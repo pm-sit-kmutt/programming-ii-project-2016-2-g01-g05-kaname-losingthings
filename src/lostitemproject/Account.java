@@ -10,6 +10,7 @@ public class Account {
     private String line;
     private String email;
     private String password;
+    private int accType;
 
     //login >>> boolean
     //
@@ -18,7 +19,7 @@ public class Account {
 
     }
 
-    public Account(int accId,String name, String surname, String username,String password, String phone, String line, String email) {
+    public Account(int accId,String name, String surname, String username,String password, String phone, String line, String email,int type) {
         this.accId = accId;
         this.name = name;
         this.surname = surname;
@@ -27,6 +28,7 @@ public class Account {
         this.line = line;
         this.email = email;
         this.password = password;
+        this.accType = type;
     }
 
     public int getAccId() {
@@ -84,14 +86,24 @@ public class Account {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    
-    public boolean login(String username,String password) {
-        boolean result=true;
-        if(password.equals(password)){
-            result = true;
-        }    
-        return result;
+
+    public int getAccType() {
+        return accType;
     }
+
+    public void setAccType(int accType) {
+        this.accType = accType;
+    }
+
+    public void setAccId(int accId) {
+        this.accId = accId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    
+    
+    
 
 }

@@ -17,15 +17,25 @@ import java.util.logging.Logger;
 public class ViewLostItem {
     public static void run(){
         Scanner sc = new Scanner(System.in);
-        int input,accountId=1;
+        int input;
+        Account acc=null;
         DBManagement dbm = new DBManagement();
         try {
+            while(acc==null){
+                System.out.print("Enter username : ");
+                String username=sc.nextLine();
+                System.out.print("Enter password : ");
+                String pass=sc.nextLine();
+                dbm.createConnection();
+                acc=dbm.login(username, pass);
+                dbm.disconnect();
+            }
             String condition = "";
             System.out.println("1 - View my item\n2 - View all item");
             System.out.print("Choose (number) : ");
             input=sc.nextInt();
             if(input==1){
-                condition="AND item.Accout_userID="+accountId;
+                condition="AND item.Accout_userID="+acc.getAccId();
             }else{
                 System.out.println("===category list===\n0 - All Category\n1 - device\n2 - costume\n3 - Bag\n4 - Key\n5 - Other");
                 System.out.print("Enter Item category (number) : ");
@@ -74,11 +84,11 @@ public class ViewLostItem {
             System.out.print("Choose (number) : ");
             input = sc.nextInt();
             while(input==1){                                                
-                if(item[focusItem-1].getOwnerId()==accountId){
+                if(item[focusItem-1].getOwnerId()==acc.getAccId()){
                     System.out.println("1 - Lost\n2 - Found\n3 - Received");
                     System.out.print("Choose (number) : ");
                     dbm.createConnection();
-                    dbm.insertStatus(stat.getLocationId(), stat.getItemId(), accountId,sc.nextInt());  
+                    dbm.insertStatus(stat.getLocationId(), stat.getItemId(), acc.getAccId(),sc.nextInt());  
                     
                     System.out.println("Change Status Completed.");
                     stat = dbm.queryStatus(item[focusItem-1].getItemId());

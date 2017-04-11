@@ -161,6 +161,24 @@ public class DBManagement {
         return allLocate;
     }
     
+    public Account login(String username,String password) throws SQLException {
+        Account acc=null;
+        
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM accout WHERE userName='"+username+"' AND password='"+password+"'");
+        if(rs.next()){
+            acc=new Account();
+            acc.setAccId(rs.getInt("userID"));
+            acc.setAccType(rs.getInt("AccountType_accTypeID"));
+            acc.setUsername(username);
+            acc.setPassword(password);
+            acc.setEmail(rs.getString("userEmail"));
+            acc.setPhone(rs.getString("userPhone"));
+            acc.setLine(rs.getString("userLine"));
+        }
+        return acc;
+    }
+    
     public boolean disconnect() throws SQLException{
         if(conn!=null){
             conn.close();
