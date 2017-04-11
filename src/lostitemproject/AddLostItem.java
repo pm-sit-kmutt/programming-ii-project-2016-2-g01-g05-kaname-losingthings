@@ -15,8 +15,9 @@ import java.util.Scanner;
 public class AddLostItem {
     public static void run(){
         Scanner sc = new Scanner(System.in);
-        String name,des,date;
+        String name,des,date,imgName;
         int owner,cate,location,accountId=1,itemId;
+        DBManagement dbm = new DBManagement();
         System.out.print("Enter name : ");
         name=sc.nextLine();
         System.out.print("Enter Description : ");
@@ -30,11 +31,16 @@ public class AddLostItem {
         sc.nextLine();
         System.out.print("Enter Lost Date(YYYY-MM-DD) : ");
         date=sc.nextLine();
-        
+        System.out.println("choose image file to upload...");
+        imgName = Picture.uploadImg();
         try {
-            itemId = LostItem.addNewLostItem(name,des,accountId,cate,date);
-            ItemStatus.addStatus(location, itemId, accountId,1);
-          
+            dbm.createConnection();           
+            itemId = dbm.insertItem(name,des,accountId,cate,date);
+            dbm.insertStatus(location, itemId, accountId,1);
+            if(imgName!=null){
+                dbm.insertImage(imgName, itemId);
+            }
+            dbm.disconnect();
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (ClassNotFoundException ex) {

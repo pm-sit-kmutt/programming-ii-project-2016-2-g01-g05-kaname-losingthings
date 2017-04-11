@@ -3,10 +3,21 @@ package lostitemproject;
 import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Scanner;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -15,6 +26,9 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.net.ftp.FTP;
+import org.apache.commons.net.ftp.FTPClient;
 
 public class Picture {
     private int pictureId;
@@ -38,44 +52,78 @@ public class Picture {
     public Picture(String path) {
         
     }
-    //getPicture
-        //logic
-        //url = ....
-        //return ImageIO.read(url);
-    public static BufferedImage getPicture(int itemId){
-        BufferedImage image = null;
-        URL url;
-        try {
-            url = new URL("https://upload.wikimedia.org/wikipedia/en/5/5f/Original_Doge_meme.jpg");
-            image = ImageIO.read(url);
-        } catch (IOException ex) {
-            System.out.println("Invalid url");
-        }catch (Exception ex) {
-            System.out.println("Invalid url");
-        }
-        return image;
-    }
-    public static boolean uploadPic(){
+    public static BufferedImage getImg(String imgName){
         BufferedImage img = null;
-        boolean result=true;
+        FTPClient ftpClient = new FTPClient();
+        OutputStream ops = null;
+        File downloadFile = new File("D:/Download/"+imgName);
+        try {
+            img = ImageIO.read(downloadFile);
+        } catch (IOException ex) {
+            System.out.println("image not found in local, downloading from server..");
+            try {
+                ftpClient.connect("93.188.160.226", 21);
+                ftpClient.login("u782694326", "kamkam1234");
+                ftpClient.enterLocalPassiveMode();
+                ftpClient.setFileType(FTP.BINARY_FILE_TYPE);            
+                ops = new BufferedOutputStream(new FileOutputStream(downloadFile));
+                if(ftpClient.retrieveFile(imgName, ops)){
+                    System.out.println("Download image successful.");
+                }
+                ops.close();
+                img = ImageIO.read(downloadFile);
+
+
+            } catch (IOException exc) {
+                exc.printStackTrace();
+            }
+        }
+        
+
+        return img;
+        
+    }
+    
+    public static String uploadImg(){
+        FTPClient ftpClient = new FTPClient();
+        InputStream inputStream = null;
+        String pathStr=null;
+        String destination=null;
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "JPG & GIF Images", "jpg", "gif");
         chooser.setFileFilter(filter);
+        
         int returnVal = chooser.showOpenDialog(null);
-        //JLabel lblimage = new JLabel();
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            //lblimage.setText(chooser.getSelectedFile().toString());
+            pathStr=chooser.getSelectedFile().toString();
+            File picFile = new File(pathStr);
+            try {
+                ftpClient.connect("93.188.160.226", 21);
+                ftpClient.login("u782694326", "kamkam1234");
+                ftpClient.enterLocalPassiveMode();
+                ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
+                inputStream = new FileInputStream(picFile);
+                destination = UUID.randomUUID().toString();
+                System.out.println("uploading...");
+                if(ftpClient.storeFile(destination, inputStream)){
+                    System.out.println("Upload image successful.");
+                }else{
+                    destination=null;
+                }
+                    
+            }catch(IOException ex) {
+                ex.printStackTrace();                
+            }
+            finally{
+                try {
+                    inputStream.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
         }
-        try {
-            //นำ url ภาพจาก internet โดยใช้ absolute path มาเป็นในตัวแปร url
 
-            //URL url = new URL(chooser.getSelectedFile().toString());
-            //ใช้ ImageIO.read ในการอ่านภาพจาก url
-            img = ImageIO.read(new File(chooser.getSelectedFile().toString()));
-        } catch (IOException e) {
-            result =false;
-        }
-        return result;
+        return destination;
     }
 }

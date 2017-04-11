@@ -17,8 +17,11 @@ import java.util.logging.Logger;
 public class ViewLostItem {
     public static void run(){
         Scanner sc = new Scanner(System.in);
-        int input,accountId=2;
+        int input,accountId=1;
+        DBManagement dbm = new DBManagement();
         try {
+            
+            
             String condition = "";
             System.out.println("1 - View my item\n2 - View all item");
             System.out.print("Choose (number) : ");
@@ -47,14 +50,22 @@ public class ViewLostItem {
             }
             System.out.print("===Order By===\n1 - Newest First.\n2 - Oldest first.\nChoose (number) : ");
             String orderBy=(sc.nextInt()==1?"DESC":"ASC");
-            LostItem item[] = LostItem.getAllLostItem(condition,orderBy);
+            dbm.createConnection();
+            LostItem item[] = dbm.queryItem(condition,orderBy);
+            dbm.disconnect();
             for(int i=0;i<item.length;i++){
                 System.out.println((i+1)+"."+item[i]);
             }
             System.out.print("Inspect Item (select number) : ");
             int focusItem = sc.nextInt();
-            ItemStatus stat = ItemStatus.getItemStatus(item[focusItem-1].getItemId());
-            System.out.println(stat);    
+            dbm.createConnection();
+            ItemStatus stat = dbm.queryStatus(item[focusItem-1].getItemId());
+            String[] imgName = dbm.queryImage(item[focusItem-1].getItemId());           
+            dbm.disconnect();
+            System.out.println(stat);  
+            if(imgName!=null){
+                System.out.println(Picture.getImg(imgName[0]));
+            }
             System.out.println("1 - change status\n2 - back");
             System.out.print("Choose (number) : ");
             input = sc.nextInt();
@@ -62,9 +73,12 @@ public class ViewLostItem {
                 if(item[focusItem-1].getOwnerId()==accountId){
                     System.out.println("1 - Lost\n2 - Found\n3 - Received");
                     System.out.print("Choose (number) : ");
-                    ItemStatus.addStatus(stat.getLocationId(), stat.getItemId(), accountId,sc.nextInt());                   
+                    dbm.createConnection();
+                    dbm.insertStatus(stat.getLocationId(), stat.getItemId(), accountId,sc.nextInt());  
+                    
                     System.out.println("Change Status Completed.");
-                    stat = ItemStatus.getItemStatus(item[focusItem-1].getItemId());
+                    stat = dbm.queryStatus(item[focusItem-1].getItemId());
+                    dbm.disconnect();
                     System.out.println(stat);                                
                 }else{
                     System.out.println("You don't have permission to change status this item.");

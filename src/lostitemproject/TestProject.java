@@ -18,6 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -34,8 +35,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class TestProject {
 
     public static void main(String[] args){
-        AddLostItem.run();
-//        ViewLostItem.run();
+//        AddLostItem.run();
+        ViewLostItem.run();
+        
         
         
         /*Connection conn=null;

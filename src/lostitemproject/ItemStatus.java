@@ -62,58 +62,53 @@ public class ItemStatus {
     }
      
 
-    public static void addStatus(int location,int itemId,int accountId,int status)
-                throws SQLException,ClassNotFoundException{        
-        Connection conn=null; 
-        Statement stm=null;
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String statusDate = sdf.format(new Date());
-        Class.forName("com.mysql.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaname_db","root","");
-        stm = conn.createStatement();
-        stm.execute("insert into itemstatus (itemStatusDate,Location_locationId,Item_itemId,Accout_userID,Status_statusID)"
-                + "value ('"+statusDate+"',"+location+","+itemId+","+accountId+","+status+")");
-        if(conn!=null)
-            conn.close();
-    }
-    public static ItemStatus getItemStatus(int itemId)
-            throws SQLException,ClassNotFoundException{
-        ItemStatus stat = new ItemStatus();
-        Connection conn=null; 
-        Statement stm=null;
-        Class.forName("com.mysql.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaname_db","root","");
-        stm = conn.createStatement();
-//        ResultSet rs = stm.executeQuery("select itemstatus.itemStatusId,itemstatus.itemStatusDate=max(itemstatus.itemStatusDate)"
-//                + ",itemstatus.itemStatusDate,location.locationId,location.locationName,itemstatus.Item_itemId,accout.userName"
+//    public static void addStatus(int location,int itemId,int accountId,int status)
+//                throws SQLException,ClassNotFoundException{        
+//        Connection conn=null; 
+//        Statement stm=null;
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        String statusDate = sdf.format(new Date());
+//        Class.forName("com.mysql.jdbc.Driver");
+//        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaname_db","root","");
+//        stm = conn.createStatement();
+//        stm.execute("insert into itemstatus (itemStatusDate,Location_locationId,Item_itemId,Accout_userID,Status_statusID)"
+//                + "value ('"+statusDate+"',"+location+","+itemId+","+accountId+","+status+")");
+//        if(conn!=null)
+//            conn.close();
+//    }
+    
+//    public static ItemStatus getItemStatus(int itemId)
+//            throws SQLException,ClassNotFoundException{
+//        ItemStatus stat = new ItemStatus();
+//        Connection conn=null; 
+//        Statement stm=null;
+//        Class.forName("com.mysql.jdbc.Driver");
+//        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaname_db","root","");
+//        stm = conn.createStatement();
+//
+//        ResultSet rs = stm.executeQuery("select itemstatus.itemStatusId,itemstatus.itemStatusDate as lastUpdate"
+//                + ",location.locationId,location.locationName,itemstatus.Item_itemId,accout.userName"
 //                + ",status.statusName from itemstatus INNER JOIN location ON itemstatus.Location_locationId=location.locationId"
 //                + " INNER JOIN accout ON itemstatus.Accout_userID=accout.userID"
 //                + " INNER JOIN status ON itemstatus.Status_statusId=status.statusId"
-//                + " WHERE itemstatus.Item_itemId="+itemId);
-
-        ResultSet rs = stm.executeQuery("select itemstatus.itemStatusId,itemstatus.itemStatusDate as lastUpdate"
-                + ",location.locationId,location.locationName,itemstatus.Item_itemId,accout.userName"
-                + ",status.statusName from itemstatus INNER JOIN location ON itemstatus.Location_locationId=location.locationId"
-                + " INNER JOIN accout ON itemstatus.Accout_userID=accout.userID"
-                + " INNER JOIN status ON itemstatus.Status_statusId=status.statusId"
-                + " WHERE (itemstatus.Item_itemId, itemstatus.itemStatusDate) IN"
-                + " (SELECT itemstatus.Item_itemId, Max(itemstatus.itemStatusDate)"
-                + " FROM itemstatus GROUP BY itemstatus.Item_itemId) AND itemstatus.Item_itemId="+itemId);
-        
-        rs.next();
-        stat.setStatusId(rs.getInt("itemStatusId"));
-        stat.setLastUpdate(rs.getDate("lastUpdate"));
-        stat.setLocationName(rs.getString("locationName"));
-        stat.setItemId(rs.getInt("Item_itemId"));
-        stat.setOwnerName(rs.getString("userName"));
-        stat.setStatusName(rs.getString("statusName"));
-        stat.setLocationId(rs.getInt("locationId"));
-        
-        if(conn!=null)
-            conn.close();
-         
-        return stat;
-    }
+//                + " WHERE (itemstatus.Item_itemId, itemstatus.itemStatusDate) IN"
+//                + " (SELECT itemstatus.Item_itemId, Max(itemstatus.itemStatusDate)"
+//                + " FROM itemstatus GROUP BY itemstatus.Item_itemId) AND itemstatus.Item_itemId="+itemId);
+//        
+//        rs.next();
+//        stat.setStatusId(rs.getInt("itemStatusId"));
+//        stat.setLastUpdate(rs.getDate("lastUpdate"));
+//        stat.setLocationName(rs.getString("locationName"));
+//        stat.setItemId(rs.getInt("Item_itemId"));
+//        stat.setOwnerName(rs.getString("userName"));
+//        stat.setStatusName(rs.getString("statusName"));
+//        stat.setLocationId(rs.getInt("locationId"));
+//        
+//        if(conn!=null)
+//            conn.close();
+//         
+//        return stat;
+//    }
 
     public String getStatusName() {
         return statusName;

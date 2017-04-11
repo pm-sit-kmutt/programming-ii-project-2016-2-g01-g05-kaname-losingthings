@@ -35,23 +35,23 @@ public class LostItem {
         this.ownerName = ownerName;
     }
 
-    public static int addNewLostItem(String itemName, String itemDesc,int ownerId,int itemCate,String date)
-                throws SQLException,ClassNotFoundException{ 
-        Connection conn=null; 
-        Statement stm=null;
-        int itemId=-1;
-        Class.forName("com.mysql.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaname_db","root","");
-        stm = conn.createStatement();
-        stm.execute("insert into item (itemName,itenmDes,DateStart,Accout_userID,Cate_cateId) "
-                + "value ('"+itemName+"','"+itemDesc+"','"+date+"','"+ownerId+"','"+itemCate+"')",Statement.RETURN_GENERATED_KEYS);
-        ResultSet rs = stm.getGeneratedKeys();
-        rs.next();
-        itemId=rs.getInt(1);       
-        if(conn!=null)
-            conn.close();
-        return itemId;
-    }
+//    public static int addNewLostItem(String itemName, String itemDesc,int ownerId,int itemCate,String date)
+//                throws SQLException,ClassNotFoundException{ 
+//        Connection conn=null; 
+//        Statement stm=null;
+//        int itemId=-1;
+//        Class.forName("com.mysql.jdbc.Driver");
+//        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaname_db","root","");
+//        stm = conn.createStatement();
+//        stm.execute("insert into item (itemName,itenmDes,DateStart,Accout_userID,Cate_cateId) "
+//                + "value ('"+itemName+"','"+itemDesc+"','"+date+"','"+ownerId+"','"+itemCate+"')",Statement.RETURN_GENERATED_KEYS);
+//        ResultSet rs = stm.getGeneratedKeys();
+//        rs.next();
+//        itemId=rs.getInt(1);       
+//        if(conn!=null)
+//            conn.close();
+//        return itemId;
+//    }
  
     public void setItemName(String itemName) { 
         this.itemName = itemName; 
@@ -100,42 +100,42 @@ public class LostItem {
         return ownerId; 
     } 
 
-    public static LostItem[] getAllLostItem(String filter,String orderBy) 
-            throws SQLException,ClassNotFoundException{ 
-        ArrayList<LostItem> allLostItem = new ArrayList<LostItem>(); 
-        Connection conn=null; 
-        Statement stm=null;
-        Class.forName("com.mysql.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaname_db","root","");
-        stm = conn.createStatement();
-        ResultSet rs = stm.executeQuery("select item.itemId ,cate.cateName ,accout.userName ,item.itemName "
-                + ",item.itenmDes ,accout.userID as OwnerId ,accout.userName as Owner_name ,item.DateStart"
-                + ",item.DateEnd ,itemstatus.itemStatusDate from item"
-                + " INNER JOIN cate ON item.Cate_cateId=cate.cateId"
-                + " INNER JOIN itemstatus ON itemstatus.Item_itemId=item.itemId"
-                + " INNER JOIN accout ON itemstatus.Accout_userID=accout.userID"                
-                + " INNER JOIN location ON itemstatus.Location_locationId=location.locationId"
-                + " WHERE (itemstatus.Item_itemId, itemstatus.itemStatusDate)"
-                + " IN (SELECT itemstatus.Item_itemId, Max(itemstatus.itemStatusDate)"
-                + " FROM itemstatus GROUP BY itemstatus.Item_itemId) "+filter
-                + " ORDER BY itemstatus.itemStatusDate "+orderBy);                
-        while(rs.next()){
-            LostItem tmp = new LostItem();
-            tmp.setItemId(rs.getInt("itemId"));
-            tmp.setCate(rs.getString("cateName"));
-            tmp.setItemName(rs.getString("itemName"));
-            tmp.setItemDescription(rs.getString("itenmDes"));
-            tmp.setDateStart(rs.getDate("dateStart"));
-            tmp.setDateEnd(rs.getDate("dateEnd"));
-            tmp.setOwnerName(rs.getString("Owner_name"));
-            tmp.setOwnerId(rs.getInt("OwnerId"));
-            allLostItem.add(tmp);
-        }
-        if(conn!=null)
-            conn.close();
-         
-        return allLostItem.toArray(new LostItem[allLostItem.size()]);
-    } 
+//    public static LostItem[] getAllLostItem(String filter,String orderBy) 
+//            throws SQLException,ClassNotFoundException{ 
+//        ArrayList<LostItem> allLostItem = new ArrayList<LostItem>(); 
+//        Connection conn=null; 
+//        Statement stm=null;
+//        Class.forName("com.mysql.jdbc.Driver");
+//        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaname_db","root","");
+//        stm = conn.createStatement();
+//        ResultSet rs = stm.executeQuery("select item.itemId ,cate.cateName ,accout.userName ,item.itemName "
+//                + ",item.itenmDes ,accout.userID as OwnerId ,accout.userName as Owner_name ,item.DateStart"
+//                + ",item.DateEnd ,itemstatus.itemStatusDate from item"
+//                + " INNER JOIN cate ON item.Cate_cateId=cate.cateId"
+//                + " INNER JOIN itemstatus ON itemstatus.Item_itemId=item.itemId"
+//                + " INNER JOIN accout ON itemstatus.Accout_userID=accout.userID"                
+//                + " INNER JOIN location ON itemstatus.Location_locationId=location.locationId"
+//                + " WHERE (itemstatus.Item_itemId, itemstatus.itemStatusDate)"
+//                + " IN (SELECT itemstatus.Item_itemId, Max(itemstatus.itemStatusDate)"
+//                + " FROM itemstatus GROUP BY itemstatus.Item_itemId) "+filter
+//                + " ORDER BY itemstatus.itemStatusDate "+orderBy);                
+//        while(rs.next()){
+//            LostItem tmp = new LostItem();
+//            tmp.setItemId(rs.getInt("itemId"));
+//            tmp.setCate(rs.getString("cateName"));
+//            tmp.setItemName(rs.getString("itemName"));
+//            tmp.setItemDescription(rs.getString("itenmDes"));
+//            tmp.setDateStart(rs.getDate("dateStart"));
+//            tmp.setDateEnd(rs.getDate("dateEnd"));
+//            tmp.setOwnerName(rs.getString("Owner_name"));
+//            tmp.setOwnerId(rs.getInt("OwnerId"));
+//            allLostItem.add(tmp);
+//        }
+//        if(conn!=null)
+//            conn.close();
+//         
+//        return allLostItem.toArray(new LostItem[allLostItem.size()]);
+//    } 
 
     public Date getDateStart() {
         return dateStart;
