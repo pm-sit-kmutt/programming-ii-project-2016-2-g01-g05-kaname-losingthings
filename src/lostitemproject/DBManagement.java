@@ -144,6 +144,23 @@ public class DBManagement {
         return imgName;
     }
     
+    public String[] queryLocation() throws SQLException{
+        ArrayList<String> temp = new ArrayList<String>();
+        String[] allLocate = null;
+        
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT location.locationName FROM location");       
+        while(rs.next()){
+            temp.add(rs.getString("locationName"));
+        }
+        
+        if(temp.size()>0){
+            allLocate=temp.toArray(new String[temp.size()]);
+        }
+        
+        return allLocate;
+    }
+    
     public boolean disconnect() throws SQLException{
         if(conn!=null){
             conn.close();

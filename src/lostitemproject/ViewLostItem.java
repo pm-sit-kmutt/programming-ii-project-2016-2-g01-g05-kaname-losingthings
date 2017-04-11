@@ -20,8 +20,6 @@ public class ViewLostItem {
         int input,accountId=1;
         DBManagement dbm = new DBManagement();
         try {
-            
-            
             String condition = "";
             System.out.println("1 - View my item\n2 - View all item");
             System.out.print("Choose (number) : ");
@@ -36,7 +34,13 @@ public class ViewLostItem {
                     condition="AND Cate_cateId="+input;
                 }
 
-                System.out.println("===location list===\n0.All Location\n1.SIT Building\n2.KFC\n3.CB1\n4.CB2");
+                System.out.println("===location list===\n0.All Location");
+                dbm.createConnection();
+                String locateList[] = dbm.queryLocation();
+                dbm.disconnect();
+                for(int i=0;i<locateList.length;i++){
+                    System.out.println((i+1)+"."+locateList[i]);
+                }
                 System.out.print("Enter location (number) : ");
                 input = sc.nextInt();
                 if(input!=0){        

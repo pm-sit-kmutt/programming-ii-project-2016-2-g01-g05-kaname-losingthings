@@ -18,22 +18,29 @@ public class AddLostItem {
         String name,des,date,imgName;
         int owner,cate,location,accountId=1,itemId;
         DBManagement dbm = new DBManagement();
-        System.out.print("Enter name : ");
-        name=sc.nextLine();
-        System.out.print("Enter Description : ");
-        des=sc.nextLine();
-        System.out.println("===category list===\n1.device\n2.costume\n3.Bag\n4.Key\n5.Other");
-        System.out.print("Enter Item category (number) : ");
-        cate=sc.nextInt();
-        System.out.println("===location list===\n1.SIT Building\n2.KFC\n3.CB1\n4.CB2");
-        System.out.print("Enter location (number) : ");
-        location=sc.nextInt();
-        sc.nextLine();
-        System.out.print("Enter Lost Date(YYYY-MM-DD) : ");
-        date=sc.nextLine();
-        System.out.println("choose image file to upload...");
-        imgName = Picture.uploadImg();
+        
         try {
+            System.out.print("Enter name : ");
+            name=sc.nextLine();
+            System.out.print("Enter Description : ");
+            des=sc.nextLine();
+            System.out.println("===category list===\n1.device\n2.costume\n3.Bag\n4.Key\n5.Other");
+            System.out.print("Enter Item category (number) : ");
+            cate=sc.nextInt();
+            System.out.println("===location list===");
+            dbm.createConnection();
+            String locateList[] = dbm.queryLocation();
+            dbm.disconnect();
+            for(int i=0;i<locateList.length;i++){
+                System.out.println((i+1)+"."+locateList[i]);
+            }
+            System.out.print("Enter location (number) : ");
+            location=sc.nextInt();
+            sc.nextLine();
+            System.out.print("Enter Lost Date(YYYY-MM-DD) : ");
+            date=sc.nextLine();
+            System.out.println("choose image file to upload...");
+            imgName = Picture.uploadImg();
             dbm.createConnection();           
             itemId = dbm.insertItem(name,des,accountId,cate,date);
             dbm.insertStatus(location, itemId, accountId,1);
