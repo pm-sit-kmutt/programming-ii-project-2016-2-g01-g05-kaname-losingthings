@@ -13,6 +13,9 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -161,7 +164,7 @@ public class DBManagement {
         return allLocate;
     }
     
-    public Account login(String username,String password) throws SQLException {
+    public   Account login(String username,String password) throws SQLException {
         Account acc=null;
         
         Statement stm = conn.createStatement();

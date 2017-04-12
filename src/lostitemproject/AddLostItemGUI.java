@@ -28,12 +28,32 @@ import org.apache.commons.net.ftp.FTPClient;
  * @author Kimmy
  */
 public class AddLostItemGUI extends javax.swing.JPanel {
-
+    private Account acc;
+    private String imgName;
+    private boolean InProgress;
     /**
      * Creates new form AddLostItemGUI
      */
-    public AddLostItemGUI() {
+    public AddLostItemGUI(Account acc) {
         initComponents();
+        this.acc=acc;
+        InProgress=true;
+    }
+
+    public Account getAcc() {
+        return acc;
+    }
+
+    public void setAcc(Account acc) {
+        this.acc = acc;
+    }
+
+    public boolean isInProgress() {
+        return InProgress;
+    }
+
+    public void setInProgress(boolean InProgress) {
+        this.InProgress = InProgress;
     }
 
     /**
@@ -56,12 +76,13 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         ComboLostItem = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        location = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         Pic = new javax.swing.JLabel();
         BtnUpload = new javax.swing.JButton();
         BtnConfirm = new javax.swing.JButton();
         Path = new javax.swing.JLabel();
+        testButton = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(800, 550));
 
@@ -70,7 +91,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         jLabel1.setText("แจ้งของหาย");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("ชื่อ-สกุล");
+        jLabel2.setText("ชื่อของหาย");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("คำอธิบาย");
@@ -97,7 +118,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         DBManagement dbm = new DBManagement();
         try{
             dbm.createConnection();
-            jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(dbm.queryLocation()));
+            location.setModel(new javax.swing.DefaultComboBoxModel<>(dbm.queryLocation()));
             dbm.disconnect();
         }catch(Exception e){
             e.printStackTrace();
@@ -124,6 +145,13 @@ public class AddLostItemGUI extends javax.swing.JPanel {
 
         Path.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        testButton.setText("test");
+        testButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                testButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,33 +168,37 @@ public class AddLostItemGUI extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(location, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(61, 61, 61)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(TextName)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
-                                    .addComponent(TextDate, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(257, 257, 257)
                                 .addComponent(BtnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(42, 42, 42)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Path, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(BtnUpload))
-                                    .addComponent(Pic, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(215, Short.MAX_VALUE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel4))
+                                        .addGap(61, 61, 61)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(TextName)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                                            .addComponent(TextDate, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addGap(42, 42, 42)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(Path, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(BtnUpload))
+                                            .addComponent(Pic, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                                .addComponent(testButton)))))
+                .addGap(89, 89, 89))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,7 +209,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
                     .addComponent(jLabel5)
                     .addComponent(ComboLostItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(location, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -186,15 +218,20 @@ public class AddLostItemGUI extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(TextDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BtnUpload)
-                    .addComponent(Path, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(TextDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(BtnUpload)
+                            .addComponent(Path, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(testButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Pic, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -204,11 +241,33 @@ public class AddLostItemGUI extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ComboLostItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboLostItemActionPerformed
-        int a = ComboLostItem.getSelectedIndex();
-        JOptionPane.showMessageDialog(this, String.valueOf(a));
+        //int a = ComboLostItem.getSelectedIndex();
+        //JOptionPane.showMessageDialog(this, String.valueOf(a));
     }//GEN-LAST:event_ComboLostItemActionPerformed
 
     private void BtnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConfirmActionPerformed
+        DBManagement dbm = new DBManagement();
+        int itemId;
+        
+        
+        try {           
+            dbm.createConnection();
+            itemId = dbm.insertItem(TextName.getText(),TextDescription.getText(),acc.getAccId(),ComboLostItem.getSelectedIndex()+1,TextDate.getText());
+            dbm.insertStatus(location.getSelectedIndex()+1, itemId, acc.getAccId(),1);
+            
+            if(imgName!=null){
+                dbm.insertImage(imgName, itemId);
+            }
+            dbm.disconnect();
+            InProgress=false;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (NullPointerException ex){
+            JOptionPane.showMessageDialog(this, "ใส่ข้อมูลไม่ครบ");
+        }
+        
         
         //itemId = dbm.insertItem(name,des,accountId,cate,date);
     }//GEN-LAST:event_BtnConfirmActionPerformed
@@ -217,15 +276,17 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         FTPClient ftpClient = new FTPClient();
         InputStream inputStream = null;
         String pathStr = null;
-        String destination = null;
-
+        //String destination = null;
+        BtnUpload.setText("กำลังอัพโหลด..");
+        BtnConfirm.setEnabled(false);
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "JPG & GIF Images", "jpg", "gif");
         chooser.setFileFilter(filter);
-
+        
         int returnVal = chooser.showOpenDialog(null);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
+            
             //BufferedImage dimg = pathStr.getScaledInstance(label.width, label.height,Image.SCALE_SMOOTH);
             pathStr = chooser.getSelectedFile().toString();
             File picFile = new File(pathStr);
@@ -235,6 +296,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
             Pic.setIcon(new ImageIcon(image));
             //Pic.setIcon(new ImageIcon(pathStr));
             //Pic.setIcon(Place.ResizeImage(Pic, pathStr));
+            
             try {
 
                 ftpClient.connect("93.188.160.226", 21);
@@ -242,13 +304,14 @@ public class AddLostItemGUI extends javax.swing.JPanel {
                 ftpClient.enterLocalPassiveMode();
                 ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
                 inputStream = new FileInputStream(picFile);
-                destination = UUID.randomUUID().toString();
+                imgName = UUID.randomUUID().toString();
                 System.out.println("uploading...");
-                if (ftpClient.storeFile(destination, inputStream)) {
+                if (ftpClient.storeFile(imgName, inputStream)) {
                     JOptionPane.showMessageDialog(this, "Upload Successful");
 
                 } else {
-                    destination = null;
+                    JOptionPane.showMessageDialog(this, "Upload Failed");
+                    imgName = null;
                 }
 
             } catch (IOException ex) {
@@ -260,9 +323,16 @@ public class AddLostItemGUI extends javax.swing.JPanel {
                     ex.printStackTrace();
                 }
             }
+            BtnUpload.setText("อัพโหลดรูปภาพ");
+            BtnConfirm.setEnabled(true);
         }
 
     }//GEN-LAST:event_BtnUploadActionPerformed
+
+    private void testButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testButtonActionPerformed
+        System.out.println(ComboLostItem.getSelectedIndex()+1);
+        System.out.println(this.isInProgress());
+    }//GEN-LAST:event_testButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -274,7 +344,6 @@ public class AddLostItemGUI extends javax.swing.JPanel {
     private javax.swing.JTextField TextDate;
     private javax.swing.JTextArea TextDescription;
     private javax.swing.JTextField TextName;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -283,5 +352,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> location;
+    private javax.swing.JButton testButton;
     // End of variables declaration//GEN-END:variables
 }
