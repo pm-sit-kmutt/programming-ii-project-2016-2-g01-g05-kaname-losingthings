@@ -5,29 +5,22 @@
  */
 package lostitemproject;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author POOM
  */
 public class LostItemProject {
     public static void main(String[] args) {
-//        Account user = new Account(1,"name", "sur", "poom029","029", "08xxxxxx", "pp", "ppppp");
-//        if(user.login("poom029", "029")){
-//            System.out.println("======== All Item =======");
-//            System.out.println(LostItem.getAllLostItem());
-//            System.out.println("======== Filter Location 1 =======");
-//            System.out.println(LostItem.getAllLostItemByLocate(1));
-//            System.out.println("======== Filter User 1 =======");
-//            System.out.println(LostItem.getAllLostItemByUser(user.getAccId()));
-//            System.out.println("======== Filter Limit 2 =======");
-//            System.out.println(LostItem.getAllLostItemWithLimit(2));
-//            System.out.println("======== All Status =======");
-//            System.out.println(ItemStatus.getAllItemStatus());
-//            System.out.println("======== Test uploadPic =======");
-//            System.out.println(Picture.uploadPic());
-//            System.out.println("======== Filter Pic by Item Id =======");
-//            System.out.println(Picture.getPicture(LostItem.getAllLostItemByUser(user.getAccId()).get(0).getItemId()));
-//        }
+        JFrame jframe = new JFrame();
+        jframe.setSize(890, 590);
+        jframe.add(new AddLostItemGUI());
+        jframe.setLocationRelativeTo(null);
+        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jframe.setVisible(true);
+        //jframe.setLayout();
+        
     }
     
 }
