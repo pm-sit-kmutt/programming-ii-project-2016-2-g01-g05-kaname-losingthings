@@ -49,10 +49,12 @@ public class LostItemProject {
                         Thread.sleep(1000);
                     }
                     itemToShow=viewGUI.getFocusItem();
+                    pageToGo=viewGUI.getPageToGo();
                     jframe.remove(viewGUI);
+                    System.out.println("removing viewGUI");
                     break;
                 case "viewDetails":
-                    
+//                    jframe.revalidate();
                     
                     
                     
