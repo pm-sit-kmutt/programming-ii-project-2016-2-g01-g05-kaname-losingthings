@@ -35,8 +35,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class TestProject {
 
     public static void main(String[] args){
-        AddLostItem.run();
-//        ViewLostItem.run();
+//        AddLostItem.run();
+        ViewLostItem.run();
         
         
         

@@ -17,11 +17,18 @@ import javax.swing.JOptionPane;
 public class LoginGUI extends javax.swing.JPanel {
 
     private Account account;
-    private boolean InProgress;
+    private String pageToGo;
+
+    public String getPageToGo() {
+        return pageToGo;
+    }
+
+    public void setPageToGo(String pageToGo) {
+        this.pageToGo = pageToGo;
+    }
     
     public LoginGUI() {
         initComponents();
-        InProgress=true;
     }
 
     public Account getAccount() {
@@ -32,15 +39,6 @@ public class LoginGUI extends javax.swing.JPanel {
         this.account = account;
     }
     
-    
-    
-    public boolean isInProgress() {
-        return InProgress;
-    }
-
-    public void setInProgress(boolean InProgress) {
-        this.InProgress = InProgress;
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -98,7 +96,7 @@ public class LoginGUI extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(250, 250, 250)
                         .addComponent(jLabel1)))
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(175, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,7 +113,7 @@ public class LoginGUI extends javax.swing.JPanel {
                     .addComponent(jLabel3))
                 .addGap(43, 43, 43)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(145, 145, 145))
+                .addGap(109, 109, 109))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -125,7 +123,7 @@ public class LoginGUI extends javax.swing.JPanel {
             dbm.createConnection();
             account=dbm.login(TextUsername.getText(),TextPassword.getText());
             if(account!=null){
-                InProgress=false;
+                pageToGo="viewAll";
             }else{
                 JOptionPane.showMessageDialog(this, "username หรือ password ไม่ถูกต้อง!");
             }

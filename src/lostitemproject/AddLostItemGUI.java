@@ -31,7 +31,8 @@ public class AddLostItemGUI extends javax.swing.JPanel {
     private Account acc;
     private String userName;
     private String imgName;
-    private boolean InProgress;
+    private String pageToGo;
+
     /**
      * Creates new form AddLostItemGUI
      */
@@ -40,9 +41,16 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         userName = ""+acc.getUsername();
         userNameText.setText(userName);
         this.acc=acc;
-        InProgress=true;
     }
+
     
+    public String getPageToGo() {
+        return pageToGo;
+    }
+
+    public void setPageToGo(String pageToGo) {
+        this.pageToGo = pageToGo;
+    }
     public Account getAcc() {
         return acc;
     }
@@ -51,15 +59,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         this.acc = acc;
     }
 
-    public boolean isInProgress() {
-        return InProgress;
-    }
 
-    public void setInProgress(boolean InProgress) {
-        this.InProgress = InProgress;
-    }
-
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -191,11 +191,29 @@ public class AddLostItemGUI extends javax.swing.JPanel {
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(Path, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BtnUpload))
-                            .addComponent(Pic, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(257, 257, 257)
+                                .addComponent(BtnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel4))
+                                    .addGap(61, 61, 61)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(TextName)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                                        .addComponent(TextDate, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addGap(42, 42, 42)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(Path, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(BtnUpload))
+                                        .addComponent(Pic, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,13 +274,15 @@ public class AddLostItemGUI extends javax.swing.JPanel {
                 dbm.insertImage(imgName, itemId);
             }
             dbm.disconnect();
-            InProgress=false;
+            pageToGo="viewAll";
         } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "ใส่ข้อมูลไม่ครบ");
             ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         } catch (NullPointerException ex){
             JOptionPane.showMessageDialog(this, "ใส่ข้อมูลไม่ครบ");
+            ex.printStackTrace();
         }
         
         

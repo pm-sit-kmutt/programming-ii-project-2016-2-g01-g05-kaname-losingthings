@@ -28,6 +28,9 @@ public class ViewLostItem {
                 String pass=sc.nextLine();
                 dbm.createConnection();
                 acc=dbm.login(username, pass);
+                if(acc==null){
+                    System.out.println("invalid username or password");
+                }
                 dbm.disconnect();
             }
             String condition = "";
@@ -84,8 +87,8 @@ public class ViewLostItem {
             System.out.print("Choose (number) : ");
             input = sc.nextInt();
             while(input==1){                                                
-                if(item[focusItem-1].getOwnerId()==acc.getAccId()){
-                    System.out.println("1 - Lost\n2 - Found\n3 - Received");
+                if(acc.getAccType()==1){
+                    System.out.println("1 - Lost\n2 - Found via kaname\n3 - Received\n4 - delete");
                     System.out.print("Choose (number) : ");
                     dbm.createConnection();
                     dbm.insertStatus(stat.getLocationId(), stat.getItemId(), acc.getAccId(),sc.nextInt());  
@@ -94,6 +97,17 @@ public class ViewLostItem {
                     stat = dbm.queryStatus(item[focusItem-1].getItemId());
                     dbm.disconnect();
                     System.out.println(stat);                                
+                }else if(item[focusItem-1].getOwnerId()==acc.getAccId()){
+                    System.out.println("2 - Found by myself");
+                    System.out.print("Choose (number) : ");
+                    dbm.createConnection();
+                    dbm.insertStatus(stat.getLocationId(), stat.getItemId(), acc.getAccId(),sc.nextInt());  
+                    
+                    System.out.println("Change Status Completed.");
+                    stat = dbm.queryStatus(item[focusItem-1].getItemId());
+                    dbm.disconnect();
+                    System.out.println(stat);       
+                    
                 }else{
                     System.out.println("You don't have permission to change status this item.");
                 }

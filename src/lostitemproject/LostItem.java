@@ -1,5 +1,6 @@
 package lostitemproject;
 
+import java.awt.Image;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,6 +16,7 @@ public class LostItem {
     private String ownerName;
     private Date dateStart;
     private Date dateEnd;
+    private Image img;
 
     public LostItem() {
     }
@@ -26,6 +28,14 @@ public class LostItem {
         this.cate = cate;
         this.ownerId = ownerId;
     } 
+
+    public Image getImg() {
+        return img;
+    }
+
+    public void setImg(Image img) {
+        this.img = img;
+    }
 
     public String getOwnerName() {
         return ownerName;

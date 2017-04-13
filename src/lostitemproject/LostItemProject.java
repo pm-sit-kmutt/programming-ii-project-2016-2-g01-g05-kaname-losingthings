@@ -5,6 +5,8 @@
  */
 package lostitemproject;
 
+import java.awt.FlowLayout;
+import java.sql.SQLException;
 import javax.swing.*;
 
 /**
@@ -12,36 +14,89 @@ import javax.swing.*;
  * @author POOM
  */
 public class LostItemProject {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, ClassNotFoundException, SQLException {
         JFrame jframe = new JFrame();        
         jframe.setSize(890, 590);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.setLocationRelativeTo(null); 
-        while(true){
-            LoginGUI loginGUI = new LoginGUI();
-            jframe.add(loginGUI);
-            jframe.setVisible(true);
-            jframe.revalidate();
-            jframe.repaint();
-            while(loginGUI.isInProgress()){
-                Thread.sleep(1000);
+        String pageToGo="login";
+        LostItem itemToShow=null;
+        Account acc=null;
+        //================= TEST ==================
+        ViewLostItemGUI viewGUI;
+        LoginGUI loginGUI;
+        AddLostItemGUI addItemGUI;
+        while(!"exit".equals(pageToGo)){
+            switch (pageToGo) {
+                case "login":
+                    loginGUI = new LoginGUI();
+                    jframe.add(loginGUI);
+                    jframe.setVisible(true);
+                    jframe.revalidate();
+                    while(loginGUI.getPageToGo()==null){
+                        Thread.sleep(1000);                       
+                    }
+                    pageToGo=loginGUI.getPageToGo();
+                    acc = loginGUI.getAccount();
+                    jframe.remove(loginGUI);
+                    break;
+                case "viewAll":
+                    viewGUI = new ViewLostItemGUI(acc);
+                    jframe.add(viewGUI);
+                    jframe.revalidate();
+                    while(viewGUI.getPageToGo()==null){
+                        viewGUI.update();
+                        Thread.sleep(1000);
+                    }
+                    itemToShow=viewGUI.getFocusItem();
+                    jframe.remove(viewGUI);
+                    break;
+                case "viewDetails":
+                    
+                    
+                    
+                    
+                    break;
+                case "addLostItem":
+                    addItemGUI = new AddLostItemGUI(acc);
+                    jframe.add(addItemGUI);
+                    jframe.revalidate();       
+                    while(addItemGUI.getPageToGo()==null){
+                        Thread.sleep(1000);
+                    }
+                    pageToGo=addItemGUI.getPageToGo();
+                    jframe.remove(addItemGUI);
+                    break;
+                case "myLostItem":
+                    
+                    
+                    
+                    break;
+                case "changeStatus":
+                    
+                    
+                    
+                    break;
             }
-            Account acc = loginGUI.getAccount();
-
-            AddLostItemGUI addItemGUI = new AddLostItemGUI(acc);
-            jframe.remove(loginGUI);
-            jframe.add(addItemGUI);
-            jframe.revalidate();
-            jframe.repaint();       
-            while(addItemGUI.isInProgress()){
-                Thread.sleep(1000);
-            }
-            jframe.remove(addItemGUI);
-            //jframe.add(new JPanel());
-            //jframe.revalidate();
-            //jframe.repaint();
         }
-        //jframe.setLayout();
+        
+        
+        
+//        System.out.println(item[0]);
+//        EachItemGUI itemGUI = new EachItemGUI(item[0]);
+        
+
+
+//        jframe.add(itemGUI);
+
+        //================= TEST ==================
+        
+        
+        while(true){
+            
+
+            
+        }
         
     }
     

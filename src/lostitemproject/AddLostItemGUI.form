@@ -66,11 +66,37 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="BtnUpload" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="Pic" min="-2" pref="302" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="TextName" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane1" pref="302" max="32767" attributes="0"/>
+                                      <Component id="TextDate" alignment="1" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="Path" min="-2" pref="170" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="BtnUpload" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="Pic" min="-2" pref="302" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="215" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

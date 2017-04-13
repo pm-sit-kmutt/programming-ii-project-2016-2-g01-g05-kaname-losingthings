@@ -56,11 +56,12 @@ public class DBManagement {
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery("select item.itemId ,cate.cateName ,accout.userName ,item.itemName "
                 + ",item.itenmDes ,accout.userID as OwnerId ,accout.userName as Owner_name ,item.DateStart"
-                + ",item.DateEnd ,itemstatus.itemStatusDate from item"
+                + ",item.DateEnd ,itemstatus.itemStatusDate ,picture.picturePath from item"
                 + " INNER JOIN cate ON item.Cate_cateId=cate.cateId"
                 + " INNER JOIN itemstatus ON itemstatus.Item_itemId=item.itemId"
                 + " INNER JOIN accout ON itemstatus.Accout_userID=accout.userID"                
                 + " INNER JOIN location ON itemstatus.Location_locationId=location.locationId"
+                + " LEFT JOIN picture ON picture.Item_itemId=item.itemId"
                 + " WHERE (itemstatus.Item_itemId, itemstatus.itemStatusDate)"
                 + " IN (SELECT itemstatus.Item_itemId, Max(itemstatus.itemStatusDate)"
                 + " FROM itemstatus GROUP BY itemstatus.Item_itemId) "+filter
@@ -75,6 +76,11 @@ public class DBManagement {
             tmp.setDateEnd(rs.getDate("dateEnd"));
             tmp.setOwnerName(rs.getString("Owner_name"));
             tmp.setOwnerId(rs.getInt("OwnerId"));
+            String imgName = rs.getString("picturePath");
+            if(imgName==null){
+                imgName="noImg";
+            }
+            tmp.setImg(Picture.getImg(imgName));
             allLostItem.add(tmp);
         }
         if(conn!=null)
