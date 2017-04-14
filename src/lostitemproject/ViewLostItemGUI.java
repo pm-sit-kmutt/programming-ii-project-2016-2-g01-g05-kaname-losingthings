@@ -34,7 +34,7 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
         
         allItemShow = new EachItemGUI[item.length];
         JPanel subPanel = new JPanel();
-        subPanel.setSize(500, item.length*120);
+        subPanel.setSize(500, item.length*140);
         for(int i=0;i<item.length;i++){
             EachItemGUI each = new EachItemGUI(item[i]);
             subPanel.add(each);
@@ -202,6 +202,8 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ViewLostItemGUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            Logger.getLogger(ViewLostItemGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
             Logger.getLogger(ViewLostItemGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_searchBtnActionPerformed

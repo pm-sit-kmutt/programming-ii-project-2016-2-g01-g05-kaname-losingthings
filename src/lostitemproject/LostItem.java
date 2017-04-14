@@ -17,6 +17,7 @@ public class LostItem {
     private Date dateStart;
     private Date dateEnd;
     private Image img;
+    private ItemStatus status;
 
     public LostItem() {
     }
@@ -28,6 +29,15 @@ public class LostItem {
         this.cate = cate;
         this.ownerId = ownerId;
     } 
+
+    public ItemStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ItemStatus status) {
+        this.status = status;
+    }
+
 
     public Image getImg() {
         return img;

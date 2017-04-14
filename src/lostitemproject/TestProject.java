@@ -36,7 +36,7 @@ public class TestProject {
 
     public static void main(String[] args){
 //        AddLostItem.run();
-        ViewLostItem.run();
+//        ViewLostItem.run();
         
         
         

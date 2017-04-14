@@ -52,30 +52,38 @@ public class Picture {
     public Picture(String path) {
         
     }
-    public static BufferedImage getImg(String imgName){
+    public static BufferedImage getImg(String imgName) throws InterruptedException{
         BufferedImage img = null;
         FTPClient ftpClient = new FTPClient();
         OutputStream ops = null;
         File downloadFile = new File("D:/Download/"+imgName);
         try {
             img = ImageIO.read(downloadFile);
+            if(img==null){
+                img = ImageIO.read(new File("D:/Download/expired"));
+            }
         } catch (IOException ex) {
             System.out.println("image not found in local, downloading from server..");
-            try {
-                ftpClient.connect("93.188.160.226", 21);
-                ftpClient.login("u782694326", "kamkam1234");
-                ftpClient.enterLocalPassiveMode();
-                ftpClient.setFileType(FTP.BINARY_FILE_TYPE);            
-                ops = new BufferedOutputStream(new FileOutputStream(downloadFile));
-                if(ftpClient.retrieveFile(imgName, ops)){
-                    System.out.println("Download image successful.");
+            boolean isSuccess=true;
+            while(isSuccess){
+                try {
+                    ftpClient.connect("93.188.160.226", 21);
+                    ftpClient.login("u782694326", "kamkam1234");
+                    ftpClient.enterLocalPassiveMode();
+                    ftpClient.setFileType(FTP.BINARY_FILE_TYPE);            
+                    ops = new BufferedOutputStream(new FileOutputStream(downloadFile));
+                    if(ftpClient.retrieveFile(imgName, ops)){
+                        System.out.println("Download image successful.");
+                    }
+                    ops.close();
+                    img = ImageIO.read(downloadFile);
+                    isSuccess=true;
+
+                } catch (IOException exc) {
+                    System.out.println("Full connection waiting..");
+                    Thread.sleep(1000);
+                    isSuccess=false;
                 }
-                ops.close();
-                img = ImageIO.read(downloadFile);
-
-
-            } catch (IOException exc) {
-                exc.printStackTrace();
             }
         }
         

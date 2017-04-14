@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @author POOM
  */
 public class ViewLostItem {
-    public static void run(){
+    public static void run() throws InterruptedException{
         Scanner sc = new Scanner(System.in);
         int input;
         Account acc=null;

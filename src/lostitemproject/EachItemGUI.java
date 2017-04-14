@@ -15,6 +15,7 @@ import javax.swing.JButton;
  */
 public class EachItemGUI extends javax.swing.JPanel {
     private LostItem item;
+    
     String pageToGo;
     /**
      * Creates new form EachItemGUI
@@ -22,7 +23,13 @@ public class EachItemGUI extends javax.swing.JPanel {
     public EachItemGUI(LostItem item) {
         this.item = item;
         initComponents();
-        imgLabel.setIcon(new ImageIcon(item.getImg().getScaledInstance(139, 116, Image.SCALE_SMOOTH)));
+        try{
+            imgLabel.setIcon(new ImageIcon(item.getImg().getScaledInstance(139, 116, Image.SCALE_SMOOTH)));
+        }catch(NullPointerException ex){
+            ex.printStackTrace();
+            System.out.println("img find problem");
+        }
+        
     }
 
     /**
@@ -36,7 +43,14 @@ public class EachItemGUI extends javax.swing.JPanel {
 
         viewDetailBtn = new javax.swing.JButton();
         imgLabel = new javax.swing.JLabel();
+        itemName = new javax.swing.JLabel();
+        cate = new javax.swing.JLabel();
+        location = new javax.swing.JLabel();
+        statusDate = new javax.swing.JLabel();
+        status = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        setMaximumSize(new java.awt.Dimension(489, 140));
         setMinimumSize(new java.awt.Dimension(489, 116));
 
         viewDetailBtn.setText("Detail");
@@ -46,23 +60,62 @@ public class EachItemGUI extends javax.swing.JPanel {
             }
         });
 
+        itemName.setText(item.getItemName());
+
+        cate.setText(item.getCate());
+
+        location.setText(item.getStatus().getLocationName());
+
+        statusDate.setText(item.getStatus().getLastUpdate().toString());
+
+        status.setText(item.getStatus().getStatusName());
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(imgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
-                .addComponent(viewDetailBtn)
-                .addGap(53, 53, 53))
+                .addContainerGap()
+                .addComponent(imgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(location, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(itemName, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                        .addComponent(viewDetailBtn)
+                        .addGap(53, 53, 53))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(statusDate, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
-                .addComponent(viewDetailBtn)
-                .addGap(43, 43, 43))
-            .addComponent(imgLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imgLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(itemName)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cate)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(location))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(viewDetailBtn)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(status)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(statusDate, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 5, Short.MAX_VALUE)))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -97,7 +150,12 @@ public class EachItemGUI extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel cate;
     private javax.swing.JLabel imgLabel;
+    private javax.swing.JLabel itemName;
+    private javax.swing.JLabel location;
+    private javax.swing.JLabel status;
+    private javax.swing.JLabel statusDate;
     private javax.swing.JButton viewDetailBtn;
     // End of variables declaration//GEN-END:variables
 }

@@ -51,7 +51,7 @@ public class DBManagement {
     }
     
     public LostItem[] queryItem(String filter,String orderBy) 
-            throws SQLException{ 
+            throws SQLException, InterruptedException{ 
         ArrayList<LostItem> allLostItem = new ArrayList<LostItem>(); 
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery("select item.itemId ,cate.cateName ,accout.userName ,item.itemName "
@@ -81,6 +81,7 @@ public class DBManagement {
                 imgName="noImg";
             }
             tmp.setImg(Picture.getImg(imgName));
+            tmp.setStatus(queryStatus(tmp.getItemId()));            
             allLostItem.add(tmp);
         }
         if(conn!=null)
