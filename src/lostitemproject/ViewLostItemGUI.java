@@ -8,6 +8,8 @@ package lostitemproject;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -20,11 +22,12 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
     private EachItemGUI[] allItemShow;
     private String pageToGo;
     private Account acc;
+    private DBManagement dbm;
     /**
      * Creates new form ViewLostItemGUI
      */
     public ViewLostItemGUI(Account acc) throws InterruptedException, ClassNotFoundException, SQLException {
-        DBManagement dbm = new DBManagement();
+        dbm = new DBManagement();
         dbm.createConnection();      
         LostItem[] item = dbm.queryItem("","DESC");
         this.acc = acc;
@@ -168,7 +171,39 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        // TODO add your handling code here:
+        try {
+            dbm.createConnection();
+            String condition = "";
+            if(cateList.getSelectedIndex()!=0){
+                condition+=" AND Cate_cateId="+cateList.getSelectedIndex();
+            }
+            if(locateList.getSelectedIndex()!=0){        
+                condition+=" AND Location_locationId="+locateList.getSelectedIndex();                   
+            }
+            if(statusList.getSelectedIndex()!=0){
+                condition+=" AND itemstatus.Status_statusId="+statusList.getSelectedIndex();
+            }
+            String orderBy=(orderByList.getSelectedIndex()==0?"DESC":"ASC");
+            LostItem[] item = dbm.queryItem(condition,orderBy);
+            this.acc = acc;
+            
+            allItemShow = new EachItemGUI[item.length];
+            JPanel subPanel = new JPanel();
+            subPanel.setSize(500, item.length*120);
+            for(int i=0;i<item.length;i++){
+                EachItemGUI each = new EachItemGUI(item[i]);
+                subPanel.add(each);
+                allItemShow[i]=each;
+            }
+            subPanel.setLayout(new BoxLayout(subPanel,BoxLayout.Y_AXIS));
+            ScrollItemList.setViewportView(subPanel);
+            ScrollItemList.revalidate();
+            ScrollItemList.repaint();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ViewLostItemGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewLostItemGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void addLostItembtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLostItembtnActionPerformed
@@ -188,6 +223,10 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
 
     public void update() {
         for(int i=0;i<allItemShow.length;i++){
+            if(allItemShow[i]==null){
+                System.out.println("data changed abort update!");
+                break;
+            }
             if(allItemShow[i].getPageToGo()!=null){
                 pageToGo="viewDetails";
                 focusItem=allItemShow[i].getItem();
