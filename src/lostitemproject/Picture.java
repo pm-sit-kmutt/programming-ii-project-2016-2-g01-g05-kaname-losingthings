@@ -60,7 +60,8 @@ public class Picture {
         try {
             img = ImageIO.read(downloadFile);
             if(img==null){
-                img = ImageIO.read(new File("D:/Download/expired"));
+                downloadFile=new File("D:/Download/expired");
+                img = ImageIO.read(downloadFile);
             }
         } catch (IOException ex) {
             System.out.println("image not found in local, downloading from server..");
@@ -105,14 +106,16 @@ public class Picture {
         int returnVal = chooser.showOpenDialog(null);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             pathStr=chooser.getSelectedFile().toString();
-            File picFile = new File(pathStr);
+//            File picFile = new File(pathStr);
+            File picFile = new File("D:\\Download\\noImg");
             try {
                 ftpClient.connect("93.188.160.226", 21);
                 ftpClient.login("u782694326", "kamkam1234");
                 ftpClient.enterLocalPassiveMode();
                 ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
                 inputStream = new FileInputStream(picFile);
-                destination = UUID.randomUUID().toString();
+//                destination = UUID.randomUUID().toString();
+                destination="noImg";
                 System.out.println("uploading...");
                 if(ftpClient.storeFile(destination, inputStream)){
                     System.out.println("Upload image successful.");

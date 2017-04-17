@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lostitemproject;
 
 import java.awt.FlowLayout;
 import java.sql.SQLException;
 import javax.swing.*;
 
-/**
- *
- * @author POOM
- */
 public class LostItemProject {
     public static void main(String[] args) throws InterruptedException, ClassNotFoundException, SQLException {
         JFrame jframe = new JFrame();        
@@ -80,20 +71,9 @@ public class LostItemProject {
                     break;
             }
         }
-        
-        
-        
-//        System.out.println(item[0]);
-//        EachItemGUI itemGUI = new EachItemGUI(item[0]);
-        
-
-
-//        jframe.add(itemGUI);
 
         //================= TEST ==================
-        
 
-        
     }
     
 }
