@@ -260,6 +260,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         
         try {           
             dbm.createConnection();
+            
             itemId = dbm.insertItem(TextName.getText(),TextDescription.getText(),acc.getAccId(),ComboLostItem.getSelectedIndex()+1,TextDate.getText());
             dbm.insertStatus(location.getSelectedIndex()+1, itemId, acc.getAccId(),1);
             
@@ -269,12 +270,12 @@ public class AddLostItemGUI extends javax.swing.JPanel {
             dbm.disconnect();
             pageToGo="viewAll";
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "ใส่ข้อมูลไม่ครบ");
+//            JOptionPane.showMessageDialog(this, "ใส่ข้อมูลไม่ครบ");
             ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         } catch (NullPointerException ex){
-            JOptionPane.showMessageDialog(this, "ใส่ข้อมูลไม่ครบ");
+//            JOptionPane.showMessageDialog(this, "ใส่ข้อมูลไม่ครบ");
             ex.printStackTrace();
         }
         
@@ -287,8 +288,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         InputStream inputStream = null;
         String pathStr = null;
         //String destination = null;
-        BtnUpload.setText("กำลังอัพโหลด..");
-        BtnConfirm.setEnabled(false);
+        
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "JPG & GIF Images", "jpg", "gif");
@@ -296,7 +296,8 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         
         int returnVal = chooser.showOpenDialog(null);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            
+            BtnUpload.setText("กำลังอัพโหลด..");
+            BtnConfirm.setEnabled(false);
             //BufferedImage dimg = pathStr.getScaledInstance(label.width, label.height,Image.SCALE_SMOOTH);
             pathStr = chooser.getSelectedFile().toString();
             File picFile = new File(pathStr);
