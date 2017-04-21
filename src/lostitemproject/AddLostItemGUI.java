@@ -17,8 +17,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -31,7 +36,6 @@ public class AddLostItemGUI extends javax.swing.JPanel {
     private Account acc;
     private String userName;
     private String imgName;
-    private String pageToGo;
 
     /**
      * Creates new form AddLostItemGUI
@@ -47,20 +51,165 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         }
     }
 
-    
-    public String getPageToGo() {
-        return pageToGo;
+
+    public JButton getBackBtn() {
+        return backBtn;
     }
 
-    public void setPageToGo(String pageToGo) {
-        this.pageToGo = pageToGo;
+    public void setBackBtn(JButton backBtn) {
+        this.backBtn = backBtn;
     }
+
+    public JButton getBtnConfirm() {
+        return BtnConfirm;
+    }
+
+    public void setBtnConfirm(JButton BtnConfirm) {
+        this.BtnConfirm = BtnConfirm;
+    }
+    
     public Account getAcc() {
         return acc;
     }
 
     public void setAcc(Account acc) {
         this.acc = acc;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getImgName() {
+        return imgName;
+    }
+
+    public void setImgName(String imgName) {
+        this.imgName = imgName;
+    }
+
+    public JLabel getPath() {
+        return Path;
+    }
+
+    public void setPath(JLabel Path) {
+        this.Path = Path;
+    }
+
+    public JTextField getTextDate() {
+        return TextDate;
+    }
+
+    public void setTextDate(JTextField TextDate) {
+        this.TextDate = TextDate;
+    }
+
+    public JTextArea getTextDescription() {
+        return TextDescription;
+    }
+
+    public void setTextDescription(JTextArea TextDescription) {
+        this.TextDescription = TextDescription;
+    }
+
+    public JTextField getTextName() {
+        return TextName;
+    }
+
+    public void setTextName(JTextField TextName) {
+        this.TextName = TextName;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public void setjLabel5(JLabel jLabel5) {
+        this.jLabel5 = jLabel5;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public void setjLabel6(JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
+    }
+
+    public JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    public void setjLabel7(JLabel jLabel7) {
+        this.jLabel7 = jLabel7;
+    }
+
+    public JLabel getjLabel8() {
+        return jLabel8;
+    }
+
+    public void setjLabel8(JLabel jLabel8) {
+        this.jLabel8 = jLabel8;
+    }
+
+    public JLabel getUserNameText() {
+        return userNameText;
+    }
+
+    public void setUserNameText(JLabel userNameText) {
+        this.userNameText = userNameText;
+    }
+
+    public JComboBox<String> getComboLostItem() {
+        return ComboLostItem;
+    }
+
+    public void setComboLostItem(JComboBox<String> ComboLostItem) {
+        this.ComboLostItem = ComboLostItem;
+    }
+
+    public JComboBox<String> getLocationCombo() {
+        return location;
+    }
+
+    public void setLocationCombo(JComboBox<String> location) {
+        this.location = location;
     }
 
 
@@ -213,7 +362,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
     }//GEN-LAST:event_ComboLostItemActionPerformed
 
     private void BtnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConfirmActionPerformed
-        DBManagement dbm = new DBManagement();
+        /*DBManagement dbm = new DBManagement();
         int itemId;
         
         
@@ -236,7 +385,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
                     dbm.insertImage(imgName, itemId);
                 }
                 dbm.disconnect();
-                pageToGo="viewAll";
+//                mainFrame.toViewPage();
             }else{
                 JOptionPane.showMessageDialog(this, "ใส่ข้อมูลไม่ครบ");
             }
@@ -250,6 +399,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         
         
         //itemId = dbm.insertItem(name,des,accountId,cate,date);
+        */
     }//GEN-LAST:event_BtnConfirmActionPerformed
 
     private void BtnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUploadActionPerformed
@@ -310,7 +460,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
     }//GEN-LAST:event_BtnUploadActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        pageToGo="viewAll";
+//        pageToGo="viewAll";
     }//GEN-LAST:event_backBtnActionPerformed
 
 

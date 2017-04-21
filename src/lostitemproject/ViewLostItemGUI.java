@@ -9,19 +9,40 @@ import javax.swing.*;
 
 public class ViewLostItemGUI extends javax.swing.JPanel {
 //    private JPanel subPanel;
-    private LostItem focusItem;
     private EachItemGUI[] allItemShow;
-    private String pageToGo;
-    private Account acc;
     private DBManagement dbm;
-    /**
-     * Creates new form ViewLostItemGUI
-     */
+
+    public JButton getLogoutBtn() {
+        return logoutBtn;
+    }
+
+    public void setLogoutBtn(JButton logoutBtn) {
+        this.logoutBtn = logoutBtn;
+    }
+
+    public JButton getAddLostItembtn() {
+        return addLostItembtn;
+    }
+
+    public void setAddLostItembtn(JButton addLostItembtn) {
+        this.addLostItembtn = addLostItembtn;
+    }
+
+    public EachItemGUI[] getAllItemShow() {
+        return allItemShow;
+    }
+
+    public void setAllItemShow(EachItemGUI[] allItemShow) {
+        this.allItemShow = allItemShow;
+    }
+    
+    
+    
     public ViewLostItemGUI(Account acc) throws InterruptedException, ClassNotFoundException, SQLException {
         dbm = new DBManagement();
         dbm.createConnection();      
         LostItem[] item = dbm.queryItem("","DESC");
-        this.acc = acc;
+//        this.acc = acc;
         
         allItemShow = new EachItemGUI[item.length];
         JPanel subPanel = new JPanel();
@@ -36,31 +57,7 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
         ScrollItemList.setViewportView(subPanel);
         ScrollItemList.getVerticalScrollBar().setUnitIncrement(16);
         
-//        while(pageToGo==null){
-//            Thread.sleep(1000);
-//        }
-//        ScrollItemList.revalidate();
-//        ScrollItemList.repaint();
-        
-        
     }
-
-    public String getPageToGo() {
-        return pageToGo;
-    }
-
-    public void setPageToGo(String pageToGo) {
-        this.pageToGo = pageToGo;
-    }
-
-    public LostItem getFocusItem() {
-        return focusItem;
-    }
-
-    public void setFocusItem(LostItem focusItem) {
-        this.focusItem = focusItem;
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,6 +75,7 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
         statusList = new javax.swing.JComboBox<>();
         orderByList = new javax.swing.JComboBox<>();
         addLostItembtn = new javax.swing.JButton();
+        logoutBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -149,6 +147,10 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
         add(addLostItembtn);
         addLostItembtn.setBounds(440, 500, 120, 33);
 
+        logoutBtn.setText("LOGOUT");
+        add(logoutBtn);
+        logoutBtn.setBounds(20, 20, 90, 25);
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("หมวดหมู่");
@@ -202,7 +204,7 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
             }
             String orderBy=(orderByList.getSelectedIndex()==0?"DESC":"ASC");
             LostItem[] item = dbm.queryItem(condition,orderBy);
-            this.acc = acc;
+//            this.acc = acc;
             
             allItemShow = new EachItemGUI[item.length];
             JPanel subPanel = new JPanel();
@@ -226,7 +228,7 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void addLostItembtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLostItembtnActionPerformed
-        pageToGo="addLostItem";
+//        pageToGo="addLostItem";
     }//GEN-LAST:event_addLostItembtnActionPerformed
 
 
@@ -243,22 +245,23 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JComboBox<String> locateList;
+    private javax.swing.JButton logoutBtn;
     private javax.swing.JComboBox<String> orderByList;
     private javax.swing.JButton searchBtn;
     private javax.swing.JComboBox<String> statusList;
     // End of variables declaration//GEN-END:variables
 
-    public void update() {
-        for(int i=0;i<allItemShow.length;i++){
-            if(allItemShow[i]==null){
-                System.out.println("data changed abort update!");
-                break;
-            }
-            if(allItemShow[i].getPageToGo()!=null){
-                pageToGo="viewDetails";
-                focusItem=allItemShow[i].getItem();
-                break;
-            }
-        }
-    }
+//    public void update() {
+//        for(int i=0;i<allItemShow.length;i++){
+//            if(allItemShow[i]==null){
+//                System.out.println("data changed abort update!");
+//                break;
+//            }
+//            if(allItemShow[i].getPageToGo()!=null){
+//                pageToGo="viewDetails";
+//                focusItem=allItemShow[i].getItem();
+//                break;
+//            }
+//        }
+//    }
 }

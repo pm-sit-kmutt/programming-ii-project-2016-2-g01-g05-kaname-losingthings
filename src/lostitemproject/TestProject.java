@@ -5,7 +5,7 @@
  */
 package lostitemproject;
 
-import com.mysql.jdbc.*;
+
 import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.image.BufferedImage;

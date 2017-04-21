@@ -21,29 +21,35 @@ import javax.swing.*;
  */
 public class LoginGUI extends javax.swing.JPanel {
 
-    private Account account;
-    private String pageToGo;
-
-    public String getPageToGo() {
-        return pageToGo;
-    }
-
-    public void setPageToGo(String pageToGo) {
-        this.pageToGo = pageToGo;
-    }
     
     public LoginGUI() {
         initComponents();
-        
-
-    }
-    public Account getAccount() {
-        return account;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public JPasswordField getTextPassword() {
+        return TextPassword;
     }
+
+    public void setTextPassword(JPasswordField TextPassword) {
+        this.TextPassword = TextPassword;
+    }
+
+    public JTextField getTextUsername() {
+        return TextUsername;
+    }
+
+    public void setTextUsername(JTextField TextUsername) {
+        this.TextUsername = TextUsername;
+    }
+
+    public JButton getLoginBtn() {
+        return loginBtn;
+    }
+
+    public void setLoginBtn(JButton loginBtn) {
+        this.loginBtn = loginBtn;
+    }
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,16 +64,17 @@ public class LoginGUI extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         TextUsername = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        loginBtn = new javax.swing.JButton();
         TextPassword = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
+        setMaximumSize(new java.awt.Dimension(850, 850));
         setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Kimmy\\Desktop\\int105\\ฟอน5.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject/ฟอน5.png"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(210, 70, 490, 100);
 
@@ -85,14 +92,14 @@ public class LoginGUI extends javax.swing.JPanel {
         add(TextUsername);
         TextUsername.setBounds(320, 180, 360, 36);
 
-        jButton1.setText("LOGIN");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        loginBtn.setText("LOGIN");
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                loginBtnActionPerformed(evt);
             }
         });
-        add(jButton1);
-        jButton1.setBounds(380, 300, 120, 33);
+        add(loginBtn);
+        loginBtn.setBounds(380, 300, 120, 33);
         add(TextPassword);
         TextPassword.setBounds(320, 230, 360, 36);
 
@@ -105,20 +112,20 @@ public class LoginGUI extends javax.swing.JPanel {
         jLabel5.setBounds(200, 60, 490, 360);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        pageToGo="viewAll";
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+//        pageToGo="viewAll";
+    }//GEN-LAST:event_loginBtnActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField TextPassword;
     private javax.swing.JTextField TextUsername;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton loginBtn;
     // End of variables declaration//GEN-END:variables
 }
 
