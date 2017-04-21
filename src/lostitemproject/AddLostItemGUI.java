@@ -37,10 +37,14 @@ public class AddLostItemGUI extends javax.swing.JPanel {
      * Creates new form AddLostItemGUI
      */
     public AddLostItemGUI(Account acc) {
-        initComponents();
-        userName = ""+acc.getUsername();
-        userNameText.setText(userName);
-        this.acc=acc;
+        try {   
+            initComponents();
+            userNameText.setText(acc.getUsername()); //ไม่ขึ้น
+            this.acc=acc;
+        }
+        catch(NullPointerException npe){
+            System.out.println("Exception");//เวลารันแล้วมันเข้าอันนี้ด้วย
+        }
     }
 
     
@@ -88,28 +92,47 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         Path = new javax.swing.JLabel();
         userNameText = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(800, 550));
+        setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("แจ้งของหาย");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject/111.png"))); // NOI18N
+        add(jLabel1);
+        jLabel1.setBounds(30, 10, 260, 50);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("ชื่อของหาย");
+        add(jLabel2);
+        jLabel2.setBounds(191, 66, 65, 17);
+        add(TextName);
+        TextName.setBounds(326, 64, 302, 22);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("คำอธิบาย");
+        add(jLabel3);
+        jLabel3.setBounds(191, 93, 56, 17);
 
         TextDescription.setColumns(20);
         TextDescription.setRows(5);
         jScrollPane1.setViewportView(TextDescription);
 
+        add(jScrollPane1);
+        jScrollPane1.setBounds(326, 93, 302, 123);
+
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("วันที่ของหาย");
+        add(jLabel4);
+        jLabel4.setBounds(191, 233, 74, 17);
+        add(TextDate);
+        TextDate.setBounds(326, 231, 302, 22);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("หมวดหมู่");
+        add(jLabel5);
+        jLabel5.setBounds(275, 31, 50, 17);
 
         ComboLostItem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "อุปกรณ์อิเล็กทรอนิกส์", "เครื่องแต่งกาย", "กระเป๋า", "กุญแจ", "อื่นๆ" }));
         ComboLostItem.addActionListener(new java.awt.event.ActionListener() {
@@ -117,8 +140,12 @@ public class AddLostItemGUI extends javax.swing.JPanel {
                 ComboLostItemActionPerformed(evt);
             }
         });
+        add(ComboLostItem);
+        ComboLostItem.setBounds(337, 29, 143, 22);
 
         jLabel6.setText("สถานที่");
+        add(jLabel6);
+        jLabel6.setBounds(498, 32, 39, 16);
 
         DBManagement dbm = new DBManagement();
         try{
@@ -128,11 +155,17 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         }catch(Exception e){
             e.printStackTrace();
         }
+        add(location);
+        location.setBounds(549, 29, 58, 22);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("อัพโหลดรูปภาพ");
+        add(jLabel7);
+        jLabel7.setBounds(191, 271, 93, 17);
 
         Pic.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        add(Pic);
+        Pic.setBounds(323, 303, 302, 168);
 
         BtnUpload.setText("อัพโหลดรูปภาพ");
         BtnUpload.addActionListener(new java.awt.event.ActionListener() {
@@ -140,6 +173,8 @@ public class AddLostItemGUI extends javax.swing.JPanel {
                 BtnUploadActionPerformed(evt);
             }
         });
+        add(BtnUpload);
+        BtnUpload.setBounds(508, 271, 117, 25);
 
         BtnConfirm.setText("ยืนยัน");
         BtnConfirm.addActionListener(new java.awt.event.ActionListener() {
@@ -147,10 +182,16 @@ public class AddLostItemGUI extends javax.swing.JPanel {
                 BtnConfirmActionPerformed(evt);
             }
         });
+        add(BtnConfirm);
+        BtnConfirm.setBounds(370, 480, 92, 33);
 
         Path.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        add(Path);
+        Path.setBounds(326, 271, 170, 25);
 
-        userNameText.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        userNameText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(userNameText);
+        userNameText.setBounds(660, 30, 150, 25);
 
         backBtn.setText("ย้อนกลับ");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -158,94 +199,12 @@ public class AddLostItemGUI extends javax.swing.JPanel {
                 backBtnActionPerformed(evt);
             }
         });
+        add(backBtn);
+        backBtn.setBounds(470, 480, 92, 33);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ComboLostItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(location, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(userNameText, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                .addGap(31, 31, 31))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(backBtn)
-                .addGap(98, 98, 98)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(61, 61, 61)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TextName)
-                            .addComponent(jScrollPane1)
-                            .addComponent(TextDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(80, 80, 80)
-                                .addComponent(BtnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Pic, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addGap(42, 42, 42)
-                            .addComponent(Path, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(BtnUpload))))
-                .addContainerGap(172, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel5)
-                            .addComponent(ComboLostItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)
-                            .addComponent(location, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(userNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(TextName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(TextDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BtnUpload)
-                    .addComponent(Path, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Pic, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backBtn))
-                .addContainerGap())
-        );
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject/พื้นหลัง590.png"))); // NOI18N
+        add(jLabel8);
+        jLabel8.setBounds(0, 0, 850, 550);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ComboLostItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboLostItemActionPerformed
@@ -260,21 +219,32 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         
         try {           
             dbm.createConnection();
-            itemId = dbm.insertItem(TextName.getText(),TextDescription.getText(),acc.getAccId(),ComboLostItem.getSelectedIndex()+1,TextDate.getText());
-            dbm.insertStatus(location.getSelectedIndex()+1, itemId, acc.getAccId(),1);
-            
-            if(imgName!=null){
-                dbm.insertImage(imgName, itemId);
+            String name,des;
+            int accId,cate,locationInt;
+            String date;
+            name=TextName.getText();
+            des=TextDescription.getText();
+            accId=acc.getAccId();
+            cate=ComboLostItem.getSelectedIndex()+1;
+            locationInt=location.getSelectedIndex()+1;
+            date=TextDate.getText();
+            if(!(name.equals("")||date.equals(""))){
+                itemId = dbm.insertItem(name,des,accId,cate,date);
+                dbm.insertStatus(locationInt, itemId, accId,1);
+
+                if(imgName!=null){
+                    dbm.insertImage(imgName, itemId);
+                }
+                dbm.disconnect();
+                pageToGo="viewAll";
+            }else{
+                JOptionPane.showMessageDialog(this, "ใส่ข้อมูลไม่ครบ");
             }
-            dbm.disconnect();
-            pageToGo="viewAll";
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "ใส่ข้อมูลไม่ครบ");
+//            JOptionPane.showMessageDialog(this, "ใส่ข้อมูลไม่ครบ");
             ex.printStackTrace();
+            System.out.println("SQL Exception!");
         } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (NullPointerException ex){
-            JOptionPane.showMessageDialog(this, "ใส่ข้อมูลไม่ครบ");
             ex.printStackTrace();
         }
         
@@ -361,6 +331,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> location;
     private javax.swing.JLabel userNameText;

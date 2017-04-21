@@ -1,13 +1,36 @@
 package lostitemproject;
 
 import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class LostItemProject {
     public static void main(String[] args) throws InterruptedException, ClassNotFoundException, SQLException {
         JFrame jframe = new JFrame();        
-        jframe.setSize(890, 590);
+        jframe.setSize(860, 590);
+        //=========test background=========
+//        File downloadFile = new File("D:/Download/expired");
+//        try {
+//            Image img = ImageIO.read(downloadFile);
+//            if(img==null){
+//                downloadFile=new File("D:/Download/expired");
+//                img = ImageIO.read(downloadFile);
+//            }
+//            jframe.setContentPane(new JLabel(new ImageIcon(img)));
+//            jframe.setLayout(new GridBagLayout());
+//            
+//        }catch (IOException ex) {
+//            Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        //=========test background=========
+        
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.setLocationRelativeTo(null); 
         String pageToGo="login";
