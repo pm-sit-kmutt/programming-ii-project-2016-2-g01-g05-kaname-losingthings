@@ -19,6 +19,7 @@ public class LostItemFrame extends javax.swing.JFrame {
     private LoginGUI loginPage; 
     private ViewLostItemGUI viewPage; 
     private AddLostItemGUI addItemPage; 
+    private ViewDetailGUI detailPage;
     private Account user; 
     private LostItem focusItem; 
      
@@ -74,12 +75,12 @@ public class LostItemFrame extends javax.swing.JFrame {
     }
     
     public void toDetailPage(){
-        System.out.println("Focus item : "+focusItem);
+//        System.out.println("Focus item : "+focusItem);
         this.getContentPane().removeAll(); 
-        addItemPage = new AddLostItemGUI(user); 
-        this.add(addItemPage); 
-        addItemPage.getBackBtn().addActionListener(new ChangePanelListener(this,ChangePanelListener.BACKTO_HOMEPAGE));
-        addItemPage.getBtnConfirm().addActionListener(new ChangePanelListener(this,ChangePanelListener.CONFIRM_ADDITEM));
+        detailPage = new ViewDetailGUI(focusItem);
+        this.add(detailPage); 
+        detailPage.getBackBtn().addActionListener(new ChangePanelListener(this,ChangePanelListener.BACKTO_HOMEPAGE));
+//        addItemPage.getBtnConfirm().addActionListener(new ChangePanelListener(this,ChangePanelListener.CONFIRM_ADDITEM));
         this.repaint(); 
         this.revalidate(); 
     }
@@ -123,6 +124,14 @@ public class LostItemFrame extends javax.swing.JFrame {
     public void setFocusItem(LostItem focusItem) { 
         this.focusItem = focusItem; 
     } 
+
+    public ViewDetailGUI getDetailPage() {
+        return detailPage;
+    }
+
+    public void setDetailPage(ViewDetailGUI detailPage) {
+        this.detailPage = detailPage;
+    }
      
      
      

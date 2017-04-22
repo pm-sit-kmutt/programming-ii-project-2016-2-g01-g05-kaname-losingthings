@@ -248,7 +248,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject/111.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/111.png"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(30, 10, 260, 50);
 
@@ -351,7 +351,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         add(backBtn);
         backBtn.setBounds(470, 480, 92, 33);
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject/พื้นหลัง590.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/พื้นหลัง590.png"))); // NOI18N
         add(jLabel8);
         jLabel8.setBounds(0, 0, 850, 550);
     }// </editor-fold>//GEN-END:initComponents

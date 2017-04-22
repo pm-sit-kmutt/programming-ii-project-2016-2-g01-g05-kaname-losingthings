@@ -32,7 +32,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/lostitemproject/&#xe1f;&#xe2d;&#xe19;5.png"/>
+          <Image iconType="3" name="/lostitemproject.image/&#xe1f;&#xe2d;&#xe19;5.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -82,14 +82,16 @@
     </Component>
     <Component class="javax.swing.JButton" name="loginBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="LOGIN"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/lostitemproject.image/&#xe1b;&#xe38;&#xe48;&#xe21;11.png"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginBtnActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="380" y="300" width="120" height="33"/>
+          <AbsoluteConstraints x="380" y="283" width="170" height="50"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -103,7 +105,7 @@
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/lostitemproject/&#xe1e;&#xe37;&#xe49;&#xe19;&#xe2b;&#xe25;&#xe31;&#xe07;.png"/>
+          <Image iconType="3" name="/lostitemproject.image/&#xe1e;&#xe37;&#xe49;&#xe19;&#xe2b;&#xe25;&#xe31;&#xe07;.png"/>
         </Property>
       </Properties>
       <Constraints>

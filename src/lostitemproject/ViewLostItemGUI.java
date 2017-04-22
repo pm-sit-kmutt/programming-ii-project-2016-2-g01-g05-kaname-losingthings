@@ -176,11 +176,11 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
         jLabel4.setBounds(660, 120, 40, 17);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject/ฟอน5.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/ฟอน5.png"))); // NOI18N
         add(jLabel5);
         jLabel5.setBounds(180, 10, 490, 100);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject/พื้นหลังหน้าอื่น.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/พื้นหลังหน้าอื่น.png"))); // NOI18N
         add(jLabel6);
         jLabel6.setBounds(0, 0, 850, 550);
 

@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class LostItemProject {
-    public static void main(String[] args) throws InterruptedException, ClassNotFoundException, SQLException {
+    public static void main(String[] args) throws InterruptedException, ClassNotFoundException, SQLException{
         LostItemFrame test = new LostItemFrame(); 
         test.setVisible(true);  
         

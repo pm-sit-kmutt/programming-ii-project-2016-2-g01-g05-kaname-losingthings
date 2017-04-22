@@ -74,7 +74,7 @@ public class LoginGUI extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject/ฟอน5.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/ฟอน5.png"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(210, 70, 490, 100);
 
@@ -92,18 +92,18 @@ public class LoginGUI extends javax.swing.JPanel {
         add(TextUsername);
         TextUsername.setBounds(320, 180, 360, 36);
 
-        loginBtn.setText("LOGIN");
+        loginBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/ปุ่ม11.png"))); // NOI18N
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginBtnActionPerformed(evt);
             }
         });
         add(loginBtn);
-        loginBtn.setBounds(380, 300, 120, 33);
+        loginBtn.setBounds(380, 283, 170, 50);
         add(TextPassword);
         TextPassword.setBounds(320, 230, 360, 36);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject/พื้นหลัง.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/พื้นหลัง.png"))); // NOI18N
         add(jLabel4);
         jLabel4.setBounds(0, 0, 850, 550);
 
