@@ -5,6 +5,7 @@
  */
 package lostitemproject;
 
+import com.github.lgooddatepicker.components.DateTimePicker;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -98,14 +99,6 @@ public class AddLostItemGUI extends javax.swing.JPanel {
 
     public void setPath(JLabel Path) {
         this.Path = Path;
-    }
-
-    public JTextField getTextDate() {
-        return TextDate;
-    }
-
-    public void setTextDate(JTextField TextDate) {
-        this.TextDate = TextDate;
     }
 
     public JTextArea getTextDescription() {
@@ -212,6 +205,14 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         this.location = location;
     }
 
+    public DateTimePicker getDateTimePicker1() {
+        return dateTimePicker1;
+    }
+
+    public void setDateTimePicker1(DateTimePicker dateTimePicker1) {
+        this.dateTimePicker1 = dateTimePicker1;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -229,7 +230,6 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         TextDescription = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
-        TextDate = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         ComboLostItem = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
@@ -240,6 +240,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         BtnConfirm = new javax.swing.JButton();
         Path = new javax.swing.JLabel();
         userNameText = new javax.swing.JLabel();
+        dateTimePicker1 = new com.github.lgooddatepicker.components.DateTimePicker();
         backBtn = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
 
@@ -275,8 +276,6 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         jLabel4.setText("วันที่ของหาย");
         add(jLabel4);
         jLabel4.setBounds(191, 233, 74, 17);
-        add(TextDate);
-        TextDate.setBounds(326, 231, 302, 22);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("หมวดหมู่");
@@ -341,6 +340,8 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         userNameText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(userNameText);
         userNameText.setBounds(660, 30, 150, 25);
+        add(dateTimePicker1);
+        dateTimePicker1.setBounds(320, 230, 310, 23);
 
         backBtn.setText("ย้อนกลับ");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -470,10 +471,10 @@ public class AddLostItemGUI extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> ComboLostItem;
     private javax.swing.JLabel Path;
     private javax.swing.JLabel Pic;
-    private javax.swing.JTextField TextDate;
     private javax.swing.JTextArea TextDescription;
     private javax.swing.JTextField TextName;
     private javax.swing.JButton backBtn;
+    private com.github.lgooddatepicker.components.DateTimePicker dateTimePicker1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

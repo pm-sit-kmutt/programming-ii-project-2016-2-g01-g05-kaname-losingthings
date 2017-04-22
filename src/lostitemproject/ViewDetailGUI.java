@@ -33,7 +33,7 @@ public class ViewDetailGUI extends javax.swing.JPanel {
             picture.setIcon(new ImageIcon(focusItem.getImg().getScaledInstance(302, 197, Image.SCALE_SMOOTH)));
         }catch(NullPointerException ex){
             ex.printStackTrace();
-            System.out.println("img find problem");
+            System.out.println("problem : can't find img");
         }
         
         //To change body of generated methods, choose Tools | Templates.

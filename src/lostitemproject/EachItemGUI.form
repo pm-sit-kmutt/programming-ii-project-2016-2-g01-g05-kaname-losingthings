@@ -204,7 +204,7 @@
           <Font name="Tahoma" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="item.getDateStart().toString()" type="code"/>
+          <Connection code="item.getStatus().getLastUpdate().toString()" type="code"/>
         </Property>
       </Properties>
     </Component>

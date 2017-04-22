@@ -80,8 +80,10 @@ public class ChangePanelListener implements ActionListener{
                     accId=mainFrame.getUser().getAccId();
                     cate=mainFrame.getAddItemPage().getComboLostItem().getSelectedIndex()+1;
                     locationInt=mainFrame.getAddItemPage().getLocationCombo().getSelectedIndex()+1;
-                    date=mainFrame.getAddItemPage().getTextDate().getText();
-                    if(!(name.equals("")||date.equals(""))){
+                    date=mainFrame.getAddItemPage().getDateTimePicker1().getDatePicker().getDateStringOrEmptyString()
+                            +" "+mainFrame.getAddItemPage().getDateTimePicker1().getTimePicker().getTimeStringOrEmptyString();
+                    System.out.println("date = "+date);
+                    if(!(name.equals("")||date.equals(" "))){
                         itemId = dbm.insertItem(name,des,accId,cate,date);
                         dbm.insertStatus(locationInt, itemId, accId,1);
 
@@ -109,7 +111,7 @@ public class ChangePanelListener implements ActionListener{
                 break;
             case 5:
                 try {
-                    mainFrame.getLoginPage().getLoginBtn().setText("กำลัง LOGIN..");
+//                    mainFrame.getLoginPage().getLoginBtn().setText("กำลัง LOGIN..");
                     mainFrame.getLoginPage().getLoginBtn().setEnabled(false);
                     dbm.createConnection();
                     String user = mainFrame.getLoginPage().getTextUsername().getText();
@@ -118,13 +120,16 @@ public class ChangePanelListener implements ActionListener{
                     if(mainFrame.getUser()!=null){
                         mainFrame.toViewPage();
                     }else{
-                        mainFrame.getLoginPage().getLoginBtn().setText("LOGIN");
+//                        mainFrame.getLoginPage().getLoginBtn().setText("LOGIN");
                         mainFrame.getLoginPage().getLoginBtn().setEnabled(true);
                         JOptionPane.showMessageDialog(mainFrame, "username หรือ password ไม่ถูกต้อง!");
                     }
                     dbm.disconnect();
                 } catch (SQLException ex) {
                     Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(mainFrame, "ไม่สามารถติดต่อกับ Server ได้!");
+//                    mainFrame.getLoginPage().getLoginBtn().setText("LOGIN");
+                    mainFrame.getLoginPage().getLoginBtn().setEnabled(true);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
                 }

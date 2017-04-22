@@ -90,7 +90,7 @@ public class EachItemGUI extends javax.swing.JPanel {
         location.setText(item.getStatus().getLocationName());
 
         statusDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        statusDate.setText(item.getDateStart().toString());
+        statusDate.setText(item.getStatus().getLastUpdate().toString());
 
         status.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         status.setText(item.getStatus().getStatusName());
