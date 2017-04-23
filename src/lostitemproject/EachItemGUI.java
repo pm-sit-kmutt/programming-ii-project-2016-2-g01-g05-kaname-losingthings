@@ -16,6 +16,8 @@ public class EachItemGUI extends javax.swing.JPanel {
             nameStatusDate.setText("วันที่พบของหาย:");
         }else if(item.getStatus().getStatusName().equals("received")){
             nameStatusDate.setText("วันที่รับของหายคืน:");
+        }else if(item.getStatus().getStatusName().equals("Found by myself")){
+            nameStatusDate.setText("วันที่ได้รับของคืน:");
         }
         try{
             textUser.setText(item.getOwnerName());

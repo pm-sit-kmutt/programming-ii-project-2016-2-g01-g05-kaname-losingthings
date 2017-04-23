@@ -77,7 +77,7 @@ public class LostItemFrame extends javax.swing.JFrame {
     public void toDetailPage(){
 //        System.out.println("Focus item : "+focusItem);
         this.getContentPane().removeAll(); 
-        detailPage = new ViewDetailGUI(focusItem);
+        detailPage = new ViewDetailGUI(focusItem,user);
         this.add(detailPage); 
         detailPage.getBackBtn().addActionListener(new ChangePanelListener(this,ChangePanelListener.BACKTO_HOMEPAGE));
 //        addItemPage.getBtnConfirm().addActionListener(new ChangePanelListener(this,ChangePanelListener.CONFIRM_ADDITEM));

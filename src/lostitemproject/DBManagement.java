@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -72,8 +73,14 @@ public class DBManagement {
             tmp.setCate(rs.getString("cateName"));
             tmp.setItemName(rs.getString("itemName"));
             tmp.setItemDescription(rs.getString("itenmDes"));
-            tmp.setDateStart(rs.getDate("dateStart"));
-            tmp.setDateEnd(rs.getDate("dateEnd"));
+            Timestamp timestamp = rs.getTimestamp("DateStart");
+            if(timestamp!=null){
+                tmp.setDateStart(new java.util.Date(timestamp.getTime()));
+            }
+            timestamp = rs.getTimestamp("dateEnd");
+            if(timestamp!=null){
+                tmp.setDateEnd(new java.util.Date(timestamp.getTime()));
+            }
             tmp.setOwnerName(rs.getString("Owner_name"));
             tmp.setOwnerId(rs.getInt("OwnerId"));
             String imgName = rs.getString("picturePath");
@@ -84,11 +91,16 @@ public class DBManagement {
             tmp.setStatus(queryStatus(tmp.getItemId()));            
             allLostItem.add(tmp);
         }
-        if(conn!=null)
-            conn.close();
-         
+        
         return allLostItem.toArray(new LostItem[allLostItem.size()]);
     } 
+    
+    public void updateItem(LostItem item,String date) throws SQLException{ 
+        Statement stm=null;
+        stm = conn.createStatement();
+        stm.execute("UPDATE item SET DateEnd='"+date+"' WHERE itemId="+item.getItemId());
+        
+    }
     
     public void insertStatus(int location,int itemId,int accountId,int status)
                 throws SQLException,ClassNotFoundException{        

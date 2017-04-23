@@ -74,7 +74,7 @@ public class ChangePanelListener implements ActionListener{
                     dbm.createConnection();
                     String name,des;
                     int accId,cate,locationInt;
-                    String date;
+                    String date,dateNew;
                     name=mainFrame.getAddItemPage().getTextName().getText();
                     des=mainFrame.getAddItemPage().getTextDescription().getText();
                     accId=mainFrame.getUser().getAccId();
@@ -82,6 +82,9 @@ public class ChangePanelListener implements ActionListener{
                     locationInt=mainFrame.getAddItemPage().getLocationCombo().getSelectedIndex()+1;
                     date=mainFrame.getAddItemPage().getDateTimePicker1().getDatePicker().getDateStringOrEmptyString()
                             +" "+mainFrame.getAddItemPage().getDateTimePicker1().getTimePicker().getTimeStringOrEmptyString();
+                    dateNew=mainFrame.getDetailPage().getCsp().getDateTimePickerStatus().getDatePicker().getDateStringOrEmptyString()
+                            +" "+mainFrame.getDetailPage().getCsp().getDateTimePickerStatus().getTimePicker().getTimeStringOrEmptyString();
+                    
                     System.out.println("date = "+date);
                     if(!(name.equals("")||date.equals(" "))){
                         itemId = dbm.insertItem(name,des,accId,cate,date);

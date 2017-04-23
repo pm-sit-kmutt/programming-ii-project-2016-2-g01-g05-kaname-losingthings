@@ -6,6 +6,10 @@
 package lostitemproject;
 
 import java.awt.Image;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -17,16 +21,17 @@ import javax.swing.JOptionPane;
  */
 public class ViewDetailGUI extends javax.swing.JPanel {
     private LostItem focusItem;
-    private String textNull = "-";
+    private Account account;
+    private SimpleDateFormat sdf;
+    private  ChangeStatusPanel csp;
     /**
      * Creates new form ViewDetailGUI
      */
-    public ViewDetailGUI() {
-        initComponents();
-    }
 
-    ViewDetailGUI(LostItem focusItem) {
+    ViewDetailGUI(LostItem focusItem,Account account) {
         this.focusItem = focusItem;
+        this.account = account;
+        sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         initComponents();
         try{
             userNameText.setText(focusItem.getOwnerName());
@@ -37,6 +42,14 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         }
         
         //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public ChangeStatusPanel getCsp() {
+        return csp;
+    }
+
+    public void setCsp(ChangeStatusPanel csp) {
+        this.csp = csp;
     }
 
     public JButton getBackBtn() {
@@ -65,11 +78,11 @@ public class ViewDetailGUI extends javax.swing.JPanel {
     }
 
     public JLabel getLocationText() {
-        return locationText;
+        return locationFound;
     }
 
     public void setLocationText(JLabel locationText) {
-        this.locationText = locationText;
+        this.locationFound = locationText;
     }
 
     public JLabel getLostItemText() {
@@ -104,6 +117,14 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         this.userNameText = userNameText;
     }
 
+    public JButton getStatusBtn() {
+        return statusBtn;
+    }
+
+    public void setStatusBtn(JButton statusBtn) {
+        this.statusBtn = statusBtn;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -121,16 +142,20 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         nameText = new javax.swing.JLabel();
         lostItemText = new javax.swing.JLabel();
         location = new javax.swing.JLabel();
-        locationText = new javax.swing.JLabel();
+        locationFound = new javax.swing.JLabel();
         picture = new javax.swing.JLabel();
         date = new javax.swing.JLabel();
         dateTextEnd = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         userNameText = new javax.swing.JLabel();
-        status = new javax.swing.JButton();
+        statusBtn = new javax.swing.JButton();
         dateTextStart1 = new javax.swing.JLabel();
         date1 = new javax.swing.JLabel();
+        statusText = new javax.swing.JLabel();
+        locationLost = new javax.swing.JLabel();
+        location2 = new javax.swing.JLabel();
+        statusNow = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -147,51 +172,59 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         description.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         description.setText("คำอธิบาย");
         add(description);
-        description.setBounds(190, 330, 56, 17);
+        description.setBounds(190, 320, 56, 17);
 
         lostItem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lostItem.setText("หมวดหมู่");
         add(lostItem);
-        lostItem.setBounds(190, 370, 50, 17);
+        lostItem.setBounds(190, 360, 50, 17);
 
         descriptionText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(descriptionText);
-        descriptionText.setBounds(300, 330, 339, 28);
+        descriptionText.setBounds(300, 320, 420, 28);
         descriptionText.setText(focusItem.getItemDescription());
 
         nameText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(nameText);
-        nameText.setBounds(300, 280, 339, 28);
+        nameText.setBounds(300, 280, 420, 28);
         nameText.setText(focusItem.getItemName());
 
         lostItemText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(lostItemText);
-        lostItemText.setBounds(300, 370, 171, 28);
+        lostItemText.setBounds(300, 360, 180, 28);
         lostItemText.setText(focusItem.getCate());
 
         location.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        location.setText("สถานที่");
+        location.setText("สถานที่ที่ทำของหาย");
         add(location);
-        location.setBounds(490, 370, 43, 17);
+        location.setBounds(490, 400, 120, 17);
 
-        locationText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        add(locationText);
-        locationText.setBounds(550, 370, 89, 28);
-        locationText.setText(focusItem.getStatus().getLocationName());
+        locationFound.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(locationFound);
+        locationFound.setBounds(620, 440, 100, 28);
+        locationFound.setText(focusItem.getStatus().getLocationName());
 
         picture.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(picture);
         picture.setBounds(310, 70, 302, 197);
 
         date.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        date.setText("วันที่พบของ");
+        date.setText("วันที่ได้รับของคืน");
         add(date);
-        date.setBounds(190, 450, 74, 17);
+        date.setBounds(190, 440, 100, 17);
 
         dateTextEnd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(dateTextEnd);
-        dateTextEnd.setBounds(300, 450, 339, 28);
-        dateTextEnd.setText(textNull);
+        dateTextEnd.setBounds(300, 440, 180, 28);
+        String dateEndStr;
+        if(focusItem.getDateEnd()==null){
+            dateTextEnd.setText("-");
+        }else{
+
+            //dateEndStr = sdf.format(csp.getDateTimePickerStatus());
+            dateEndStr = sdf.format(focusItem.getDateEnd());
+            dateTextEnd.setText(dateEndStr);
+        }
 
         backBtn.setText("ย้อนกลับ");
         add(backBtn);
@@ -208,35 +241,100 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         add(userNameText);
         userNameText.setBounds(684, 13, 154, 32);
 
-        status.setText("เปลี่ยนสถานะ");
-        status.addActionListener(new java.awt.event.ActionListener() {
+        statusBtn.setText("เปลี่ยนสถานะ");
+        statusBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                statusActionPerformed(evt);
+                statusBtnActionPerformed(evt);
             }
         });
-        add(status);
-        status.setBounds(430, 500, 120, 33);
+        add(statusBtn);
+        statusBtn.setBounds(430, 500, 120, 33);
 
         dateTextStart1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        String dateStartStr = sdf.format(focusItem.getDateStart());
         add(dateTextStart1);
-        dateTextStart1.setBounds(300, 410, 339, 28);
-        dateTextStart1.setText(focusItem.getDateStart().toString());
+        dateTextStart1.setBounds(300, 400, 180, 28);
+        dateTextStart1.setText(dateStartStr);
 
         date1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         date1.setText("วันที่ของหาย");
         add(date1);
-        date1.setBounds(190, 410, 74, 17);
-    }// </editor-fold>//GEN-END:initComponents
+        date1.setBounds(190, 400, 74, 17);
 
-    private void statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusActionPerformed
+        statusText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        statusText.setText("สถานะปัจจุบัน");
+        add(statusText);
+        statusText.setBounds(490, 360, 100, 17);
+
+        locationLost.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(locationLost);
+        locationLost.setBounds(620, 400, 100, 28);
+        locationLost.setText(focusItem.getStatus().getLocationName());
+
+        location2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        location2.setText("สถานที่ที่พบของหาย");
+        add(location2);
+        location2.setBounds(490, 440, 120, 17);
+
+        statusNow.setText(focusItem.getStatus().getStatusName());
+        statusNow.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(statusNow);
+        statusNow.setBounds(580, 360, 140, 28);
+    }// </editor-fold>//GEN-END:initComponents
+   // ChangeStatusPanel csp;
+    private void statusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusBtnActionPerformed
         ImageIcon icon = new ImageIcon(focusItem.getImg().getScaledInstance(302, 197, Image.SCALE_SMOOTH));
-                JOptionPane.showMessageDialog(
-                        null,
-                        ""+focusItem.getItemName(),
-                        "Hello", JOptionPane.INFORMATION_MESSAGE,
-                        icon);
+        csp=new ChangeStatusPanel(account,focusItem);
+        int result=JOptionPane.NO_OPTION;
+        if(account.getAccType()==Account.TYPE_ADMIN){
+            //csp = new ChangeStatusPanel(account);
+            result = JOptionPane.showConfirmDialog(this,csp,"เปลี่ยนสถานะ",JOptionPane.YES_NO_OPTION);
+        }else if(account.getAccId()==focusItem.getOwnerId()){
+//            csp = new ChangeStatusPanel(account);
+            result = JOptionPane.showConfirmDialog(this,csp,"เปลี่ยนสถานะ",JOptionPane.YES_NO_OPTION);
+        }else{
+            JOptionPane.showMessageDialog(this,"ไม่มีสิทธิ!");
+        }
+        
+        
+        if(result==JOptionPane.YES_OPTION){
+            int statusChoose = csp.getStatusCombo().getSelectedIndex()+1;
+            System.out.println("csp.getStatusCombo().getSelectedItem() = "+csp.getStatusCombo().getSelectedItem());
+            if(csp.getStatusCombo().getSelectedItem().equals("found by myself")){
+                statusChoose = 4;
+            }
+           // String dateEndStr = sdf.format(csp.getDateTimePickerStatus());
+            int  locationNew = csp. getLocationComboBox().getSelectedIndex()+1;
+            try {
+                DBManagement dbm=new DBManagement();
+                dbm.createConnection();
+                dbm.insertStatus(locationNew, focusItem.getItemId(), account.getAccId(), statusChoose);
+                System.out.println("statusChoose = "+statusChoose);
+                if(statusChoose==3||statusChoose==4){
+                    String date=csp.getDateTimePickerStatus().getDatePicker().getDateStringOrEmptyString()
+                            +" "+csp.getDateTimePickerStatus().getTimePicker().getTimeStringOrEmptyString();
+                    dbm.updateItem(focusItem,date);
+                    System.out.println("date = "+date);
+                    dateTextEnd.setText(date);
+                }
+                dbm.disconnect();
+                String locationStr = csp.getLocationComboBox().getSelectedItem().toString();
+                String statusStr = csp.getStatusCombo().getSelectedItem().toString();
                 
-    }//GEN-LAST:event_statusActionPerformed
+                statusNow.setText(statusStr);
+                locationFound.setText(locationStr);
+                //dateTextEnd.setText("วันที่ของเจอ");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ViewDetailGUI.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                System.out.println("การเชื่อมต่อมีปัญหา!");
+                Logger.getLogger(ViewDetailGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        
+                
+    }//GEN-LAST:event_statusBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -250,13 +348,17 @@ public class ViewDetailGUI extends javax.swing.JPanel {
     private javax.swing.JLabel detail;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel location;
-    private javax.swing.JLabel locationText;
+    private javax.swing.JLabel location2;
+    private javax.swing.JLabel locationFound;
+    private javax.swing.JLabel locationLost;
     private javax.swing.JLabel lostItem;
     private javax.swing.JLabel lostItemText;
     private javax.swing.JLabel name;
     private javax.swing.JLabel nameText;
     private javax.swing.JLabel picture;
-    private javax.swing.JButton status;
+    private javax.swing.JButton statusBtn;
+    private javax.swing.JLabel statusNow;
+    private javax.swing.JLabel statusText;
     private javax.swing.JLabel userNameText;
     // End of variables declaration//GEN-END:variables
 }
