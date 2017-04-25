@@ -16,6 +16,21 @@ public class LostItemProject {
         LostItemFrame test = new LostItemFrame(); 
         test.setVisible(true);  
         
+//        JFrame jframe = new JFrame();        
+//        jframe.setSize(400, 300);
+//        JScrollPane jsp = new JScrollPane();
+//        jsp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+//        jsp.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+//        LocationChoicePanel lcp = new LocationChoicePanel();
+//        jsp.setSize(100, 200);
+//        jsp.setViewportView(lcp);
+//        jsp.getVerticalScrollBar().setUnitIncrement(16);
+//        
+//        jframe.add(jsp);
+//        jframe.setVisible(true);
+//        jframe.revalidate();
+//        jframe.repaint();
+//        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         /*
         JFrame jframe = new JFrame();        

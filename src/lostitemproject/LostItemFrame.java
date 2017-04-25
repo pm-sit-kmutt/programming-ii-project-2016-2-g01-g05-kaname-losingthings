@@ -1,8 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties. 
- * To change this template file, choose Tools | Templates 
- * and open the template in the editor. 
- */ 
 package lostitemproject; 
  
 import java.awt.*; 
@@ -11,10 +6,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger; 
 import javax.swing.*; 
  
-/** 
- * 
- * @author POOM 
- */ 
 public class LostItemFrame extends javax.swing.JFrame { 
     private LoginGUI loginPage; 
     private ViewLostItemGUI viewPage; 
@@ -48,7 +39,8 @@ public class LostItemFrame extends javax.swing.JFrame {
             viewPage.getAddLostItembtn().addActionListener(new ChangePanelListener(this,ChangePanelListener.ADD_LOSTITEM));
             EachItemGUI[] allItemShow = viewPage.getAllItemShow();
             for(int i=0;i<allItemShow.length;i++){
-                allItemShow[i].getViewDetailBtn().addActionListener(new ChangePanelListener(this,ChangePanelListener.DETAIL,allItemShow[i].getItem())); 
+                allItemShow[i].getViewDetailBtn().addActionListener(
+                        new ChangePanelListener(this,ChangePanelListener.DETAIL,allItemShow[i].getItem())); 
             }
             this.add(viewPage);
             this.repaint(); 

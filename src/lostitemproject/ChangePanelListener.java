@@ -18,13 +18,13 @@ import javax.swing.*;
  */
 public class ChangePanelListener implements ActionListener{
     
-    public static int BACKTO_HOMEPAGE=0;
-    public static int DETAIL=1;
-    public static int ADD_LOSTITEM=2;
-    public static int CONFIRM_ADDITEM=3;
-    public static int CONFIRM_CHANGE_STATUS=4;
-    public static int LOGIN=5;
-    public static int LOGOUT=6;
+    public static final int BACKTO_HOMEPAGE=0;
+    public static final int DETAIL=1;
+    public static final int ADD_LOSTITEM=2;
+    public static final int CONFIRM_ADDITEM=3;
+    public static final int CONFIRM_CHANGE_STATUS=4;
+    public static final int LOGIN=5;
+    public static final int LOGOUT=6;
     
     private LostItemFrame mainFrame;
     private int buttonCase;
