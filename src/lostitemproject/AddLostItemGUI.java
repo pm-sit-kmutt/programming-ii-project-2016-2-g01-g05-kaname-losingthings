@@ -6,6 +6,7 @@
 package lostitemproject;
 
 import com.github.lgooddatepicker.components.DateTimePicker;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -13,18 +14,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -37,19 +32,22 @@ public class AddLostItemGUI extends javax.swing.JPanel {
     private Account acc;
     private String userName;
     private String imgName;
+    private javax.swing.JScrollPane ScrollItemList;
+//    private String[] locationList;
 
     /**
      * Creates new form AddLostItemGUI
      */
     public AddLostItemGUI(Account acc) {
-        try {   
-            initComponents();
-            userNameText.setText(acc.getUsername()); //ไม่ขึ้น
-            this.acc=acc;
-        }
-        catch(NullPointerException npe){
-            System.out.println("Exception");//เวลารันแล้วมันเข้าอันนี้ด้วย
-        }
+         
+            
+        initComponents();
+        userNameText.setText(acc.getUsername()); //ไม่ขึ้น
+        this.acc=acc;
+        ScrollItemList = new javax.swing.JScrollPane();
+        ScrollItemList.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        ScrollItemList.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        
     }
 
 
@@ -241,15 +239,16 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         Path = new javax.swing.JLabel();
         userNameText = new javax.swing.JLabel();
         dateTimePicker1 = new com.github.lgooddatepicker.components.DateTimePicker();
+        locationBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(800, 550));
         setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/111.png"))); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(30, 10, 260, 50);
 
@@ -342,6 +341,15 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         userNameText.setBounds(660, 30, 150, 25);
         add(dateTimePicker1);
         dateTimePicker1.setBounds(320, 230, 310, 23);
+
+        locationBtn.setText("เลือกสถานที่");
+        locationBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                locationBtnActionPerformed(evt);
+            }
+        });
+        add(locationBtn);
+        locationBtn.setBounds(690, 150, 120, 25);
 
         backBtn.setText("ย้อนกลับ");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -464,6 +472,39 @@ public class AddLostItemGUI extends javax.swing.JPanel {
 //        pageToGo="viewAll";
     }//GEN-LAST:event_backBtnActionPerformed
 
+    private void locationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locationBtnActionPerformed
+       
+        try {
+//            LocationChoicePanel lcp = new LocationChoicePanel();
+//            JScrollPane scrollpane = new JScrollPane(lcp);
+//            UIManager.put("OptionPane.minimumSize",new Dimension(100,200));
+//            JOptionPane.showMessageDialog(null,scrollpane,"เลือกสถานที่",JOptionPane.PLAIN_MESSAGE);
+//            ScrollItemList = new JScrollPane(lcp);
+//            ScrollItemList.setSize(100, 200);
+//            ScrollItemList.setViewportView(lcp);
+//            ScrollItemList.getVerticalScrollBar().setUnitIncrement(16);
+            
+            //=========
+            JScrollPane jsp = new JScrollPane();
+            jsp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+            jsp.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+            jsp.setPreferredSize(new Dimension( 200, 100 ));
+            LocationChoicePanel lcp = new LocationChoicePanel();
+            jsp.setSize(100, 200);
+            jsp.setViewportView(lcp);
+            jsp.getVerticalScrollBar().setUnitIncrement(16);
+            
+            //========
+
+            UIManager.put("OptionPane.minimumSize",new Dimension(100,200));
+            JOptionPane.showMessageDialog(null,jsp,"เลือกสถานที่",JOptionPane.PLAIN_MESSAGE);
+        } catch (SQLException ex) {
+            Logger.getLogger(AddLostItemGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddLostItemGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_locationBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnConfirm;
@@ -485,6 +526,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> location;
+    private javax.swing.JButton locationBtn;
     private javax.swing.JLabel userNameText;
     // End of variables declaration//GEN-END:variables
 }

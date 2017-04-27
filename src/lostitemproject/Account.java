@@ -1,8 +1,8 @@
 package lostitemproject;
 
 public class Account {
-    public static int TYPE_ADMIN=1;
-    public static int TYPE_USER=2;
+    public static final int TYPE_ADMIN=1;
+    public static final int TYPE_USER=2;
        
     private int accId;
     private String name;
