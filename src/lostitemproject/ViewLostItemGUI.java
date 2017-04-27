@@ -46,7 +46,7 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
         
         allItemShow = new EachItemGUI[item.length];
         JPanel subPanel = new JPanel();
-        subPanel.setSize(708, item.length*140);
+        subPanel.setSize(700, item.length*140);
         for(int i=0;i<item.length;i++){
             EachItemGUI each = new EachItemGUI(item[i]);
             subPanel.add(each);
@@ -89,6 +89,8 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
         ScrollItemList.setBackground(new java.awt.Color(255, 255, 255));
         ScrollItemList.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         ScrollItemList.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        ScrollItemList.setMaximumSize(new java.awt.Dimension(708, 326));
+        ScrollItemList.setMinimumSize(new java.awt.Dimension(708, 326));
         add(ScrollItemList);
         ScrollItemList.setBounds(70, 160, 708, 326);
 
