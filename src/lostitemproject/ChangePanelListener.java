@@ -92,8 +92,7 @@ public class ChangePanelListener implements ActionListener{
                     
                     date=mainFrame.getAddItemPage().getDateTimePicker1().getDatePicker().getDateStringOrEmptyString()
                             +" "+mainFrame.getAddItemPage().getDateTimePicker1().getTimePicker().getTimeStringOrEmptyString();
-//                    dateNew=mainFrame.getDetailPage().getCsp().getDateTimePickerStatus().getDatePicker().getDateStringOrEmptyString()
-//                            +" "+mainFrame.getDetailPage().getCsp().getDateTimePickerStatus().getTimePicker().getTimeStringOrEmptyString();
+                    
                     
                     System.out.println("date = "+date);
                     if(!(name.equals("")||date.equals(" ")||!isLocationSelected)){

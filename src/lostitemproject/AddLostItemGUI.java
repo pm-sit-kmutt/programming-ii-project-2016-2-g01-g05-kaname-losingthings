@@ -405,8 +405,6 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         FTPClient ftpClient = new FTPClient();
         InputStream inputStream = null;
         String pathStr = null;
-        //String destination = null;
-        
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "JPG & GIF Images", "jpg", "gif");
@@ -416,15 +414,12 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             BtnUpload.setText("กำลังอัพโหลด..");
             BtnConfirm.setEnabled(false);
-            //BufferedImage dimg = pathStr.getScaledInstance(label.width, label.height,Image.SCALE_SMOOTH);
             pathStr = chooser.getSelectedFile().toString();
             File picFile = new File(pathStr);
-            Path.setText(pathStr);
+            Path.setText(pathStr);//เป็นการให้แสดงpath ที่เราได้มาจาก chooser.getSelectedFile().toString();
             ImageIcon imageStr = new ImageIcon(pathStr);
-            Image image = imageStr.getImage().getScaledInstance(302, 168, Image.SCALE_SMOOTH);
+            Image image = imageStr.getImage().getScaledInstance(302, 168, Image.SCALE_SMOOTH);//ให้แสดงรูปภาพบนlabelมีการเซตขนาดรูปให้พอดีกรอบ และเซตรูปให้SMOOTH
             Pic.setIcon(new ImageIcon(image));
-            //Pic.setIcon(new ImageIcon(pathStr));
-            //Pic.setIcon(Place.ResizeImage(Pic, pathStr));
             
             try {
 
