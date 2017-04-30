@@ -17,24 +17,26 @@ import java.util.Date;
 public class ItemStatus {
     private int statusId;
 //    private boolean statusFound;
-    private int locationId;
-    private String locationName;
+    private ArrayList<Integer> locationId;
+    private ArrayList<String> locationName;
     private Date lastUpdate;
     private int itemId;
     private String statusName;
     private String ownerName;
 
     public ItemStatus() {
+        locationId = new ArrayList<Integer>();
+        locationName = new ArrayList<String>();
     }
 
     
-    public ItemStatus(int statusId, boolean statusFound, int locationId, Date lastUpdate, int itemId) {
-        this.statusId = statusId;
+//    public ItemStatus(int statusId, boolean statusFound, int[] locationId, Date lastUpdate, int itemId) {
+//        this.statusId = statusId;
 //        this.statusFound = statusFound;
-        this.locationId = locationId;
-        this.lastUpdate = lastUpdate;
-        this.itemId = itemId;
-    }
+//        this.locationId = locationId;
+//        this.lastUpdate = lastUpdate;
+//        this.itemId = itemId;
+//    }
     
     
 //    public boolean getStatusFound() {
@@ -45,11 +47,11 @@ public class ItemStatus {
 //        this.statusFound = status;
 //    }
 
-    public int getLocationId() {
+    public ArrayList<Integer> getLocationId() {
         return locationId;
     }
 
-    public void setLocationId(int locationId) {
+    public void setLocationId(ArrayList<Integer> locationId) {
         this.locationId = locationId;
     }
 
@@ -134,11 +136,11 @@ public class ItemStatus {
         this.statusId = statusId;
     }
 
-    public String getLocationName() {
+    public ArrayList<String> getLocationName() {
         return locationName;
     }
 
-    public void setLocationName(String locationName) {
+    public void setLocationName(ArrayList<String> locationName) {
         this.locationName = locationName;
     }
 

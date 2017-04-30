@@ -57,13 +57,19 @@ public class LostItemFrame extends javax.swing.JFrame {
     } 
      
     public void toAddItemPage(){
-        this.getContentPane().removeAll(); 
-        addItemPage = new AddLostItemGUI(user); 
-        this.add(addItemPage); 
-        addItemPage.getBackBtn().addActionListener(new ChangePanelListener(this,ChangePanelListener.BACKTO_HOMEPAGE));
-        addItemPage.getBtnConfirm().addActionListener(new ChangePanelListener(this,ChangePanelListener.CONFIRM_ADDITEM));
-        this.repaint(); 
-        this.revalidate(); 
+        try {
+            this.getContentPane().removeAll();
+            addItemPage = new AddLostItemGUI(user);
+            this.add(addItemPage);
+            addItemPage.getBackBtn().addActionListener(new ChangePanelListener(this,ChangePanelListener.BACKTO_HOMEPAGE));
+            addItemPage.getBtnConfirm().addActionListener(new ChangePanelListener(this,ChangePanelListener.CONFIRM_ADDITEM));
+            this.repaint(); 
+            this.revalidate();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "โปรดตรวจสอบการเชื่อมต่ออินเทอร์เน็ต!");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LostItemFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void toDetailPage(){

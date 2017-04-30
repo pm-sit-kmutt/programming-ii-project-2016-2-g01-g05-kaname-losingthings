@@ -43,7 +43,10 @@ public class AddLostItem {
             imgName = Picture.uploadImg();
             dbm.createConnection();           
             itemId = dbm.insertItem(name,des,accountId,cate,date);
-            dbm.insertStatus(location, itemId, accountId,1);
+            int statusId = dbm.insertStatus(itemId, accountId,1);
+            if(statusId!=-1){
+                dbm.insertItemLocation(location, statusId);
+            }
             if(imgName!=null){
                 dbm.insertImage(imgName, itemId);
             }

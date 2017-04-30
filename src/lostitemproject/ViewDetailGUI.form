@@ -143,7 +143,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="locationFound.setText(focusItem.getStatus().getLocationName());"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="String allLocationFound = &quot;&quot;;&#xa;for(int i=0;i&lt;focusItem.getStatus().getLocationName().size();i++){&#xa;    allLocationFound+=focusItem.getStatus().getLocationName().get(i)+&quot;,&quot;;&#xa;}&#xa;allLocationFound=allLocationFound.substring(0, allLocationFound.length()-1);&#xa;locationFound.setText(allLocationFound);"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -304,7 +304,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="locationLost.setText(focusItem.getStatus().getLocationName());"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="String allLocationLost = &quot;&quot;;&#xa;for(int i=0;i&lt;focusItem.getStatus().getLocationName().size();i++){&#xa;    allLocationLost+=focusItem.getStatus().getLocationName().get(i)+&quot;,&quot;;&#xa;}&#xa;allLocationLost=allLocationLost.substring(0, allLocationLost.length()-1);&#xa;locationLost.setText(allLocationLost);"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

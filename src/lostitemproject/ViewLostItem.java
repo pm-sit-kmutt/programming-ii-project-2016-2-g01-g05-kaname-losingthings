@@ -34,6 +34,7 @@ public class ViewLostItem {
                 dbm.disconnect();
             }
             String condition = "";
+            String locationFilter = "";
             System.out.println("1 - View my item\n2 - View all item");
             System.out.print("Choose (number) : ");
             input=sc.nextInt();
@@ -57,7 +58,7 @@ public class ViewLostItem {
                 System.out.print("Enter location (number) : ");
                 input = sc.nextInt();
                 if(input!=0){        
-                    condition+=" AND Location_locationId="+input;                   
+                    locationFilter+=" AND Location_locationId="+input;                   
                 }
             }
             System.out.print("===status list===\n0 - All Status\n1 - Lost.\n2 - Found.\n3 - Received\nChoose (number) : ");
@@ -68,7 +69,7 @@ public class ViewLostItem {
             System.out.print("===Order By===\n1 - Newest First.\n2 - Oldest first.\nChoose (number) : ");
             String orderBy=(sc.nextInt()==1?"DESC":"ASC");
             dbm.createConnection();
-            LostItem item[] = dbm.queryItem(condition,orderBy);
+            LostItem item[] = dbm.queryItem(condition,orderBy,locationFilter);
             dbm.disconnect();
             for(int i=0;i<item.length;i++){
                 System.out.println((i+1)+"."+item[i]);
@@ -91,8 +92,10 @@ public class ViewLostItem {
                     System.out.println("1 - Lost\n2 - Found via kaname\n3 - Received\n4 - delete");
                     System.out.print("Choose (number) : ");
                     dbm.createConnection();
-                    dbm.insertStatus(stat.getLocationId(), stat.getItemId(), acc.getAccId(),sc.nextInt());  
-                    
+                    int statusId = dbm.insertStatus(stat.getItemId(), acc.getAccId(),sc.nextInt());  
+                    if(statusId!=-1){
+                        dbm.insertItemLocation(stat.getLocationId(), statusId);
+                    }
                     System.out.println("Change Status Completed.");
                     stat = dbm.queryStatus(item[focusItem-1].getItemId());
                     dbm.disconnect();
@@ -101,8 +104,10 @@ public class ViewLostItem {
                     System.out.println("2 - Found by myself");
                     System.out.print("Choose (number) : ");
                     dbm.createConnection();
-                    dbm.insertStatus(stat.getLocationId(), stat.getItemId(), acc.getAccId(),sc.nextInt());  
-                    
+                    int statusId = dbm.insertStatus(stat.getItemId(), acc.getAccId(),sc.nextInt());  
+                    if(statusId!=-1){
+                        dbm.insertItemLocation(stat.getLocationId(), statusId);
+                    }
                     System.out.println("Change Status Completed.");
                     stat = dbm.queryStatus(item[focusItem-1].getItemId());
                     dbm.disconnect();

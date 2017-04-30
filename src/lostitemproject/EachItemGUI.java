@@ -98,7 +98,12 @@ public class EachItemGUI extends javax.swing.JPanel {
         cate.setText(item.getCate());
 
         location.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        location.setText(item.getStatus().getLocationName());
+        String allLocation = "";
+        for(int i=0;i<item.getStatus().getLocationName().size();i++){
+            allLocation+=item.getStatus().getLocationName().get(i)+",";
+        }
+        allLocation=allLocation.substring(0, allLocation.length()-1);
+        location.setText(allLocation);
 
         statusDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         statusDate.setText(item.getStatus().getLastUpdate().toString());

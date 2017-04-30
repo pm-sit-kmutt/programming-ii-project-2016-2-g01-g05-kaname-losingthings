@@ -8,6 +8,7 @@ package lostitemproject;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -74,21 +75,30 @@ public class ChangePanelListener implements ActionListener{
                     dbm.createConnection();
                     String name,des;
                     int accId,cate,locationInt;
+                    ArrayList<Integer> locations = new ArrayList<Integer>();
                     String date,dateNew;
                     name=mainFrame.getAddItemPage().getTextName().getText();
                     des=mainFrame.getAddItemPage().getTextDescription().getText();
                     accId=mainFrame.getUser().getAccId();
                     cate=mainFrame.getAddItemPage().getComboLostItem().getSelectedIndex()+1;
-                    locationInt=mainFrame.getAddItemPage().getLocationCombo().getSelectedIndex()+1;
+//                    locationInt=mainFrame.getAddItemPage().getLocationCombo().getSelectedIndex()+1;
+                    for(int i=0;i<mainFrame.getAddItemPage().getLcp().getLocationList().length;i++){
+                        if(mainFrame.getAddItemPage().getLcp().getAllCheckBox()[i].isSelected()){
+                            locations.add(i);
+                        }
+                    }
                     date=mainFrame.getAddItemPage().getDateTimePicker1().getDatePicker().getDateStringOrEmptyString()
                             +" "+mainFrame.getAddItemPage().getDateTimePicker1().getTimePicker().getTimeStringOrEmptyString();
-                    dateNew=mainFrame.getDetailPage().getCsp().getDateTimePickerStatus().getDatePicker().getDateStringOrEmptyString()
-                            +" "+mainFrame.getDetailPage().getCsp().getDateTimePickerStatus().getTimePicker().getTimeStringOrEmptyString();
+//                    dateNew=mainFrame.getDetailPage().getCsp().getDateTimePickerStatus().getDatePicker().getDateStringOrEmptyString()
+//                            +" "+mainFrame.getDetailPage().getCsp().getDateTimePickerStatus().getTimePicker().getTimeStringOrEmptyString();
                     
                     System.out.println("date = "+date);
                     if(!(name.equals("")||date.equals(" "))){
                         itemId = dbm.insertItem(name,des,accId,cate,date);
-                        dbm.insertStatus(locationInt, itemId, accId,1);
+                        int statusId = dbm.insertStatus(itemId, accId,1);
+                        if(statusId!=-1){
+                            dbm.insertItemLocation(locations, statusId);
+                        }
 
                         if(mainFrame.getAddItemPage().getImgName()!=null){
                             dbm.insertImage(mainFrame.getAddItemPage().getImgName(), itemId);

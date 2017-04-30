@@ -41,7 +41,7 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
     public ViewLostItemGUI(Account acc) throws InterruptedException, ClassNotFoundException, SQLException {
         dbm = new DBManagement();
         dbm.createConnection();      
-        LostItem[] item = dbm.queryItem("","DESC");
+        LostItem[] item = dbm.queryItem("","DESC","");
 //        this.acc = acc;
         
         allItemShow = new EachItemGUI[item.length];
@@ -195,17 +195,19 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
         try {
             dbm.createConnection();
             String condition = "";
+            String locationFilter = "";
             if(cateList.getSelectedIndex()!=0){
                 condition+=" AND Cate_cateId="+cateList.getSelectedIndex();
             }
-            if(locateList.getSelectedIndex()!=0){        
-                condition+=" AND Location_locationId="+locateList.getSelectedIndex();                   
+            if(locateList.getSelectedIndex()!=0){       
+                
+                locationFilter+=" AND itemlocation.Location_locationId="+locateList.getSelectedIndex();                   
             }
             if(statusList.getSelectedIndex()!=0){
                 condition+=" AND itemstatus.Status_statusId="+statusList.getSelectedIndex();
             }
             String orderBy=(orderByList.getSelectedIndex()==0?"DESC":"ASC");
-            LostItem[] item = dbm.queryItem(condition,orderBy);
+            LostItem[] item = dbm.queryItem(condition,orderBy,locationFilter);
 //            this.acc = acc;
             
             allItemShow = new EachItemGUI[item.length];

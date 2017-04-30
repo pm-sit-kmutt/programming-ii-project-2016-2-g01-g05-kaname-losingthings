@@ -38,6 +38,22 @@ public class LocationChoicePanel extends javax.swing.JPanel {
         
     }
 
+    public JCheckBox[] getAllCheckBox() {
+        return allCheckBox;
+    }
+
+    public void setAllCheckBox(JCheckBox[] allCheckBox) {
+        this.allCheckBox = allCheckBox;
+    }
+
+    public String[] getLocationList() {
+        return locationList;
+    }
+
+    public void setLocationList(String[] locationList) {
+        this.locationList = locationList;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

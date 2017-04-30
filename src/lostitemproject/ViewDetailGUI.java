@@ -202,7 +202,12 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         locationFound.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(locationFound);
         locationFound.setBounds(620, 440, 100, 28);
-        locationFound.setText(focusItem.getStatus().getLocationName());
+        String allLocationFound = "";
+        for(int i=0;i<focusItem.getStatus().getLocationName().size();i++){
+            allLocationFound+=focusItem.getStatus().getLocationName().get(i)+",";
+        }
+        allLocationFound=allLocationFound.substring(0, allLocationFound.length()-1);
+        locationFound.setText(allLocationFound);
 
         picture.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(picture);
@@ -269,7 +274,12 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         locationLost.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(locationLost);
         locationLost.setBounds(620, 400, 100, 28);
-        locationLost.setText(focusItem.getStatus().getLocationName());
+        String allLocationLost = "";
+        for(int i=0;i<focusItem.getStatus().getLocationName().size();i++){
+            allLocationLost+=focusItem.getStatus().getLocationName().get(i)+",";
+        }
+        allLocationLost=allLocationLost.substring(0, allLocationLost.length()-1);
+        locationLost.setText(allLocationLost);
 
         location2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         location2.setText("สถานที่ที่พบของหาย");
@@ -308,7 +318,10 @@ public class ViewDetailGUI extends javax.swing.JPanel {
             try {
                 DBManagement dbm=new DBManagement();
                 dbm.createConnection();
-                dbm.insertStatus(locationNew, focusItem.getItemId(), account.getAccId(), statusChoose);
+                int statusId = dbm.insertStatus(focusItem.getItemId(), account.getAccId(), statusChoose);
+                if(statusId!=-1){
+                    dbm.insertItemLocation(locationNew, statusId);
+                }
                 System.out.println("statusChoose = "+statusChoose);
                 if(statusChoose==3||statusChoose==4){
                     String date=csp.getDateTimePickerStatus().getDatePicker().getDateStringOrEmptyString()

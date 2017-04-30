@@ -33,12 +33,13 @@ public class AddLostItemGUI extends javax.swing.JPanel {
     private String userName;
     private String imgName;
     private javax.swing.JScrollPane ScrollItemList;
+    private LocationChoicePanel lcp;
 //    private String[] locationList;
 
     /**
      * Creates new form AddLostItemGUI
      */
-    public AddLostItemGUI(Account acc) {
+    public AddLostItemGUI(Account acc) throws SQLException, ClassNotFoundException {
          
             
         initComponents();
@@ -47,7 +48,16 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         ScrollItemList = new javax.swing.JScrollPane();
         ScrollItemList.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         ScrollItemList.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        lcp = new LocationChoicePanel();
         
+    }
+
+    public LocationChoicePanel getLcp() {
+        return lcp;
+    }
+
+    public void setLcp(LocationChoicePanel lcp) {
+        this.lcp = lcp;
     }
 
 
@@ -474,8 +484,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
 
     private void locationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locationBtnActionPerformed
        
-        try {
-//            LocationChoicePanel lcp = new LocationChoicePanel();
+        //            LocationChoicePanel lcp = new LocationChoicePanel();
 //            JScrollPane scrollpane = new JScrollPane(lcp);
 //            UIManager.put("OptionPane.minimumSize",new Dimension(100,200));
 //            JOptionPane.showMessageDialog(null,scrollpane,"เลือกสถานที่",JOptionPane.PLAIN_MESSAGE);
@@ -483,26 +492,19 @@ public class AddLostItemGUI extends javax.swing.JPanel {
 //            ScrollItemList.setSize(100, 200);
 //            ScrollItemList.setViewportView(lcp);
 //            ScrollItemList.getVerticalScrollBar().setUnitIncrement(16);
-            
-            //=========
+
+//=========
             JScrollPane jsp = new JScrollPane();
             jsp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
             jsp.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
             jsp.setPreferredSize(new Dimension( 200, 100 ));
-            LocationChoicePanel lcp = new LocationChoicePanel();
             jsp.setSize(100, 200);
             jsp.setViewportView(lcp);
             jsp.getVerticalScrollBar().setUnitIncrement(16);
-            
             //========
 
             UIManager.put("OptionPane.minimumSize",new Dimension(100,200));
             JOptionPane.showMessageDialog(null,jsp,"เลือกสถานที่",JOptionPane.PLAIN_MESSAGE);
-        } catch (SQLException ex) {
-            Logger.getLogger(AddLostItemGUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AddLostItemGUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_locationBtnActionPerformed
 
 
