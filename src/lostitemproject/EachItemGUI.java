@@ -103,6 +103,9 @@ public class EachItemGUI extends javax.swing.JPanel {
             allLocation+=item.getStatus().getLocationName().get(i)+",";
         }
         allLocation=allLocation.substring(0, allLocation.length()-1);
+        if(allLocation.length()>=15){
+            allLocation=allLocation.substring(0, 14)+"...";
+        }
         location.setText(allLocation);
 
         statusDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N

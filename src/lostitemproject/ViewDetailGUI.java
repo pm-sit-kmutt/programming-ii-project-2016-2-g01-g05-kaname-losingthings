@@ -24,11 +24,13 @@ public class ViewDetailGUI extends javax.swing.JPanel {
     private Account account;
     private SimpleDateFormat sdf;
     private  ChangeStatusPanel csp;
+    private DBManagement dbm;
     /**
      * Creates new form ViewDetailGUI
      */
 
     ViewDetailGUI(LostItem focusItem,Account account) {
+        dbm = new DBManagement();
         this.focusItem = focusItem;
         this.account = account;
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -203,11 +205,27 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         add(locationFound);
         locationFound.setBounds(620, 440, 100, 28);
         String allLocationFound = "";
-        for(int i=0;i<focusItem.getStatus().getLocationName().size();i++){
-            allLocationFound+=focusItem.getStatus().getLocationName().get(i)+",";
+        ItemStatus statFound=null;
+        if(focusItem.getStatus().getStatusName().equalsIgnoreCase("lost")){
+            locationFound.setText("-");
+        }else{
+            try{
+                dbm.createConnection();
+                statFound = dbm.queryStatusSpecifyType(focusItem.getItemId(), 2);
+                if(statFound==null){
+                    statFound = dbm.queryStatusSpecifyType(focusItem.getItemId(), 4);
+                }
+                dbm.disconnect();
+
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            for(int i=0;i<statFound.getLocationName().size();i++){
+                allLocationFound+=statFound.getLocationName().get(i)+",";
+            }
+            allLocationFound=allLocationFound.substring(0, allLocationFound.length()-1);
+            locationFound.setText(allLocationFound);
         }
-        allLocationFound=allLocationFound.substring(0, allLocationFound.length()-1);
-        locationFound.setText(allLocationFound);
 
         picture.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(picture);
@@ -275,8 +293,19 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         add(locationLost);
         locationLost.setBounds(620, 400, 100, 28);
         String allLocationLost = "";
-        for(int i=0;i<focusItem.getStatus().getLocationName().size();i++){
-            allLocationLost+=focusItem.getStatus().getLocationName().get(i)+",";
+        ItemStatus statLost=focusItem.getStatus();
+        if(!statLost.getStatusName().equalsIgnoreCase("lost")){
+            try{
+                dbm.createConnection();
+                statLost = dbm.queryStatusSpecifyType(statLost.getItemId(), 1);
+                dbm.disconnect();
+
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        for(int i=0;i<statLost.getLocationName().size();i++){
+            allLocationLost+=statLost.getLocationName().get(i)+",";
         }
         allLocationLost=allLocationLost.substring(0, allLocationLost.length()-1);
         locationLost.setText(allLocationLost);

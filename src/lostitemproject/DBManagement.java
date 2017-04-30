@@ -154,6 +154,40 @@ public class DBManagement {
         return stat;
     }
     
+    public ItemStatus queryStatusSpecifyType(int itemId,int statusType)
+            throws SQLException{
+        ItemStatus stat = null; 
+        Statement stm = conn.createStatement();
+
+        ResultSet rs = stm.executeQuery("select itemstatus.itemStatusId,itemstatus.itemStatusDate"
+                + " ,itemstatus.Item_itemId ,status.statusName from itemstatus"
+                + " INNER JOIN account ON itemstatus.Account_userID=account.userID"
+                + " INNER JOIN status ON itemstatus.Status_statusId=status.statusId"
+                + " WHERE itemstatus.Status_statusId="+statusType
+                + " AND itemstatus.Item_itemId="+itemId);
+        
+        while(rs.next()){
+            stat = new ItemStatus();
+            stat.setStatusId(rs.getInt("itemStatusId"));
+            stat.setLastUpdate(rs.getDate("itemStatusDate")); 
+            stat.setItemId(rs.getInt("Item_itemId"));
+            stat.setStatusName(rs.getString("statusName"));
+            queryItemLocation(stat);
+        }
+        
+        return stat;
+    }
+    
+    public void deleteStatusSpecifyType(int itemId,int statusType)
+            throws SQLException{
+        ItemStatus stat = new ItemStatus(); 
+        Statement stm = conn.createStatement();
+
+        stm.executeUpdate("DELETE FROM itemstatus WHERE itemstatus.Status_statusId="+statusType
+                + " AND itemstatus.Item_itemId="+itemId);
+
+    }
+    
     public void insertItemLocation(ArrayList<Integer> locationIds,int ItemStatusId)
                 throws SQLException{ 
         PreparedStatement psm=null;

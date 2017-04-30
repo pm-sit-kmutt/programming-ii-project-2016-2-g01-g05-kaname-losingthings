@@ -205,14 +205,6 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         this.ComboLostItem = ComboLostItem;
     }
 
-    public JComboBox<String> getLocationCombo() {
-        return location;
-    }
-
-    public void setLocationCombo(JComboBox<String> location) {
-        this.location = location;
-    }
-
     public DateTimePicker getDateTimePicker1() {
         return dateTimePicker1;
     }
@@ -241,7 +233,6 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         ComboLostItem = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        location = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         Pic = new javax.swing.JLabel();
         BtnUpload = new javax.swing.JButton();
@@ -304,17 +295,6 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         add(jLabel6);
         jLabel6.setBounds(498, 32, 39, 16);
 
-        DBManagement dbm = new DBManagement();
-        try{
-            dbm.createConnection();
-            location.setModel(new javax.swing.DefaultComboBoxModel<>(dbm.queryLocation()));
-            dbm.disconnect();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        add(location);
-        location.setBounds(549, 29, 58, 22);
-
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("อัพโหลดรูปภาพ");
         add(jLabel7);
@@ -348,7 +328,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
 
         userNameText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(userNameText);
-        userNameText.setBounds(660, 30, 150, 25);
+        userNameText.setBounds(680, 20, 150, 25);
         add(dateTimePicker1);
         dateTimePicker1.setBounds(320, 230, 310, 23);
 
@@ -359,7 +339,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
             }
         });
         add(locationBtn);
-        locationBtn.setBounds(690, 150, 120, 25);
+        locationBtn.setBounds(550, 30, 120, 25);
 
         backBtn.setText("ย้อนกลับ");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -505,6 +485,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
 
             UIManager.put("OptionPane.minimumSize",new Dimension(100,200));
             JOptionPane.showMessageDialog(null,jsp,"เลือกสถานที่",JOptionPane.PLAIN_MESSAGE);
+            locationBtn.setText("เลือกแล้ว");
     }//GEN-LAST:event_locationBtnActionPerformed
 
 
@@ -527,7 +508,6 @@ public class AddLostItemGUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> location;
     private javax.swing.JButton locationBtn;
     private javax.swing.JLabel userNameText;
     // End of variables declaration//GEN-END:variables

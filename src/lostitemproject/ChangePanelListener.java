@@ -77,6 +77,7 @@ public class ChangePanelListener implements ActionListener{
                     int accId,cate,locationInt;
                     ArrayList<Integer> locations = new ArrayList<Integer>();
                     String date,dateNew;
+                    boolean isLocationSelected=false;
                     name=mainFrame.getAddItemPage().getTextName().getText();
                     des=mainFrame.getAddItemPage().getTextDescription().getText();
                     accId=mainFrame.getUser().getAccId();
@@ -85,15 +86,17 @@ public class ChangePanelListener implements ActionListener{
                     for(int i=0;i<mainFrame.getAddItemPage().getLcp().getLocationList().length;i++){
                         if(mainFrame.getAddItemPage().getLcp().getAllCheckBox()[i].isSelected()){
                             locations.add(i);
+                            isLocationSelected=true;
                         }
                     }
+                    
                     date=mainFrame.getAddItemPage().getDateTimePicker1().getDatePicker().getDateStringOrEmptyString()
                             +" "+mainFrame.getAddItemPage().getDateTimePicker1().getTimePicker().getTimeStringOrEmptyString();
 //                    dateNew=mainFrame.getDetailPage().getCsp().getDateTimePickerStatus().getDatePicker().getDateStringOrEmptyString()
 //                            +" "+mainFrame.getDetailPage().getCsp().getDateTimePickerStatus().getTimePicker().getTimeStringOrEmptyString();
                     
                     System.out.println("date = "+date);
-                    if(!(name.equals("")||date.equals(" "))){
+                    if(!(name.equals("")||date.equals(" ")||!isLocationSelected)){
                         itemId = dbm.insertItem(name,des,accId,cate,date);
                         int statusId = dbm.insertStatus(itemId, accId,1);
                         if(statusId!=-1){

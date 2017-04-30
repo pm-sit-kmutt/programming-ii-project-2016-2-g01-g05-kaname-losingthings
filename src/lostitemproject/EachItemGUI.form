@@ -189,7 +189,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="location">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor" postCode="String allLocation = &quot;&quot;;&#xa;for(int i=0;i&lt;item.getStatus().getLocationName().size();i++){&#xa;    allLocation+=item.getStatus().getLocationName().get(i)+&quot;,&quot;;&#xa;}&#xa;allLocation=allLocation.substring(0, allLocation.length()-1);">
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor" postCode="String allLocation = &quot;&quot;;&#xa;for(int i=0;i&lt;item.getStatus().getLocationName().size();i++){&#xa;    allLocation+=item.getStatus().getLocationName().get(i)+&quot;,&quot;;&#xa;}&#xa;allLocation=allLocation.substring(0, allLocation.length()-1);&#xa;if(allLocation.length()&gt;=15){&#xa;    allLocation=allLocation.substring(0, 14)+&quot;...&quot;;&#xa;}">
           <Font name="Tahoma" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
