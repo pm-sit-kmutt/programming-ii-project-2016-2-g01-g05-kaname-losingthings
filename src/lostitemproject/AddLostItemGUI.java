@@ -486,6 +486,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
             UIManager.put("OptionPane.minimumSize",new Dimension(100,200));
             JOptionPane.showMessageDialog(null,jsp,"เลือกสถานที่",JOptionPane.PLAIN_MESSAGE);
             locationBtn.setText("เลือกแล้ว");
+            UIManager.put("OptionPane.minimumSize",new Dimension(100,20));
     }//GEN-LAST:event_locationBtnActionPerformed
 
 

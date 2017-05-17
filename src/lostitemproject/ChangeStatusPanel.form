@@ -102,6 +102,9 @@
           <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(statusChoice)" type="code"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="statusComboActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] statusChoice;&#xa;if(account.getAccType()==Account.TYPE_ADMIN){&#xa;    statusChoice = new String[] {&quot;lost&quot;,&quot;found&quot;,&quot;recieved&quot;};&#xa;}else{&#xa;    statusChoice = new String[] {&quot;lost&quot;,&quot;found by myself&quot;};&#xa;}"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -124,7 +127,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#xe2a;&#xe16;&#xe32;&#xe19;&#xe30;&#xe1b;&#xe31;&#xe08;&#xe08;&#xe38;&#xe1a;&#xe31;&#xe19;"/>
+        <Property name="text" type="java.lang.String" value="&#xe2a;&#xe16;&#xe32;&#xe19;&#xe30;"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="supermarket" size="15" style="1"/>
         </Property>

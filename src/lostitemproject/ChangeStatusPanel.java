@@ -68,6 +68,11 @@ public class ChangeStatusPanel extends javax.swing.JPanel {
             statusChoice = new String[] {"lost","found by myself"};
         }
         statusCombo.setModel(new javax.swing.DefaultComboBoxModel<>(statusChoice));
+        statusCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statusComboActionPerformed(evt);
+            }
+        });
 
         DBManagement dbm = new DBManagement();
         try{
@@ -78,7 +83,7 @@ public class ChangeStatusPanel extends javax.swing.JPanel {
             e.printStackTrace();
         }
 
-        jLabel2.setText("สถานะปัจจุบัน");
+        jLabel2.setText("สถานะ");
         jLabel2.setFont(new java.awt.Font("supermarket", 1, 15)); // NOI18N
 
         jLabel3.setText("สถานที่ที่พบของหาย");
@@ -165,6 +170,17 @@ public class ChangeStatusPanel extends javax.swing.JPanel {
                     .addComponent(locationComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void statusComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusComboActionPerformed
+        System.out.println("action per.");
+        if(statusCombo.getSelectedIndex()==2){
+            System.out.println("condition right");
+            locationComboBox.setEnabled(false);
+            locationComboBox.setSelectedIndex(lostItem.getStatus().getLocationId().get(0)-1);
+        }else{
+            locationComboBox.setEnabled(true);
+        }
+    }//GEN-LAST:event_statusComboActionPerformed
 
     public JComboBox<String> getStatusCombo() {
         return statusCombo;

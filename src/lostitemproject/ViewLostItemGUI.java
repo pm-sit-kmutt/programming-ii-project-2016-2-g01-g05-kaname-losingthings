@@ -11,6 +11,8 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
 //    private JPanel subPanel;
     private EachItemGUI[] allItemShow;
     private DBManagement dbm;
+    private Account user;
+    private LostItemFrame mainFrame;
 
     public JButton getLogoutBtn() {
         return logoutBtn;
@@ -38,7 +40,9 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
     
     
     
-    public ViewLostItemGUI(Account acc) throws InterruptedException, ClassNotFoundException, SQLException {
+    public ViewLostItemGUI(Account acc,LostItemFrame mainFrame) throws InterruptedException, ClassNotFoundException, SQLException {
+        user=acc;
+        this.mainFrame=mainFrame;
         dbm = new DBManagement();
         dbm.createConnection();      
         LostItem[] item = dbm.queryItem("","DESC","");
@@ -75,6 +79,7 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
         statusList = new javax.swing.JComboBox<>();
         orderByList = new javax.swing.JComboBox<>();
         addLostItembtn = new javax.swing.JButton();
+        searchMyItem = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -105,7 +110,7 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
             }
         });
         add(searchBtn);
-        searchBtn.setBounds(360, 500, 120, 33);
+        searchBtn.setBounds(290, 500, 120, 33);
 
         cateList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ทั้งหมด", "อุปกรณ์อิเล็กทรอนิกส์", "เครื่องแต่งกาย", "กระเป๋า", "กุญแจ", "อื่นๆ" }));
         add(cateList);
@@ -147,11 +152,20 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
             }
         });
         add(addLostItembtn);
-        addLostItembtn.setBounds(490, 500, 120, 33);
+        addLostItembtn.setBounds(600, 500, 120, 33);
+
+        searchMyItem.setText("ค้นหาของหายฉัน");
+        searchMyItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchMyItemActionPerformed(evt);
+            }
+        });
+        add(searchMyItem);
+        searchMyItem.setBounds(440, 500, 123, 40);
 
         logoutBtn.setText("LOGOUT");
         add(logoutBtn);
-        logoutBtn.setBounds(230, 500, 120, 33);
+        logoutBtn.setBounds(140, 500, 120, 33);
 
         jLabel1.setFont(new java.awt.Font("supermarket", 1, 15)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -217,7 +231,10 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
                 EachItemGUI each = new EachItemGUI(item[i]);
                 subPanel.add(each);
                 allItemShow[i]=each;
+                allItemShow[i].getViewDetailBtn().addActionListener(
+                        new ChangePanelListener(mainFrame,ChangePanelListener.DETAIL,allItemShow[i].getItem())); 
             }
+
             subPanel.setLayout(new BoxLayout(subPanel,BoxLayout.Y_AXIS));
             ScrollItemList.setViewportView(subPanel);
             ScrollItemList.revalidate();
@@ -232,8 +249,50 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void addLostItembtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLostItembtnActionPerformed
-//        pageToGo="addLostItem";
+
     }//GEN-LAST:event_addLostItembtnActionPerformed
+
+    private void searchMyItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchMyItemActionPerformed
+        try {
+            dbm.createConnection();
+            String condition = " AND item.Account_userId="+user.getAccId();
+            String locationFilter = "";
+            if(cateList.getSelectedIndex()!=0){
+                condition+=" AND Cate_cateId="+cateList.getSelectedIndex();
+            }
+            if(locateList.getSelectedIndex()!=0){       
+                
+                locationFilter+=" AND itemlocation.Location_locationId="+locateList.getSelectedIndex();                   
+            }
+            if(statusList.getSelectedIndex()!=0){
+                condition+=" AND itemstatus.Status_statusId="+statusList.getSelectedIndex();
+            }
+            String orderBy=(orderByList.getSelectedIndex()==0?"DESC":"ASC");
+            LostItem[] item = dbm.queryItem(condition,orderBy,locationFilter);
+//            this.acc = acc;
+            
+            allItemShow = new EachItemGUI[item.length];
+            JPanel subPanel = new JPanel();
+            subPanel.setSize(500, item.length*120);
+            for(int i=0;i<item.length;i++){
+                EachItemGUI each = new EachItemGUI(item[i]);
+                subPanel.add(each);
+                allItemShow[i]=each;
+                allItemShow[i].getViewDetailBtn().addActionListener(
+                        new ChangePanelListener(mainFrame,ChangePanelListener.DETAIL,allItemShow[i].getItem())); 
+            }
+            subPanel.setLayout(new BoxLayout(subPanel,BoxLayout.Y_AXIS));
+            ScrollItemList.setViewportView(subPanel);
+            ScrollItemList.revalidate();
+            ScrollItemList.repaint();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ViewLostItemGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewLostItemGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ViewLostItemGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_searchMyItemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -252,6 +311,7 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
     private javax.swing.JButton logoutBtn;
     private javax.swing.JComboBox<String> orderByList;
     private javax.swing.JButton searchBtn;
+    private javax.swing.JButton searchMyItem;
     private javax.swing.JComboBox<String> statusList;
     // End of variables declaration//GEN-END:variables
 

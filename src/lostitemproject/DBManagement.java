@@ -65,7 +65,7 @@ public class DBManagement {
                 + ",item.dateEnd ,itemstatus.itemStatusDate ,picture.picturePath from item"
                 + " INNER JOIN cate ON item.Cate_cateId=cate.cateId"
                 + " INNER JOIN itemstatus ON itemstatus.Item_itemId=item.itemId"
-                + " INNER JOIN account ON itemstatus.Account_userID=Account.userID"
+                + " INNER JOIN account ON item.Account_userID=Account.userID"
                 + locationJOIN                
                 + " LEFT JOIN picture ON picture.Item_itemId=item.itemId"
                 + " WHERE (itemstatus.Item_itemId, itemstatus.itemStatusDate)"
@@ -194,7 +194,7 @@ public class DBManagement {
         psm = conn.prepareStatement("insert into itemlocation (Location_locationId,ItemStatus_itemStatusId) value (?,?)");
         
         for(int i=0;i<locationIds.size();i++){
-            psm.setInt(1, locationIds.get(i)+1);
+            psm.setInt(1, locationIds.get(i));
             psm.setInt(2, ItemStatusId);
             psm.executeUpdate();
         }
@@ -295,6 +295,12 @@ public class DBManagement {
             } 
         }
         return acc;
+    }
+    
+    public void deleteItem(int itemId) throws SQLException{
+        Statement stm=null;
+        stm = conn.createStatement();
+        stm.executeUpdate("DELETE FROM item WHERE itemId = "+itemId);    
     }
     
     public boolean disconnect() throws SQLException{

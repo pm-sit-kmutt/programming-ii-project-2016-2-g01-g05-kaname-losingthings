@@ -13,7 +13,8 @@ import javax.swing.*;
 
 public class LostItemProject {
     public static void main(String[] args) throws InterruptedException, ClassNotFoundException, SQLException{
-        LostItemFrame test = new LostItemFrame(); 
+        LostItemFrame test = new LostItemFrame();
+        JFrame test1 = new JFrame();
         test.setVisible(true);  
         
 //        JFrame jframe = new JFrame();        

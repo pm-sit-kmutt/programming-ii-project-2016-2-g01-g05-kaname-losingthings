@@ -6,26 +6,26 @@ import java.util.logging.Level;
 import java.util.logging.Logger; 
 import javax.swing.*; 
  
-public class LostItemFrame extends javax.swing.JFrame { 
-    private LoginGUI loginPage; 
-    private ViewLostItemGUI viewPage; 
-    private AddLostItemGUI addItemPage; 
+public class LostItemFrame extends javax.swing.JFrame{
+    private LoginGUI loginPage;
+    private ViewLostItemGUI viewPage;
+    private AddLostItemGUI addItemPage;
     private ViewDetailGUI detailPage;
-    private Account user; 
-    private LostItem focusItem; 
+    private Account user;
+    private LostItem focusItem;
      
-    public LostItemFrame() { 
+    public LostItemFrame() {
         this.setSize(860, 590); 
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         this.setLocationRelativeTo(null); 
-        toLoginPage(); 
+        toLoginPage();
     } 
      
     public void toLoginPage(){ 
         this.getContentPane().removeAll(); 
-        loginPage = new LoginGUI(); 
-        loginPage.getLoginBtn().addActionListener(new ChangePanelListener(this,ChangePanelListener.LOGIN)); 
+        loginPage = new LoginGUI();
+        loginPage.getLoginBtn().addActionListener(new ChangePanelListener(this,ChangePanelListener.LOGIN));
         this.add(loginPage); 
         this.repaint(); 
         this.revalidate(); 
@@ -34,7 +34,7 @@ public class LostItemFrame extends javax.swing.JFrame {
     public void toViewPage(){ 
         try { 
             this.getContentPane().removeAll(); 
-            viewPage = new ViewLostItemGUI(user); 
+            viewPage = new ViewLostItemGUI(user,this); 
             viewPage.getLogoutBtn().addActionListener(new ChangePanelListener(this,ChangePanelListener.LOGOUT));
             viewPage.getAddLostItembtn().addActionListener(new ChangePanelListener(this,ChangePanelListener.ADD_LOSTITEM));
             EachItemGUI[] allItemShow = viewPage.getAllItemShow();
@@ -43,8 +43,8 @@ public class LostItemFrame extends javax.swing.JFrame {
                         new ChangePanelListener(this,ChangePanelListener.DETAIL,allItemShow[i].getItem())); 
             }
             this.add(viewPage);
-            this.repaint(); 
-            this.revalidate(); 
+            this.repaint();
+            this.revalidate();
              
         } catch (InterruptedException ex) { 
             Logger.getLogger(LostItemFrame.class.getName()).log(Level.SEVERE, null, ex); 
@@ -52,7 +52,7 @@ public class LostItemFrame extends javax.swing.JFrame {
             Logger.getLogger(LostItemFrame.class.getName()).log(Level.SEVERE, null, ex); 
         } catch (SQLException ex) { 
             Logger.getLogger(LostItemFrame.class.getName()).log(Level.SEVERE, null, ex); 
-        } 
+        }
          
     } 
      
@@ -78,7 +78,7 @@ public class LostItemFrame extends javax.swing.JFrame {
         detailPage = new ViewDetailGUI(focusItem,user);
         this.add(detailPage); 
         detailPage.getBackBtn().addActionListener(new ChangePanelListener(this,ChangePanelListener.BACKTO_HOMEPAGE));
-//        addItemPage.getBtnConfirm().addActionListener(new ChangePanelListener(this,ChangePanelListener.CONFIRM_ADDITEM));
+        detailPage.getDeleteItemBtn().addActionListener(new ChangePanelListener(this,ChangePanelListener.CONFIRM_DELETE_STATUS,focusItem));
         this.repaint(); 
         this.revalidate(); 
     }

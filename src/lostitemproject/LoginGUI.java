@@ -94,11 +94,6 @@ public class LoginGUI extends javax.swing.JPanel {
 
         loginBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         loginBtn.setText("LOGIN");
-        loginBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginBtnActionPerformed(evt);
-            }
-        });
         add(loginBtn);
         loginBtn.setBounds(380, 283, 170, 50);
         add(TextPassword);
@@ -112,10 +107,6 @@ public class LoginGUI extends javax.swing.JPanel {
         add(jLabel5);
         jLabel5.setBounds(200, 60, 490, 360);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-//        pageToGo="viewAll";
-    }//GEN-LAST:event_loginBtnActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

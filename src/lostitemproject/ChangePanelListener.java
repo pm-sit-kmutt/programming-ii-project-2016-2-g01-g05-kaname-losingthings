@@ -23,7 +23,7 @@ public class ChangePanelListener implements ActionListener{
     public static final int DETAIL=1;
     public static final int ADD_LOSTITEM=2;
     public static final int CONFIRM_ADDITEM=3;
-    public static final int CONFIRM_CHANGE_STATUS=4;
+    public static final int CONFIRM_DELETE_STATUS=4;
     public static final int LOGIN=5;
     public static final int LOGOUT=6;
     
@@ -64,10 +64,10 @@ public class ChangePanelListener implements ActionListener{
                 mainFrame.setFocusItem(bindingItem);
                 mainFrame.toDetailPage();
                 break;
+                
             case 2:
                 mainFrame.toAddItemPage();
                 break;
-                
                 
             case 3:
                 int itemId;
@@ -93,7 +93,6 @@ public class ChangePanelListener implements ActionListener{
                     date=mainFrame.getAddItemPage().getDateTimePicker1().getDatePicker().getDateStringOrEmptyString()
                             +" "+mainFrame.getAddItemPage().getDateTimePicker1().getTimePicker().getTimeStringOrEmptyString();
 
-                    System.out.println("date = "+date);
                     if(!(name.equals("")||date.equals(" ")||!isLocationSelected)){
                         itemId = dbm.insertItem(name,des,accId,cate,date);
                         int statusId = dbm.insertStatus(itemId, accId,1);
@@ -125,8 +124,19 @@ public class ChangePanelListener implements ActionListener{
                 break;
                 
             case 4:
-                
-                
+                int result = JOptionPane.showConfirmDialog(null,"ต้องการลบของหายหรือไม่ ?","ลบของหาย",JOptionPane.YES_NO_OPTION);
+                if(result==JOptionPane.YES_OPTION){
+                    try {
+                        dbm.createConnection();
+                        dbm.deleteItem(bindingItem.getItemId());
+                        dbm.disconnect();
+                        mainFrame.toViewPage();
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(ViewDetailGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ViewDetailGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                 break;
             case 5:
                 try {

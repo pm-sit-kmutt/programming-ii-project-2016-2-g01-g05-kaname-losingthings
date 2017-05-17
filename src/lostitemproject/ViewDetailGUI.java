@@ -23,7 +23,7 @@ public class ViewDetailGUI extends javax.swing.JPanel {
     private LostItem focusItem;
     private Account account;
     private SimpleDateFormat sdf;
-    private  ChangeStatusPanel csp;
+    private ChangeStatusPanel csp;
     private DBManagement dbm;
     /**
      * Creates new form ViewDetailGUI
@@ -41,6 +41,9 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         }catch(NullPointerException ex){
             ex.printStackTrace();
             System.out.println("problem : can't find img");
+        }
+        if(account.getAccType()!=Account.TYPE_ADMIN){
+            deleteItemBtn.setVisible(false);
         }
         
         //To change body of generated methods, choose Tools | Templates.
@@ -127,6 +130,15 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         this.statusBtn = statusBtn;
     }
 
+    public JButton getDeleteItemBtn() {
+        return deleteItemBtn;
+    }
+
+    public void setDeleteItemBtn(JButton deleteItemBtn) {
+        this.deleteItemBtn = deleteItemBtn;
+    }
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -153,6 +165,7 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         userNameText = new javax.swing.JLabel();
         statusBtn = new javax.swing.JButton();
         dateTextStart1 = new javax.swing.JLabel();
+        deleteItemBtn = new javax.swing.JButton();
         date1 = new javax.swing.JLabel();
         statusText = new javax.swing.JLabel();
         location2 = new javax.swing.JLabel();
@@ -182,7 +195,7 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         description.setForeground(new java.awt.Color(255, 255, 255));
         description.setText("คำอธิบาย");
         add(description);
-        description.setBounds(30, 320, 56, 14);
+        description.setBounds(30, 320, 71, 21);
 
         lostItem.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
         lostItem.setForeground(new java.awt.Color(255, 255, 255));
@@ -191,11 +204,14 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         lostItem.setBounds(30, 350, 70, 20);
 
         descriptionText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        descriptionText.setOpaque(true);
         add(descriptionText);
         descriptionText.setBounds(160, 310, 350, 28);
         descriptionText.setText(focusItem.getItemDescription());
 
+        nameText.setBackground(new java.awt.Color(204, 153, 0));
         nameText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        nameText.setOpaque(true);
         add(nameText);
         nameText.setBounds(160, 270, 350, 28);
         nameText.setText(focusItem.getItemName());
@@ -262,7 +278,7 @@ public class ViewDetailGUI extends javax.swing.JPanel {
 
         backBtn.setText("ย้อนกลับ");
         add(backBtn);
-        backBtn.setBounds(320, 500, 92, 33);
+        backBtn.setBounds(220, 500, 92, 33);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/user (1).png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -283,13 +299,17 @@ public class ViewDetailGUI extends javax.swing.JPanel {
             }
         });
         add(statusBtn);
-        statusBtn.setBounds(430, 500, 120, 33);
+        statusBtn.setBounds(330, 500, 120, 33);
 
         dateTextStart1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         String dateStartStr = sdf.format(focusItem.getDateStart());
         add(dateTextStart1);
         dateTextStart1.setBounds(530, 100, 180, 28);
         dateTextStart1.setText(dateStartStr);
+
+        deleteItemBtn.setText("ลบของหาย");
+        add(deleteItemBtn);
+        deleteItemBtn.setBounds(470, 500, 110, 30);
 
         date1.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
         date1.setForeground(new java.awt.Color(255, 255, 255));
@@ -307,7 +327,7 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         location2.setForeground(new java.awt.Color(255, 255, 255));
         location2.setText("สถานที่ที่พบของหาย");
         add(location2);
-        location2.setBounds(30, 430, 120, 14);
+        location2.setBounds(30, 430, 120, 21);
 
         statusNow.setText(focusItem.getStatus().getStatusName());
         statusNow.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -318,11 +338,13 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         name1.setForeground(new java.awt.Color(255, 255, 255));
         name1.setText("ชื่่อของหาย");
         add(name1);
-        name1.setBounds(30, 280, 65, 25);
+        name1.setBounds(30, 280, 92, 25);
 
+        locationArea.setBackground(new java.awt.Color(204, 153, 0));
         locationArea.setColumns(20);
         locationArea.setRows(5);
         locationArea.setBorder(null);
+        locationArea.setEnabled(false);
         jScrollPane1.setViewportView(locationArea);
         String allLocationLost = "";
         ItemStatus statLost=focusItem.getStatus();
@@ -358,47 +380,47 @@ public class ViewDetailGUI extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
    // ChangeStatusPanel csp;
     private void statusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusBtnActionPerformed
-        ImageIcon icon = new ImageIcon(focusItem.getImg().getScaledInstance(302, 197, Image.SCALE_SMOOTH));
+//        ImageIcon icon = new ImageIcon(focusItem.getImg().getScaledInstance(302, 197, Image.SCALE_SMOOTH));
         csp=new ChangeStatusPanel(account,focusItem);
         int result=JOptionPane.NO_OPTION;
         if(account.getAccType()==Account.TYPE_ADMIN){
             //csp = new ChangeStatusPanel(account);
-            result = JOptionPane.showConfirmDialog(this,csp,"เปลี่ยนสถานะ",JOptionPane.YES_NO_OPTION);
+            result = JOptionPane.showConfirmDialog(this,csp,"เปลี่ยนสถานะ",JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE);
         }else if(account.getAccId()==focusItem.getOwnerId()){
 //            csp = new ChangeStatusPanel(account);
-            result = JOptionPane.showConfirmDialog(this,csp,"เปลี่ยนสถานะ",JOptionPane.YES_NO_OPTION);
+            result = JOptionPane.showConfirmDialog(this,csp,"เปลี่ยนสถานะ",JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE);
         }else{
             JOptionPane.showMessageDialog(this,"ไม่มีสิทธิ!");
         }
         
         
         if(result==JOptionPane.YES_OPTION){
+            
             int statusChoose = csp.getStatusCombo().getSelectedIndex()+1;
-            System.out.println("csp.getStatusCombo().getSelectedItem() = "+csp.getStatusCombo().getSelectedItem());
+            
             if(csp.getStatusCombo().getSelectedItem().equals("found by myself")){
                 statusChoose = 4;
             }
            // String dateEndStr = sdf.format(csp.getDateTimePickerStatus());
-            int  locationNew = csp. getLocationComboBox().getSelectedIndex()+1;
+            int  locationNew = csp.getLocationComboBox().getSelectedIndex();
             try {
                 DBManagement dbm=new DBManagement();
                 dbm.createConnection();
+                
                 int statusId = dbm.insertStatus(focusItem.getItemId(), account.getAccId(), statusChoose);
                 if(statusId!=-1){
                     dbm.insertItemLocation(locationNew, statusId);
                 }
-                System.out.println("statusChoose = "+statusChoose);
                 if(statusChoose==3||statusChoose==4){
                     String date=csp.getDateTimePickerStatus().getDatePicker().getDateStringOrEmptyString()
                             +" "+csp.getDateTimePickerStatus().getTimePicker().getTimeStringOrEmptyString();
                     dbm.updateItem(focusItem,date);
-                    System.out.println("date = "+date);
                     dateTextEnd.setText(date);
                 }
                 dbm.disconnect();
                 String locationStr = csp.getLocationComboBox().getSelectedItem().toString();
                 String statusStr = csp.getStatusCombo().getSelectedItem().toString();
-                
+
                 statusNow.setText(statusStr);
                 locationFound.setText(locationStr);
                 //dateTextEnd.setText("วันที่ของเจอ");
@@ -408,6 +430,7 @@ public class ViewDetailGUI extends javax.swing.JPanel {
                 System.out.println("การเชื่อมต่อมีปัญหา!");
                 Logger.getLogger(ViewDetailGUI.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
             
         }
         
@@ -421,6 +444,7 @@ public class ViewDetailGUI extends javax.swing.JPanel {
     private javax.swing.JLabel date1;
     private javax.swing.JLabel dateTextEnd;
     private javax.swing.JLabel dateTextStart1;
+    private javax.swing.JButton deleteItemBtn;
     private javax.swing.JLabel description;
     private javax.swing.JLabel descriptionText;
     private javax.swing.JLabel detail;

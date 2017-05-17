@@ -92,6 +92,7 @@
             <LineBorder/>
           </Border>
         </Property>
+        <Property name="opaque" type="boolean" value="true"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="descriptionText.setText(focusItem.getItemDescription());"/>
@@ -104,11 +105,15 @@
     </Component>
     <Component class="javax.swing.JLabel" name="nameText">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="99" red="cc" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder/>
           </Border>
         </Property>
+        <Property name="opaque" type="boolean" value="true"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="nameText.setText(focusItem.getItemName());"/>
@@ -222,7 +227,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="320" y="500" width="92" height="33"/>
+          <AbsoluteConstraints x="220" y="500" width="92" height="33"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -271,7 +276,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="430" y="500" width="120" height="33"/>
+          <AbsoluteConstraints x="330" y="500" width="120" height="33"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -290,6 +295,16 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="530" y="100" width="180" height="28"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JButton" name="deleteItemBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#xe25;&#xe1a;&#xe02;&#xe2d;&#xe07;&#xe2b;&#xe32;&#xe22;"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="470" y="500" width="110" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -388,11 +403,15 @@
       <SubComponents>
         <Component class="javax.swing.JTextArea" name="locationArea">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="99" red="cc" type="rgb"/>
+            </Property>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="String allLocationLost = &quot;&quot;;&#xa;ItemStatus statLost=focusItem.getStatus();&#xa;if(!statLost.getStatusName().equalsIgnoreCase(&quot;lost&quot;)){&#xa;    try{&#xa;        dbm.createConnection();&#xa;        statLost = dbm.queryStatusSpecifyType(statLost.getItemId(), 1);&#xa;        dbm.disconnect();&#xa;&#xa;    }catch(Exception e){&#xa;        e.printStackTrace();&#xa;    }&#xa;}&#xa;for(int i=0;i&lt;statLost.getLocationName().size();i++){&#xa;    allLocationLost+=statLost.getLocationName().get(i)+&quot;\n&quot;;&#xa;}&#xa;allLocationLost=allLocationLost.substring(0, allLocationLost.length()-1);&#xa;locationArea.setText(allLocationLost);"/>
