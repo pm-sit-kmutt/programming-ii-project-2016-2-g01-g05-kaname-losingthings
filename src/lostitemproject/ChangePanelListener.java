@@ -92,8 +92,7 @@ public class ChangePanelListener implements ActionListener{
                     
                     date=mainFrame.getAddItemPage().getDateTimePicker1().getDatePicker().getDateStringOrEmptyString()
                             +" "+mainFrame.getAddItemPage().getDateTimePicker1().getTimePicker().getTimeStringOrEmptyString();
-                    
-                    
+
                     System.out.println("date = "+date);
                     if(!(name.equals("")||date.equals(" ")||!isLocationSelected)){
                         itemId = dbm.insertItem(name,des,accId,cate,date);
@@ -106,13 +105,18 @@ public class ChangePanelListener implements ActionListener{
                             dbm.insertImage(mainFrame.getAddItemPage().getImgName(), itemId);
                         }
                         dbm.disconnect();
-                        JOptionPane.showMessageDialog(mainFrame, "แจ้งของหายเรียบร้อยแล้ว.");
+                        JOptionPane.showMessageDialog(null, "แจ้งของหายเรียบร้อยแล้ว.");
                         mainFrame.toViewPage();
                     }else{
-                        JOptionPane.showMessageDialog(mainFrame, "ใส่ข้อมูลไม่ครบ");
+                        if(!isLocationSelected){
+                            mainFrame.getAddItemPage().getLocationBtn().setText("ยังไม่ได้เลือก");
+                            JOptionPane.showMessageDialog(null, "กรุณาเลือกอย่างน้อย 1 สถานที่!");
+                        }else{
+                            JOptionPane.showMessageDialog(null, "ใส่ข้อมูลไม่ครบ");
+                        }
                     }
                 } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(mainFrame, "โปรดตรวจสอบการเชื่อมต่ออินเทอร์เน็ต");
+                    JOptionPane.showMessageDialog(null, "โปรดตรวจสอบการเชื่อมต่ออินเทอร์เน็ต");
                     ex.printStackTrace();
                     System.out.println("SQL Exception!");
                 } catch (ClassNotFoundException ex) {

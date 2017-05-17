@@ -213,6 +213,14 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         this.dateTimePicker1 = dateTimePicker1;
     }
 
+    public JButton getLocationBtn() {
+        return locationBtn;
+    }
+
+    public void setLocationBtn(JButton locationBtn) {
+        this.locationBtn = locationBtn;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -465,17 +473,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void locationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locationBtnActionPerformed
-       
-        //            LocationChoicePanel lcp = new LocationChoicePanel();
-//            JScrollPane scrollpane = new JScrollPane(lcp);
-//            UIManager.put("OptionPane.minimumSize",new Dimension(100,200));
-//            JOptionPane.showMessageDialog(null,scrollpane,"เลือกสถานที่",JOptionPane.PLAIN_MESSAGE);
-//            ScrollItemList = new JScrollPane(lcp);
-//            ScrollItemList.setSize(100, 200);
-//            ScrollItemList.setViewportView(lcp);
-//            ScrollItemList.getVerticalScrollBar().setUnitIncrement(16);
 
-//=========
             JScrollPane jsp = new JScrollPane();
             jsp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
             jsp.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
