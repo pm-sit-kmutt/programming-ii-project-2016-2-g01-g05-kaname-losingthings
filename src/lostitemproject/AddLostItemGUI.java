@@ -251,19 +251,21 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/111.png"))); // NOI18N
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         add(jLabel1);
-        jLabel1.setBounds(30, 10, 260, 50);
+        jLabel1.setBounds(10, 10, 260, 50);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("ชื่อของหาย");
+        jLabel2.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         add(jLabel2);
-        jLabel2.setBounds(191, 66, 65, 17);
+        jLabel2.setBounds(176, 66, 80, 30);
         add(TextName);
         TextName.setBounds(326, 64, 302, 22);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("คำอธิบาย");
+        jLabel3.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         add(jLabel3);
-        jLabel3.setBounds(191, 93, 56, 17);
+        jLabel3.setBounds(177, 93, 70, 30);
 
         TextDescription.setColumns(20);
         TextDescription.setRows(5);
@@ -272,15 +274,17 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         add(jScrollPane1);
         jScrollPane1.setBounds(326, 93, 302, 123);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("วันที่ของหาย");
+        jLabel4.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         add(jLabel4);
-        jLabel4.setBounds(191, 233, 74, 17);
+        jLabel4.setBounds(170, 230, 90, 30);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("หมวดหมู่");
+        jLabel5.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         add(jLabel5);
-        jLabel5.setBounds(275, 31, 50, 17);
+        jLabel5.setBounds(280, 30, 60, 20);
 
         ComboLostItem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "อุปกรณ์อิเล็กทรอนิกส์", "เครื่องแต่งกาย", "กระเป๋า", "กุญแจ", "อื่นๆ" }));
         ComboLostItem.addActionListener(new java.awt.event.ActionListener() {
@@ -292,13 +296,16 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         ComboLostItem.setBounds(337, 29, 143, 22);
 
         jLabel6.setText("สถานที่");
+        jLabel6.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         add(jLabel6);
-        jLabel6.setBounds(498, 32, 39, 16);
+        jLabel6.setBounds(500, 30, 60, 30);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("อัพโหลดรูปภาพ");
+        jLabel7.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         add(jLabel7);
-        jLabel7.setBounds(191, 271, 93, 17);
+        jLabel7.setBounds(170, 270, 110, 30);
 
         Pic.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         add(Pic);
@@ -328,7 +335,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
 
         userNameText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(userNameText);
-        userNameText.setBounds(680, 20, 150, 25);
+        userNameText.setBounds(690, 10, 150, 25);
         add(dateTimePicker1);
         dateTimePicker1.setBounds(320, 230, 310, 23);
 
@@ -350,7 +357,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         add(backBtn);
         backBtn.setBounds(470, 480, 92, 33);
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/พื้นหลัง590.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/พื้นหลังหน้าอื่น.png"))); // NOI18N
         add(jLabel8);
         jLabel8.setBounds(0, 0, 850, 550);
     }// </editor-fold>//GEN-END:initComponents

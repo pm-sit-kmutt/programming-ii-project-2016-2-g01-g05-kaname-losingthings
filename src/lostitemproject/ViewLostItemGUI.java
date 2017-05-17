@@ -105,7 +105,7 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
             }
         });
         add(searchBtn);
-        searchBtn.setBounds(310, 500, 120, 33);
+        searchBtn.setBounds(360, 500, 120, 33);
 
         cateList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ทั้งหมด", "อุปกรณ์อิเล็กทรอนิกส์", "เครื่องแต่งกาย", "กระเป๋า", "กุญแจ", "อื่นๆ" }));
         add(cateList);
@@ -147,35 +147,35 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
             }
         });
         add(addLostItembtn);
-        addLostItembtn.setBounds(440, 500, 120, 33);
+        addLostItembtn.setBounds(490, 500, 120, 33);
 
         logoutBtn.setText("LOGOUT");
         add(logoutBtn);
-        logoutBtn.setBounds(20, 20, 90, 25);
+        logoutBtn.setBounds(230, 500, 120, 33);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("supermarket", 1, 15)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("หมวดหมู่");
         add(jLabel1);
-        jLabel1.setBounds(80, 120, 80, 17);
+        jLabel1.setBounds(80, 120, 80, 20);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("supermarket", 1, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("สถานที่");
         add(jLabel2);
-        jLabel2.setBounds(310, 120, 60, 17);
+        jLabel2.setBounds(310, 120, 60, 20);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("supermarket", 1, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("สถานะ");
         add(jLabel3);
-        jLabel3.setBounds(480, 120, 50, 17);
+        jLabel3.setBounds(480, 120, 50, 20);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("supermarket", 1, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("ลำดับ");
         add(jLabel4);
-        jLabel4.setBounds(660, 120, 40, 17);
+        jLabel4.setBounds(660, 120, 40, 20);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/ฟอน5.png"))); // NOI18N

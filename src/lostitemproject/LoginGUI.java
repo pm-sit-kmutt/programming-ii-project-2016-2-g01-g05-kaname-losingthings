@@ -92,7 +92,8 @@ public class LoginGUI extends javax.swing.JPanel {
         add(TextUsername);
         TextUsername.setBounds(320, 180, 360, 36);
 
-        loginBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/ปุ่ม11.png"))); // NOI18N
+        loginBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        loginBtn.setText("LOGIN");
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginBtnActionPerformed(evt);
@@ -105,7 +106,7 @@ public class LoginGUI extends javax.swing.JPanel {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/พื้นหลัง.png"))); // NOI18N
         add(jLabel4);
-        jLabel4.setBounds(0, 0, 850, 550);
+        jLabel4.setBounds(0, -10, 850, 570);
 
         jLabel5.setText("jLabel5");
         add(jLabel5);
