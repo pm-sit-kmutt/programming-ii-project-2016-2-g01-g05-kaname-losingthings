@@ -71,8 +71,8 @@ public class EachItemGUI extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        setMaximumSize(new java.awt.Dimension(730, 194));
-        setMinimumSize(new java.awt.Dimension(730, 194));
+        setMaximumSize(new java.awt.Dimension(730, 247));
+        setMinimumSize(new java.awt.Dimension(730, 247));
 
         viewDetailBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         viewDetailBtn.setText("ดูรายละเอียด");
@@ -95,6 +95,7 @@ public class EachItemGUI extends javax.swing.JPanel {
         for(int i=0;i<item.getStatus().getLocationName().size();i++){
             allLocation+=item.getStatus().getLocationName().get(i)+",";
         }
+        if(allLocation.length()>0)
         allLocation=allLocation.substring(0, allLocation.length()-1);
         if(allLocation.length()>=15){
             allLocation=allLocation.substring(0, 14)+"...";

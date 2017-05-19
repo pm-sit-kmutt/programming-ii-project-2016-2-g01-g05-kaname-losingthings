@@ -194,7 +194,7 @@ public class DBManagement {
         psm = conn.prepareStatement("insert into itemlocation (Location_locationId,ItemStatus_itemStatusId) value (?,?)");
         
         for(int i=0;i<locationIds.size();i++){
-            psm.setInt(1, locationIds.get(i));
+            psm.setInt(1, locationIds.get(i)+1);
             psm.setInt(2, ItemStatusId);
             psm.executeUpdate();
         }

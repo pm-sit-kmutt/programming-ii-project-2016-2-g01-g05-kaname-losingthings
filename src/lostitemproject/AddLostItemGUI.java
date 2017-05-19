@@ -471,12 +471,12 @@ public class AddLostItemGUI extends javax.swing.JPanel {
                     bos=new BufferedOutputStream(os);
                     is = new FileInputStream(picFile);
                     bis=new BufferedInputStream(is);
-                    System.out.println("bis.available() = "+bis.available());
-                    while(bis.available()!=0){
-                        bos.write(bis.read());
+                    int data;
+                    while((data = bis.read()) != -1){
+                        bos.write(data);
                     }
                     
-                    os.close();
+                    bos.close();
 
                 } else {
                     JOptionPane.showMessageDialog(this, "Upload Failed\nServer อาจจะเกิดปัญหา ขออภัยในความไม่สะดวกค่ะ");
