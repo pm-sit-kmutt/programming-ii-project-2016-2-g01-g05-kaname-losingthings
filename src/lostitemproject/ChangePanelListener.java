@@ -115,7 +115,7 @@ public class ChangePanelListener implements ActionListener{
                         }
                     }
                 } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "โปรดตรวจสอบการเชื่อมต่ออินเทอร์เน็ต");
+                    JOptionPane.showMessageDialog(null, ex);
                     ex.printStackTrace();
                     System.out.println("SQL Exception!");
                 } catch (ClassNotFoundException ex) {

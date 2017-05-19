@@ -180,28 +180,28 @@ public class ViewDetailGUI extends javax.swing.JPanel {
 
         setLayout(null);
 
-        detail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/114.png"))); // NOI18N
         detail.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         detail.setForeground(new java.awt.Color(255, 255, 255));
+        detail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/114.png"))); // NOI18N
         add(detail);
         detail.setBounds(310, -10, 500, 110);
 
-        description.setText("คำอธิบาย");
         description.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
         description.setForeground(new java.awt.Color(255, 255, 255));
+        description.setText("คำอธิบาย");
         add(description);
-        description.setBounds(460, 290, 56, 14);
+        description.setBounds(440, 300, 56, 14);
 
-        lostItem.setText("หมวดหมู่");
         lostItem.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
         lostItem.setForeground(new java.awt.Color(255, 255, 255));
+        lostItem.setText("หมวดหมู่");
         add(lostItem);
-        lostItem.setBounds(80, 330, 70, 20);
+        lostItem.setBounds(60, 340, 70, 20);
 
         descriptionText.setBackground(new java.awt.Color(255, 255, 255));
         descriptionText.setOpaque(true);
         add(descriptionText);
-        descriptionText.setBounds(520, 280, 240, 110);
+        descriptionText.setBounds(500, 290, 280, 110);
         descriptionText.setText(focusItem.getItemDescription());
         descriptionText.setHorizontalAlignment(SwingConstants.CENTER);
         descriptionText.setVerticalAlignment(SwingConstants.CENTER);
@@ -218,7 +218,7 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         nameText.setBackground(new java.awt.Color(255, 255, 255));
         nameText.setOpaque(true);
         add(nameText);
-        nameText.setBounds(210, 280, 230, 28);
+        nameText.setBounds(190, 290, 230, 28);
         nameText.setText(focusItem.getItemName());
         nameText.setHorizontalAlignment(SwingConstants.CENTER);
         nameText.setVerticalAlignment(SwingConstants.CENTER);
@@ -226,21 +226,21 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         lostItemText.setBackground(new java.awt.Color(255, 255, 255));
         lostItemText.setOpaque(true);
         add(lostItemText);
-        lostItemText.setBounds(210, 320, 230, 28);
+        lostItemText.setBounds(190, 330, 230, 28);
         lostItemText.setText(focusItem.getCate());
         lostItemText.setHorizontalAlignment(SwingConstants.CENTER);
         lostItemText.setVerticalAlignment(SwingConstants.CENTER);
 
-        location.setText("สถานที่ที่ทำของหาย");
         location.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
         location.setForeground(new java.awt.Color(255, 255, 255));
+        location.setText("สถานที่ที่ทำของหาย");
         add(location);
-        location.setBounds(450, 400, 130, 30);
+        location.setBounds(430, 410, 130, 30);
 
         locationFound.setBackground(new java.awt.Color(255, 255, 255));
         locationFound.setOpaque(true);
         add(locationFound);
-        locationFound.setBounds(570, 440, 190, 28);
+        locationFound.setBounds(550, 450, 230, 28);
         String allLocationFound = "";
         ItemStatus statFound=null;
         if(focusItem.getStatus().getStatusName().equalsIgnoreCase("lost")){
@@ -266,18 +266,18 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         locationFound.setHorizontalAlignment(SwingConstants.CENTER);
         locationFound.setVerticalAlignment(SwingConstants.CENTER);
         add(picture);
-        picture.setBounds(270, 70, 350, 190);
+        picture.setBounds(270, 80, 350, 190);
 
-        date.setText("วันที่ได้รับของคืน");
         date.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
         date.setForeground(new java.awt.Color(255, 255, 255));
+        date.setText("วันที่ได้รับของคืน");
         add(date);
-        date.setBounds(80, 440, 100, 20);
+        date.setBounds(60, 450, 100, 20);
 
         dateTextEnd.setBackground(new java.awt.Color(255, 255, 255));
         dateTextEnd.setOpaque(true);
         add(dateTextEnd);
-        dateTextEnd.setBounds(210, 440, 230, 28);
+        dateTextEnd.setBounds(190, 450, 230, 28);
         String dateEndStr;
         if(focusItem.getDateEnd()==null){
             dateTextEnd.setText("-");
@@ -319,42 +319,42 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         dateTextStart1.setOpaque(true);
         String dateStartStr = sdf.format(focusItem.getDateStart());
         add(dateTextStart1);
-        dateTextStart1.setBounds(210, 400, 230, 28);
+        dateTextStart1.setBounds(190, 410, 230, 28);
         dateTextStart1.setText(dateStartStr);
         dateTextStart1.setHorizontalAlignment(SwingConstants.CENTER);
         dateTextStart1.setVerticalAlignment(SwingConstants.CENTER);
 
-        date1.setText("วันที่ของหาย");
         date1.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
         date1.setForeground(new java.awt.Color(255, 255, 255));
+        date1.setText("วันที่ของหาย");
         add(date1);
-        date1.setBounds(80, 400, 90, 30);
+        date1.setBounds(60, 410, 90, 30);
 
-        statusText.setText("สถานะปัจจุบัน");
         statusText.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
         statusText.setForeground(new java.awt.Color(255, 255, 255));
+        statusText.setText("สถานะปัจจุบัน");
         add(statusText);
-        statusText.setBounds(80, 360, 90, 30);
+        statusText.setBounds(60, 370, 90, 30);
 
-        location2.setText("สถานที่ที่พบของหาย");
         location2.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
         location2.setForeground(new java.awt.Color(255, 255, 255));
+        location2.setText("สถานที่ที่พบของหาย");
         add(location2);
-        location2.setBounds(450, 440, 120, 30);
+        location2.setBounds(430, 450, 120, 30);
 
         statusNow.setText(focusItem.getStatus().getStatusName());
         statusNow.setBackground(new java.awt.Color(255, 255, 255));
         statusNow.setOpaque(true);
         add(statusNow);
-        statusNow.setBounds(210, 360, 230, 28);
+        statusNow.setBounds(190, 370, 230, 28);
         statusNow.setHorizontalAlignment(SwingConstants.CENTER);
         statusNow.setVerticalAlignment(SwingConstants.CENTER);
 
-        name1.setText("ชื่่อของหาย");
         name1.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
         name1.setForeground(new java.awt.Color(255, 255, 255));
+        name1.setText("ชื่่อของหาย");
         add(name1);
-        name1.setBounds(80, 290, 65, 25);
+        name1.setBounds(60, 300, 65, 25);
 
         locationArea.setColumns(20);
         locationArea.setRows(5);
@@ -381,12 +381,12 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         locationArea.setText(allLocationLost);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(570, 400, 190, 30);
+        jScrollPane1.setBounds(550, 410, 230, 30);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/พื้นหลังหน้าอื่น.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
         jLabel2.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/พื้นหลังหน้าอื่น.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
         add(jLabel2);
         jLabel2.setBounds(0, 0, 850, 550);
 
