@@ -9,15 +9,9 @@ import com.github.lgooddatepicker.components.DateTimePicker;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.*;
 import javax.swing.Icon;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -43,7 +37,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
          
             
         initComponents();
-        userNameText.setText(acc.getUsername()); //ไม่ขึ้น
+        userNameText.setText(acc.getUsername()); 
         this.acc=acc;
         ScrollItemList = new javax.swing.JScrollPane();
         ScrollItemList.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -231,6 +225,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         TextName = new javax.swing.JTextField();
@@ -245,12 +240,16 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         Pic = new javax.swing.JLabel();
         BtnUpload = new javax.swing.JButton();
         BtnConfirm = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
         Path = new javax.swing.JLabel();
         userNameText = new javax.swing.JLabel();
         dateTimePicker1 = new com.github.lgooddatepicker.components.DateTimePicker();
         locationBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+
+        jLabel10.setText("jLabel10");
 
         setPreferredSize(new java.awt.Dimension(800, 550));
         setLayout(null);
@@ -265,34 +264,34 @@ public class AddLostItemGUI extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         add(jLabel2);
-        jLabel2.setBounds(176, 66, 80, 30);
+        jLabel2.setBounds(170, 80, 80, 30);
         add(TextName);
-        TextName.setBounds(326, 64, 302, 22);
+        TextName.setBounds(310, 80, 320, 22);
 
         jLabel3.setText("คำอธิบาย");
         jLabel3.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         add(jLabel3);
-        jLabel3.setBounds(177, 93, 70, 30);
+        jLabel3.setBounds(170, 110, 70, 30);
 
         TextDescription.setColumns(20);
         TextDescription.setRows(5);
         jScrollPane1.setViewportView(TextDescription);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(326, 93, 302, 123);
+        jScrollPane1.setBounds(310, 110, 320, 123);
 
         jLabel4.setText("วันที่ของหาย");
         jLabel4.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         add(jLabel4);
-        jLabel4.setBounds(170, 230, 90, 30);
+        jLabel4.setBounds(160, 240, 90, 30);
 
         jLabel5.setText("หมวดหมู่");
         jLabel5.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         add(jLabel5);
-        jLabel5.setBounds(280, 30, 60, 20);
+        jLabel5.setBounds(270, 40, 60, 20);
 
         ComboLostItem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "อุปกรณ์อิเล็กทรอนิกส์", "เครื่องแต่งกาย", "กระเป๋า", "กุญแจ", "อื่นๆ" }));
         ComboLostItem.addActionListener(new java.awt.event.ActionListener() {
@@ -301,23 +300,23 @@ public class AddLostItemGUI extends javax.swing.JPanel {
             }
         });
         add(ComboLostItem);
-        ComboLostItem.setBounds(337, 29, 143, 22);
+        ComboLostItem.setBounds(330, 40, 143, 22);
 
         jLabel6.setText("สถานที่");
         jLabel6.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         add(jLabel6);
-        jLabel6.setBounds(500, 30, 60, 30);
+        jLabel6.setBounds(490, 40, 60, 30);
 
         jLabel7.setText("อัพโหลดรูปภาพ");
         jLabel7.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         add(jLabel7);
-        jLabel7.setBounds(170, 270, 110, 30);
+        jLabel7.setBounds(160, 280, 110, 30);
 
         Pic.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         add(Pic);
-        Pic.setBounds(323, 303, 302, 168);
+        Pic.setBounds(310, 310, 310, 168);
 
         BtnUpload.setText("อัพโหลดรูปภาพ");
         BtnUpload.addActionListener(new java.awt.event.ActionListener() {
@@ -326,7 +325,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
             }
         });
         add(BtnUpload);
-        BtnUpload.setBounds(508, 271, 117, 25);
+        BtnUpload.setBounds(500, 280, 130, 25);
 
         BtnConfirm.setText("ยืนยัน");
         BtnConfirm.addActionListener(new java.awt.event.ActionListener() {
@@ -335,17 +334,25 @@ public class AddLostItemGUI extends javax.swing.JPanel {
             }
         });
         add(BtnConfirm);
-        BtnConfirm.setBounds(370, 480, 92, 33);
+        BtnConfirm.setBounds(360, 490, 92, 33);
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/user (2).png"))); // NOI18N
+        jLabel11.setMaximumSize(new java.awt.Dimension(32, 32));
+        jLabel11.setMinimumSize(new java.awt.Dimension(32, 32));
+        add(jLabel11);
+        jLabel11.setBounds(680, 10, 48, 40);
 
         Path.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Path.setForeground(new java.awt.Color(255, 255, 255));
         add(Path);
-        Path.setBounds(326, 271, 170, 25);
+        Path.setBounds(310, 280, 180, 25);
 
-        userNameText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        userNameText.setFont(new java.awt.Font("supermarket", 0, 14)); // NOI18N
+        userNameText.setForeground(new java.awt.Color(255, 255, 255));
         add(userNameText);
-        userNameText.setBounds(690, 10, 150, 25);
+        userNameText.setBounds(720, 20, 110, 25);
         add(dateTimePicker1);
-        dateTimePicker1.setBounds(320, 230, 310, 23);
+        dateTimePicker1.setBounds(310, 240, 320, 23);
 
         locationBtn.setText("เลือกสถานที่");
         locationBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -354,7 +361,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
             }
         });
         add(locationBtn);
-        locationBtn.setBounds(550, 30, 120, 25);
+        locationBtn.setBounds(540, 40, 120, 25);
 
         backBtn.setText("ย้อนกลับ");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -363,11 +370,16 @@ public class AddLostItemGUI extends javax.swing.JPanel {
             }
         });
         add(backBtn);
-        backBtn.setBounds(470, 480, 92, 33);
+        backBtn.setBounds(460, 490, 92, 33);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/พื้นหลังหน้าอื่น.png"))); // NOI18N
         add(jLabel8);
         jLabel8.setBounds(0, 0, 850, 550);
+
+        jLabel9.setText("jLabel9");
+        jLabel9.setPreferredSize(new java.awt.Dimension(32, 32));
+        add(jLabel9);
+        jLabel9.setBounds(32, 10, 32, 32);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ComboLostItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboLostItemActionPerformed
@@ -418,13 +430,17 @@ public class AddLostItemGUI extends javax.swing.JPanel {
 
     private void BtnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUploadActionPerformed
         FTPClient ftpClient = new FTPClient();
-        InputStream inputStream = null;
+        InputStream is = null;
+        BufferedInputStream bis=null;
+        FileOutputStream os=null;
+        BufferedOutputStream bos=null;
         String pathStr = null;
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "JPG & GIF Images", "jpg", "gif");
         chooser.setFileFilter(filter);
-        
+        BtnUpload.setText("กำลังอัพโหลด..");
+        BtnConfirm.setEnabled(false);
         int returnVal = chooser.showOpenDialog(null);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             BtnUpload.setText("กำลังอัพโหลด..");
@@ -442,14 +458,28 @@ public class AddLostItemGUI extends javax.swing.JPanel {
                 ftpClient.login("u782694326", "kamkam1234");
                 ftpClient.enterLocalPassiveMode();
                 ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
-                inputStream = new FileInputStream(picFile);
+                
+                is = new FileInputStream(picFile);
+                bis=new BufferedInputStream(is);
+                
+                
                 imgName = UUID.randomUUID().toString();
                 System.out.println("uploading...");
-                if (ftpClient.storeFile(imgName, inputStream)) {
+                if (ftpClient.storeFile(imgName, bis)) {
                     JOptionPane.showMessageDialog(this, "Upload Successful");
+                    os=new FileOutputStream("D:/Download/"+imgName);
+                    bos=new BufferedOutputStream(os);
+                    is = new FileInputStream(picFile);
+                    bis=new BufferedInputStream(is);
+                    System.out.println("bis.available() = "+bis.available());
+                    while(bis.available()!=0){
+                        bos.write(bis.read());
+                    }
+                    
+                    os.close();
 
                 } else {
-                    JOptionPane.showMessageDialog(this, "Upload Failed");
+                    JOptionPane.showMessageDialog(this, "Upload Failed\nServer อาจจะเกิดปัญหา ขออภัยในความไม่สะดวกค่ะ");
                     imgName = null;
                 }
 
@@ -457,15 +487,15 @@ public class AddLostItemGUI extends javax.swing.JPanel {
                 ex.printStackTrace();
             } finally {
                 try {
-                    inputStream.close();
+                    bis.close();
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
             }
-            BtnUpload.setText("อัพโหลดรูปภาพ");
-            BtnConfirm.setEnabled(true);
+            
         }
-
+        BtnUpload.setText("อัพโหลดรูปภาพ");
+        BtnConfirm.setEnabled(true);
     }//GEN-LAST:event_BtnUploadActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
@@ -501,6 +531,8 @@ public class AddLostItemGUI extends javax.swing.JPanel {
     private javax.swing.JButton backBtn;
     private com.github.lgooddatepicker.components.DateTimePicker dateTimePicker1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -508,6 +540,7 @@ public class AddLostItemGUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton locationBtn;
     private javax.swing.JLabel userNameText;

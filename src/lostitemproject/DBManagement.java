@@ -277,7 +277,28 @@ public class DBManagement {
         return allLocate;
     }
     
-    public   Account login(String username,String password) throws SQLException {
+    public Account queryAccount(int accId) throws SQLException {
+        Account acc=null;
+        
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT userName,name,surname,userType,userPhone,"
+                + "userEmail,userLine,AccountType_accTypeID FROM account WHERE userID="+accId); 
+        if(rs.next()){
+                acc=new Account(); 
+                acc.setAccId(accId); 
+                acc.setAccType(rs.getInt("AccountType_accTypeID")); 
+                acc.setName(rs.getString("name"));
+                acc.setSurname(rs.getString("surname"));
+                acc.setUsername(rs.getString("userName")); 
+                acc.setEmail(rs.getString("userEmail")); 
+                acc.setPhone(rs.getString("userPhone")); 
+                acc.setLine(rs.getString("userLine")); 
+                acc.setAccTypeStr(rs.getString("userType"));
+        }
+        return acc;
+    }
+    
+    public Account login(String username,String password) throws SQLException {
         Account acc=null;
         
         Statement stm = conn.createStatement();
@@ -287,11 +308,14 @@ public class DBManagement {
                 acc=new Account(); 
                 acc.setAccId(rs.getInt("userID")); 
                 acc.setAccType(rs.getInt("AccountType_accTypeID")); 
+                acc.setName(rs.getString("name"));
+                acc.setSurname(rs.getString("surname"));
                 acc.setUsername(username); 
                 acc.setPassword(password); 
                 acc.setEmail(rs.getString("userEmail")); 
                 acc.setPhone(rs.getString("userPhone")); 
                 acc.setLine(rs.getString("userLine")); 
+                acc.setAccTypeStr(rs.getString("userType"));
             } 
         }
         return acc;

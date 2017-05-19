@@ -92,10 +92,15 @@ public class LoginGUI extends javax.swing.JPanel {
         add(TextUsername);
         TextUsername.setBounds(320, 180, 360, 36);
 
-        loginBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         loginBtn.setText("LOGIN");
+        loginBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBtnActionPerformed(evt);
+            }
+        });
         add(loginBtn);
-        loginBtn.setBounds(380, 283, 170, 50);
+        loginBtn.setBounds(380, 290, 170, 40);
         add(TextPassword);
         TextPassword.setBounds(320, 230, 360, 36);
 
@@ -107,6 +112,10 @@ public class LoginGUI extends javax.swing.JPanel {
         add(jLabel5);
         jLabel5.setBounds(200, 60, 490, 360);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginBtnActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

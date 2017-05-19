@@ -40,16 +40,14 @@ public class AddLostItem {
             System.out.print("Enter Lost Date(YYYY-MM-DD) : ");
             date=sc.nextLine();
             System.out.println("choose image file to upload...");
-            imgName = Picture.uploadImg();
+
             dbm.createConnection();           
             itemId = dbm.insertItem(name,des,accountId,cate,date);
             int statusId = dbm.insertStatus(itemId, accountId,1);
             if(statusId!=-1){
                 dbm.insertItemLocation(location, statusId);
             }
-            if(imgName!=null){
-                dbm.insertImage(imgName, itemId);
-            }
+            
             dbm.disconnect();
         } catch (SQLException ex) {
             ex.printStackTrace();

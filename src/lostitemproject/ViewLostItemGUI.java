@@ -74,8 +74,10 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
         jProgressBar1 = new javax.swing.JProgressBar();
         ScrollItemList = new javax.swing.JScrollPane();
         searchBtn = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
         cateList = new javax.swing.JComboBox<>();
         locateList = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
         statusList = new javax.swing.JComboBox<>();
         orderByList = new javax.swing.JComboBox<>();
         addLostItembtn = new javax.swing.JButton();
@@ -97,7 +99,7 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
         ScrollItemList.setMaximumSize(new java.awt.Dimension(708, 326));
         ScrollItemList.setMinimumSize(new java.awt.Dimension(708, 326));
         add(ScrollItemList);
-        ScrollItemList.setBounds(70, 160, 708, 326);
+        ScrollItemList.setBounds(70, 200, 700, 290);
 
         searchBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         searchBtn.setText("ค้นหา");
@@ -110,11 +112,13 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
             }
         });
         add(searchBtn);
-        searchBtn.setBounds(290, 500, 120, 33);
+        searchBtn.setBounds(370, 500, 120, 33);
+        add(jLabel8);
+        jLabel8.setBounds(670, 30, 32, 0);
 
         cateList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ทั้งหมด", "อุปกรณ์อิเล็กทรอนิกส์", "เครื่องแต่งกาย", "กระเป๋า", "กุญแจ", "อื่นๆ" }));
         add(cateList);
-        cateList.setBounds(140, 120, 157, 22);
+        cateList.setBounds(250, 130, 157, 22);
 
         DBManagement dbm = new DBManagement();
         try{
@@ -131,16 +135,23 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
         }catch(Exception e){
             e.printStackTrace();
         }
+        locateList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                locateListActionPerformed(evt);
+            }
+        });
         add(locateList);
-        locateList.setBounds(360, 120, 110, 22);
+        locateList.setBounds(250, 170, 290, 22);
+        add(jLabel10);
+        jLabel10.setBounds(720, 20, 120, 30);
 
         statusList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ทั้งหมด", "กำลังหา", "พบแล้ว", "ได้รับคืนแล้ว" }));
         add(statusList);
-        statusList.setBounds(530, 120, 112, 22);
+        statusList.setBounds(510, 130, 160, 22);
 
         orderByList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ใหม่-เก่า", "เก่า-ใหม่" }));
         add(orderByList);
-        orderByList.setBounds(700, 120, 72, 22);
+        orderByList.setBounds(592, 170, 80, 22);
 
         addLostItembtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addLostItembtn.setText("แจ้งของหาย");
@@ -152,8 +163,9 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
             }
         });
         add(addLostItembtn);
-        addLostItembtn.setBounds(600, 500, 120, 33);
+        addLostItembtn.setBounds(530, 500, 120, 33);
 
+        searchMyItem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         searchMyItem.setText("ค้นหาของหายฉัน");
         searchMyItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,44 +173,46 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
             }
         });
         add(searchMyItem);
-        searchMyItem.setBounds(440, 500, 123, 40);
+        searchMyItem.setBounds(180, 500, 150, 33);
 
-        logoutBtn.setText("LOGOUT");
+        logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/logout.png"))); // NOI18N
+        logoutBtn.setMaximumSize(new java.awt.Dimension(65, 45));
+        logoutBtn.setMinimumSize(new java.awt.Dimension(65, 45));
         add(logoutBtn);
-        logoutBtn.setBounds(140, 500, 120, 33);
+        logoutBtn.setBounds(20, 20, 40, 40);
 
         jLabel1.setFont(new java.awt.Font("supermarket", 1, 15)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("หมวดหมู่");
         add(jLabel1);
-        jLabel1.setBounds(80, 120, 80, 20);
+        jLabel1.setBounds(190, 130, 80, 20);
 
         jLabel2.setFont(new java.awt.Font("supermarket", 1, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("สถานที่");
         add(jLabel2);
-        jLabel2.setBounds(310, 120, 60, 20);
+        jLabel2.setBounds(190, 170, 60, 20);
 
         jLabel3.setFont(new java.awt.Font("supermarket", 1, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("สถานะ");
         add(jLabel3);
-        jLabel3.setBounds(480, 120, 50, 20);
+        jLabel3.setBounds(450, 130, 50, 20);
 
         jLabel4.setFont(new java.awt.Font("supermarket", 1, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("ลำดับ");
         add(jLabel4);
-        jLabel4.setBounds(660, 120, 40, 20);
+        jLabel4.setBounds(550, 170, 40, 20);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/ฟอน5.png"))); // NOI18N
         add(jLabel5);
-        jLabel5.setBounds(180, 10, 490, 100);
+        jLabel5.setBounds(190, 20, 490, 100);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/พื้นหลังหน้าอื่น.png"))); // NOI18N
         add(jLabel6);
-        jLabel6.setBounds(0, 0, 850, 550);
+        jLabel6.setBounds(0, -10, 860, 570);
 
         jLabel7.setText("jLabel7");
         add(jLabel7);
@@ -294,18 +308,24 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_searchMyItemActionPerformed
 
+    private void locateListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locateListActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_locateListActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollItemList;
     private javax.swing.JButton addLostItembtn;
     private javax.swing.JComboBox<String> cateList;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JComboBox<String> locateList;
     private javax.swing.JButton logoutBtn;

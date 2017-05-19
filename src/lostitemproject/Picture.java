@@ -93,7 +93,7 @@ public class Picture {
         
     }
     
-    public static String uploadImg(){
+    /*public static String uploadImg(){
         FTPClient ftpClient = new FTPClient();
         InputStream inputStream = null;
         String pathStr=null;
@@ -136,5 +136,5 @@ public class Picture {
         }
 
         return destination;
-    }
+    }*/
 }

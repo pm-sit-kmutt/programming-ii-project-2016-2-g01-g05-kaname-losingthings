@@ -13,6 +13,7 @@ public class Account {
     private String email;
     private String password;
     private int accType;
+    private String accTypeStr;
 
     //login >>> boolean
     //
@@ -21,7 +22,7 @@ public class Account {
 
     }
 
-    public Account(int accId,String name, String surname, String username,String password, String phone, String line, String email,int type) {
+    public Account(int accId,String name, String surname, String username,String password, String phone, String line, String email,int type,String accTypeStr) {
         this.accId = accId;
         this.name = name;
         this.surname = surname;
@@ -31,8 +32,18 @@ public class Account {
         this.email = email;
         this.password = password;
         this.accType = type;
+        this.accTypeStr = accTypeStr;
     }
 
+    public String getAccTypeStr() {
+        return accTypeStr;
+    }
+
+    public void setAccTypeStr(String accTypeStr) {
+        this.accTypeStr = accTypeStr;
+    }
+
+    
     public int getAccId() {
         return accId;
     }

@@ -20,204 +20,186 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="detail">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/lostitemproject.image/114.png"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="24" style="0"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/lostitemproject.image/111.png"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="&#xe14;&#xe39;&#xe23;&#xe32;&#xe22;&#xe25;&#xe30;&#xe40;&#xe2d;&#xe35;&#xe22;&#xe14;"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="250" y="10" width="260" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JLabel" name="name">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="supermarket" size="16" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="&#xe23;&#xe39;&#xe1b;&#xe20;&#xe32;&#xe1e;"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="30" y="70" width="50" height="25"/>
+          <AbsoluteConstraints x="310" y="-10" width="500" height="110"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="description">
       <Properties>
+        <Property name="text" type="java.lang.String" value="&#xe04;&#xe33;&#xe2d;&#xe18;&#xe34;&#xe1a;&#xe32;&#xe22;"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="supermarket" size="16" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#xe04;&#xe33;&#xe2d;&#xe18;&#xe34;&#xe1a;&#xe32;&#xe22;"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="30" y="320" width="-1" height="-1"/>
+          <AbsoluteConstraints x="460" y="290" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="lostItem">
       <Properties>
+        <Property name="text" type="java.lang.String" value="&#xe2b;&#xe21;&#xe27;&#xe14;&#xe2b;&#xe21;&#xe39;&#xe48;"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="supermarket" size="16" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#xe2b;&#xe21;&#xe27;&#xe14;&#xe2b;&#xe21;&#xe39;&#xe48;"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="30" y="350" width="70" height="20"/>
+          <AbsoluteConstraints x="80" y="330" width="70" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="descriptionText">
       <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
-          </Border>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="descriptionText.setText(focusItem.getItemDescription());"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="descriptionText.setText(focusItem.getItemDescription());&#xa;descriptionText.setHorizontalAlignment(SwingConstants.CENTER);&#xa;descriptionText.setVerticalAlignment(SwingConstants.CENTER);"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="160" y="310" width="350" height="28"/>
+          <AbsoluteConstraints x="520" y="280" width="240" height="110"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JButton" name="deleteItemBtn">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/lostitemproject.image/rubbish-bin (1).png"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteItemBtnActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="790" y="490" width="40" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="nameText">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="99" red="cc" type="rgb"/>
-        </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
-          </Border>
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="nameText.setText(focusItem.getItemName());"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="nameText.setText(focusItem.getItemName());&#xa;nameText.setHorizontalAlignment(SwingConstants.CENTER);&#xa;nameText.setVerticalAlignment(SwingConstants.CENTER);"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JLabel()"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="160" y="270" width="350" height="28"/>
+          <AbsoluteConstraints x="210" y="280" width="230" height="28"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="lostItemText">
       <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
-          </Border>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+        <Property name="opaque" type="boolean" value="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="lostItemText.setText(focusItem.getCate());"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="lostItemText.setText(focusItem.getCate());&#xa;lostItemText.setHorizontalAlignment(SwingConstants.CENTER);&#xa;lostItemText.setVerticalAlignment(SwingConstants.CENTER);"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="160" y="350" width="160" height="28"/>
+          <AbsoluteConstraints x="210" y="320" width="230" height="28"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="location">
       <Properties>
+        <Property name="text" type="java.lang.String" value="&#xe2a;&#xe16;&#xe32;&#xe19;&#xe17;&#xe35;&#xe48;&#xe17;&#xe35;&#xe48;&#xe17;&#xe33;&#xe02;&#xe2d;&#xe07;&#xe2b;&#xe32;&#xe22;"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="supermarket" size="16" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#xe2a;&#xe16;&#xe32;&#xe19;&#xe17;&#xe35;&#xe48;&#xe17;&#xe35;&#xe48;&#xe17;&#xe33;&#xe02;&#xe2d;&#xe07;&#xe2b;&#xe32;&#xe22;"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="530" y="150" width="130" height="30"/>
+          <AbsoluteConstraints x="450" y="400" width="130" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="locationFound">
       <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
-          </Border>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+        <Property name="opaque" type="boolean" value="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="String allLocationFound = &quot;&quot;;&#xa;ItemStatus statFound=null;&#xa;if(focusItem.getStatus().getStatusName().equalsIgnoreCase(&quot;lost&quot;)){&#xa;    locationFound.setText(&quot;-&quot;);&#xa;}else{&#xa;try{&#xa;    dbm.createConnection();&#xa;    statFound = dbm.queryStatusSpecifyType(focusItem.getItemId(), 2);&#xa;    if(statFound==null){&#xa;        statFound = dbm.queryStatusSpecifyType(focusItem.getItemId(), 4);&#xa;    }&#xa;    dbm.disconnect();&#xa;&#xa;}catch(Exception e){&#xa;        e.printStackTrace();&#xa;    }&#xa;for(int i=0;i&lt;statFound.getLocationName().size();i++){&#xa;    allLocationFound+=statFound.getLocationName().get(i)+&quot;,&quot;;&#xa;}&#xa;allLocationFound=allLocationFound.substring(0, allLocationFound.length()-1);&#xa;locationFound.setText(allLocationFound);&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="String allLocationFound = &quot;&quot;;&#xa;ItemStatus statFound=null;&#xa;if(focusItem.getStatus().getStatusName().equalsIgnoreCase(&quot;lost&quot;)){&#xa;    locationFound.setText(&quot;-&quot;);&#xa;}else{&#xa;try{&#xa;    dbm.createConnection();&#xa;    statFound = dbm.queryStatusSpecifyType(focusItem.getItemId(), 2);&#xa;    if(statFound==null){&#xa;        statFound = dbm.queryStatusSpecifyType(focusItem.getItemId(), 4);&#xa;    }&#xa;    dbm.disconnect();&#xa;&#xa;}catch(Exception e){&#xa;        e.printStackTrace();&#xa;    }&#xa;for(int i=0;i&lt;statFound.getLocationName().size();i++){&#xa;    allLocationFound+=statFound.getLocationName().get(i)+&quot;,&quot;;&#xa;}&#xa;allLocationFound=allLocationFound.substring(0, allLocationFound.length()-1);&#xa;locationFound.setText(allLocationFound);&#xa;}&#xa;locationFound.setHorizontalAlignment(SwingConstants.CENTER);&#xa;locationFound.setVerticalAlignment(SwingConstants.CENTER);"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="160" y="430" width="350" height="28"/>
+          <AbsoluteConstraints x="570" y="440" width="190" height="28"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="picture">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
-          </Border>
-        </Property>
-      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="160" y="67" width="350" height="190"/>
+          <AbsoluteConstraints x="270" y="70" width="350" height="190"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="date">
       <Properties>
+        <Property name="text" type="java.lang.String" value="&#xe27;&#xe31;&#xe19;&#xe17;&#xe35;&#xe48;&#xe44;&#xe14;&#xe49;&#xe23;&#xe31;&#xe1a;&#xe02;&#xe2d;&#xe07;&#xe04;&#xe37;&#xe19;"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="supermarket" size="16" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#xe27;&#xe31;&#xe19;&#xe17;&#xe35;&#xe48;&#xe44;&#xe14;&#xe49;&#xe23;&#xe31;&#xe1a;&#xe02;&#xe2d;&#xe07;&#xe04;&#xe37;&#xe19;"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="30" y="390" width="100" height="20"/>
+          <AbsoluteConstraints x="80" y="440" width="100" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="dateTextEnd">
       <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
-          </Border>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+        <Property name="opaque" type="boolean" value="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="String dateEndStr;&#xa;if(focusItem.getDateEnd()==null){&#xa;    dateTextEnd.setText(&quot;-&quot;);&#xa;}else{&#xa;   &#xa;    //dateEndStr = sdf.format(csp.getDateTimePickerStatus());&#xa;    dateEndStr = sdf.format(focusItem.getDateEnd());&#xa;    dateTextEnd.setText(dateEndStr);&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="String dateEndStr;&#xa;if(focusItem.getDateEnd()==null){&#xa;    dateTextEnd.setText(&quot;-&quot;);&#xa;}else{&#xa;   &#xa;    //dateEndStr = sdf.format(csp.getDateTimePickerStatus());&#xa;    dateEndStr = sdf.format(focusItem.getDateEnd());&#xa;    dateTextEnd.setText(dateEndStr);&#xa;}&#xa;dateTextEnd.setHorizontalAlignment(SwingConstants.CENTER);&#xa;dateTextEnd.setVerticalAlignment(SwingConstants.CENTER);"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="160" y="390" width="350" height="28"/>
+          <AbsoluteConstraints x="210" y="440" width="230" height="28"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -227,14 +209,14 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="220" y="500" width="92" height="33"/>
+          <AbsoluteConstraints x="330" y="490" width="92" height="33"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/lostitemproject.image/user (1).png"/>
+          <Image iconType="3" name="/lostitemproject.image/user (2).png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel1"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -253,12 +235,10 @@
     <Component class="javax.swing.JLabel" name="userNameText">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="supermarket" size="14" style="0"/>
+          <Font name="supermarket" size="18" style="0"/>
         </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
-          </Border>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -276,116 +256,105 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="330" y="500" width="120" height="33"/>
+          <AbsoluteConstraints x="440" y="490" width="120" height="33"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="dateTextStart1">
       <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
-          </Border>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+        <Property name="opaque" type="boolean" value="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="dateTextStart1.setText(dateStartStr);"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="dateTextStart1.setText(dateStartStr);&#xa;dateTextStart1.setHorizontalAlignment(SwingConstants.CENTER);&#xa;dateTextStart1.setVerticalAlignment(SwingConstants.CENTER);"/>
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="String dateStartStr = sdf.format(focusItem.getDateStart());"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="530" y="100" width="180" height="28"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JButton" name="deleteItemBtn">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#xe25;&#xe1a;&#xe02;&#xe2d;&#xe07;&#xe2b;&#xe32;&#xe22;"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="470" y="500" width="110" height="30"/>
+          <AbsoluteConstraints x="210" y="400" width="230" height="28"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="date1">
       <Properties>
+        <Property name="text" type="java.lang.String" value="&#xe27;&#xe31;&#xe19;&#xe17;&#xe35;&#xe48;&#xe02;&#xe2d;&#xe07;&#xe2b;&#xe32;&#xe22;"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="supermarket" size="16" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#xe27;&#xe31;&#xe19;&#xe17;&#xe35;&#xe48;&#xe02;&#xe2d;&#xe07;&#xe2b;&#xe32;&#xe22;"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="530" y="70" width="90" height="30"/>
+          <AbsoluteConstraints x="80" y="400" width="90" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="statusText">
       <Properties>
+        <Property name="text" type="java.lang.String" value="&#xe2a;&#xe16;&#xe32;&#xe19;&#xe30;&#xe1b;&#xe31;&#xe08;&#xe08;&#xe38;&#xe1a;&#xe31;&#xe19;"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="supermarket" size="16" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#xe2a;&#xe16;&#xe32;&#xe19;&#xe30;&#xe1b;&#xe31;&#xe08;&#xe08;&#xe38;&#xe1a;&#xe31;&#xe19;"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="330" y="350" width="90" height="30"/>
+          <AbsoluteConstraints x="80" y="360" width="90" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="location2">
       <Properties>
+        <Property name="text" type="java.lang.String" value="&#xe2a;&#xe16;&#xe32;&#xe19;&#xe17;&#xe35;&#xe48;&#xe17;&#xe35;&#xe48;&#xe1e;&#xe1a;&#xe02;&#xe2d;&#xe07;&#xe2b;&#xe32;&#xe22;"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="supermarket" size="16" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#xe2a;&#xe16;&#xe32;&#xe19;&#xe17;&#xe35;&#xe48;&#xe17;&#xe35;&#xe48;&#xe1e;&#xe1a;&#xe02;&#xe2d;&#xe07;&#xe2b;&#xe32;&#xe22;"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="30" y="430" width="120" height="-1"/>
+          <AbsoluteConstraints x="450" y="440" width="120" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="statusNow">
       <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
-          </Border>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+        <Property name="opaque" type="boolean" value="true"/>
       </Properties>
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="statusNow.setHorizontalAlignment(SwingConstants.CENTER);&#xa;statusNow.setVerticalAlignment(SwingConstants.CENTER);"/>
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="statusNow.setText(focusItem.getStatus().getStatusName());"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="420" y="350" width="90" height="28"/>
+          <AbsoluteConstraints x="210" y="360" width="230" height="28"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="name1">
       <Properties>
+        <Property name="text" type="java.lang.String" value="&#xe0a;&#xe37;&#xe48;&#xe48;&#xe2d;&#xe02;&#xe2d;&#xe07;&#xe2b;&#xe32;&#xe22;"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="supermarket" size="16" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#xe0a;&#xe37;&#xe48;&#xe48;&#xe2d;&#xe02;&#xe2d;&#xe07;&#xe2b;&#xe32;&#xe22;"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="30" y="280" width="-1" height="25"/>
+          <AbsoluteConstraints x="80" y="290" width="-1" height="25"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -395,7 +364,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="530" y="170" width="260" height="290"/>
+          <AbsoluteConstraints x="570" y="400" width="190" height="30"/>
         </Constraint>
       </Constraints>
 
@@ -403,9 +372,6 @@
       <SubComponents>
         <Component class="javax.swing.JTextArea" name="locationArea">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="99" red="cc" type="rgb"/>
-            </Property>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -414,23 +380,24 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="String allLocationLost = &quot;&quot;;&#xa;ItemStatus statLost=focusItem.getStatus();&#xa;if(!statLost.getStatusName().equalsIgnoreCase(&quot;lost&quot;)){&#xa;    try{&#xa;        dbm.createConnection();&#xa;        statLost = dbm.queryStatusSpecifyType(statLost.getItemId(), 1);&#xa;        dbm.disconnect();&#xa;&#xa;    }catch(Exception e){&#xa;        e.printStackTrace();&#xa;    }&#xa;}&#xa;for(int i=0;i&lt;statLost.getLocationName().size();i++){&#xa;    allLocationLost+=statLost.getLocationName().get(i)+&quot;\n&quot;;&#xa;}&#xa;allLocationLost=allLocationLost.substring(0, allLocationLost.length()-1);&#xa;locationArea.setText(allLocationLost);"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="String allLocationLost = &quot;&quot;;&#xa;ItemStatus statLost=focusItem.getStatus();&#xa;if(!statLost.getStatusName().equalsIgnoreCase(&quot;lost&quot;)){&#xa;    try{&#xa;        dbm.createConnection();&#xa;        statLost = dbm.queryStatusSpecifyType(statLost.getItemId(), 1);&#xa;        dbm.disconnect();&#xa;&#xa;    }catch(Exception e){&#xa;        e.printStackTrace();&#xa;    }&#xa;}&#xa;for(int i=0;i&lt;statLost.getLocationName().size();i++){&#xa;    allLocationLost+=&quot;   &quot;+statLost.getLocationName().get(i)+&quot;\n&quot;;&#xa;}&#xa;allLocationLost=allLocationLost.substring(0, allLocationLost.length()-1);&#xa;locationArea.setText(allLocationLost);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="locationArea.setLineWrap(true);"/>
           </AuxValues>
         </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/lostitemproject.image/&#xe1e;&#xe37;&#xe49;&#xe19;&#xe2b;&#xe25;&#xe31;&#xe07;&#xe2b;&#xe19;&#xe49;&#xe32;&#xe2d;&#xe37;&#xe48;&#xe19;.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="jLabel2"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="supermarket" size="16" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/lostitemproject.image/&#xe1e;&#xe37;&#xe49;&#xe19;&#xe2b;&#xe25;&#xe31;&#xe07;&#xe2b;&#xe19;&#xe49;&#xe32;&#xe2d;&#xe37;&#xe48;&#xe19;.png"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="jLabel2"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

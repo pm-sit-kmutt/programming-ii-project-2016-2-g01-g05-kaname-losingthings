@@ -15,7 +15,7 @@ public class LostItemFrame extends javax.swing.JFrame{
     private LostItem focusItem;
      
     public LostItemFrame() {
-        this.setSize(860, 590); 
+        this.setSize(850, 580); 
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         this.setLocationRelativeTo(null); 
