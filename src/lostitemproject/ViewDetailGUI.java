@@ -428,6 +428,8 @@ public class ViewDetailGUI extends javax.swing.JPanel {
                     dbm.deleteStatusSpecifyType(focusItem.getItemId(), 2);
                     dbm.deleteStatusSpecifyType(focusItem.getItemId(), 3);
                     dbm.deleteStatusSpecifyType(focusItem.getItemId(), 4);
+                    dbm.updateItem(focusItem, null);
+                    dateTextEnd.setText("-");
                     statusStr="lost";
                 }else{
                     int statusId = dbm.insertStatus(focusItem.getItemId(), account.getAccId(), statusChoose);

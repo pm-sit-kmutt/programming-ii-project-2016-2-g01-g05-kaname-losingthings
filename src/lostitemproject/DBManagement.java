@@ -103,7 +103,11 @@ public class DBManagement {
     public void updateItem(LostItem item,String date) throws SQLException{ 
         Statement stm=null;
         stm = conn.createStatement();
-        stm.execute("UPDATE item SET DateEnd='"+date+"' WHERE itemId="+item.getItemId());
+        if(date==null){
+            stm.execute("UPDATE item SET DateEnd="+date+" WHERE itemId="+item.getItemId());
+        }else{
+            stm.execute("UPDATE item SET DateEnd='"+date+"' WHERE itemId="+item.getItemId());
+        }
         
     }
     
@@ -182,7 +186,7 @@ public class DBManagement {
             throws SQLException{
         ItemStatus stat = new ItemStatus(); 
         Statement stm = conn.createStatement();
-
+        
         stm.executeUpdate("DELETE FROM itemstatus WHERE itemstatus.Status_statusId="+statusType
                 + " AND itemstatus.Item_itemId="+itemId);
 

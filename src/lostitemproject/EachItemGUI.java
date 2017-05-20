@@ -27,7 +27,6 @@ public class EachItemGUI extends javax.swing.JPanel {
             imgLabel.setIcon(new ImageIcon(item.getImg().getScaledInstance(149, 128, Image.SCALE_SMOOTH)));
         }catch(NullPointerException ex){
             ex.printStackTrace();
-            System.out.println("problem : can't find img");
         }
         
     }
