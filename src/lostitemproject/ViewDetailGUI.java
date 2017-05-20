@@ -39,7 +39,7 @@ public class ViewDetailGUI extends javax.swing.JPanel {
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         initComponents();
         try{
-            userNameText.setText(focusItem.getOwnerName());
+            userNameText.setText(account.getUsername());
             picture.setIcon(new ImageIcon(focusItem.getImg().getScaledInstance(350, 197, Image.SCALE_SMOOTH)));
         }catch(NullPointerException ex){
             ex.printStackTrace();
@@ -180,11 +180,11 @@ public class ViewDetailGUI extends javax.swing.JPanel {
 
         setLayout(null);
 
+        detail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/114.png"))); // NOI18N
         detail.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         detail.setForeground(new java.awt.Color(255, 255, 255));
-        detail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lostitemproject.image/114.png"))); // NOI18N
         add(detail);
-        detail.setBounds(310, -10, 500, 110);
+        detail.setBounds(310, -10, 240, 110);
 
         description.setFont(new java.awt.Font("supermarket", 1, 16)); // NOI18N
         description.setForeground(new java.awt.Color(255, 255, 255));
@@ -420,22 +420,31 @@ public class ViewDetailGUI extends javax.swing.JPanel {
            // String dateEndStr = sdf.format(csp.getDateTimePickerStatus());
             int  locationNew = csp.getLocationComboBox().getSelectedIndex();
             try {
+                String locationStr="-";
+                String statusStr="";
                 DBManagement dbm=new DBManagement();
                 dbm.createConnection();
-                
-                int statusId = dbm.insertStatus(focusItem.getItemId(), account.getAccId(), statusChoose);
-                if(statusId!=-1){
-                    dbm.insertItemLocation(locationNew, statusId);
-                }
-                if(statusChoose==3||statusChoose==4){
-                    String date=csp.getDateTimePickerStatus().getDatePicker().getDateStringOrEmptyString()
-                            +" "+csp.getDateTimePickerStatus().getTimePicker().getTimeStringOrEmptyString();
-                    dbm.updateItem(focusItem,date);
-                    dateTextEnd.setText(date);
+                if(statusChoose==1){
+                    dbm.deleteStatusSpecifyType(focusItem.getItemId(), 2);
+                    dbm.deleteStatusSpecifyType(focusItem.getItemId(), 3);
+                    dbm.deleteStatusSpecifyType(focusItem.getItemId(), 4);
+                    statusStr="lost";
+                }else{
+                    int statusId = dbm.insertStatus(focusItem.getItemId(), account.getAccId(), statusChoose);
+                    if(statusId!=-1){
+                        dbm.insertItemLocation(locationNew, statusId);
+                    }
+                    if(statusChoose==3||statusChoose==4){
+                        String date=csp.getDateTimePickerStatus().getDatePicker().getDateStringOrEmptyString()
+                                +" "+csp.getDateTimePickerStatus().getTimePicker().getTimeStringOrEmptyString();
+                        dbm.updateItem(focusItem,date);
+                        dateTextEnd.setText(date);
+                    }
+                    locationStr = csp.getLocationComboBox().getSelectedItem().toString();
+                    statusStr = csp.getStatusCombo().getSelectedItem().toString();
                 }
                 dbm.disconnect();
-                String locationStr = csp.getLocationComboBox().getSelectedItem().toString();
-                String statusStr = csp.getStatusCombo().getSelectedItem().toString();
+                
 
                 statusNow.setText(statusStr);
                 locationFound.setText(locationStr);

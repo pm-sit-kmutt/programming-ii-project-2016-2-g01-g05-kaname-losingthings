@@ -71,8 +71,8 @@ public class EachItemGUI extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        setMaximumSize(new java.awt.Dimension(730, 247));
-        setMinimumSize(new java.awt.Dimension(730, 247));
+        setMaximumSize(new java.awt.Dimension(750, 247));
+        setMinimumSize(new java.awt.Dimension(750, 247));
 
         viewDetailBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         viewDetailBtn.setText("ดูรายละเอียด");
@@ -152,7 +152,7 @@ public class EachItemGUI extends javax.swing.JPanel {
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(textUser, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(230, 329, Short.MAX_VALUE))
+                        .addGap(230, 349, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)

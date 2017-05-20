@@ -28,10 +28,10 @@
       </Border>
     </Property>
     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[730, 247]"/>
+      <Dimension value="[750, 247]"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[730, 247]"/>
+      <Dimension value="[750, 247]"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -58,7 +58,7 @@
                       <Component id="jLabel7" min="-2" pref="32" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="textUser" min="-2" pref="147" max="-2" attributes="0"/>
-                      <EmptySpace min="230" pref="329" max="32767" attributes="0"/>
+                      <EmptySpace min="230" pref="349" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">

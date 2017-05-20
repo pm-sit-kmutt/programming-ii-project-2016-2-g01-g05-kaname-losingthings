@@ -8,6 +8,8 @@ package lostitemproject;
 import com.github.lgooddatepicker.components.DateTimePicker;
 import java.awt.Image;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
@@ -31,11 +33,28 @@ public class ChangeStatusPanel extends javax.swing.JPanel {
         //sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         initComponents();
         try{
-            userNameText.setText(lostItem.getOwnerName());
+            userNameText.setText(account.getUsername());
             picStatus.setIcon(new ImageIcon(lostItem.getImg().getScaledInstance(216, 146, Image.SCALE_SMOOTH)));
         }catch(NullPointerException ex){
             ex.printStackTrace();
             System.out.println("problem : can't find img");
+        }
+        System.out.println("status = "+lostItem.getStatus().getStatusName());
+        if(lostItem.getStatus().getStatusName().equals("lost")){
+            LocalDateTime ldt = LocalDateTime.ofInstant(lostItem.getDateStart().toInstant(), ZoneId.systemDefault());
+            dateTimePickerStatus.getDatePicker().setDate(ldt.toLocalDate());
+            dateTimePickerStatus.getTimePicker().setTime(ldt.toLocalTime());
+            dateTimePickerStatus.setEnabled(false);
+            locationComboBox.setEnabled(false);
+        }else if(lostItem.getStatus().getStatusName().equals("found")){
+            statusCombo.setSelectedIndex(1);
+        }else if(lostItem.getStatus().getStatusName().equals("received")){
+            statusCombo.setSelectedIndex(2);
+            locationComboBox.setEnabled(false);
+            dateTimePickerStatus.setEnabled(true);
+            locationComboBox.setSelectedIndex(lostItem.getStatus().getLocationId().get(0)-1);
+        }else if(lostItem.getStatus().getStatusName().equals("found by myself")){
+            statusCombo.setSelectedIndex(1);
         }
         
     }
@@ -181,13 +200,20 @@ public class ChangeStatusPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void statusComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusComboActionPerformed
-        System.out.println("action per.");
+
         if(statusCombo.getSelectedIndex()==2){
-            System.out.println("condition right");
             locationComboBox.setEnabled(false);
+            dateTimePickerStatus.setEnabled(true);
             locationComboBox.setSelectedIndex(lostItem.getStatus().getLocationId().get(0)-1);
+        }else if(statusCombo.getSelectedIndex()==0){
+            LocalDateTime ldt = LocalDateTime.ofInstant(lostItem.getDateStart().toInstant(), ZoneId.systemDefault());
+            dateTimePickerStatus.getDatePicker().setDate(ldt.toLocalDate());
+            dateTimePickerStatus.getTimePicker().setTime(ldt.toLocalTime());
+            dateTimePickerStatus.setEnabled(false);
+            locationComboBox.setEnabled(false);  
         }else{
             locationComboBox.setEnabled(true);
+            dateTimePickerStatus.setEnabled(true);
         }
     }//GEN-LAST:event_statusComboActionPerformed
 
