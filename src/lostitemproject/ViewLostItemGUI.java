@@ -124,7 +124,7 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
         try{
             dbm.createConnection();
             String[] locate = dbm.queryLocation();
-            locateList.setMaximumRowCount(60);
+            locateList.setMaximumRowCount(10);
             String[] temp = new String[locate.length+1];
             temp[0]="ทั้งหมด";
             for(int i=1;i<temp.length;i++){
@@ -335,17 +335,4 @@ public class ViewLostItemGUI extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> statusList;
     // End of variables declaration//GEN-END:variables
 
-//    public void update() {
-//        for(int i=0;i<allItemShow.length;i++){
-//            if(allItemShow[i]==null){
-//                System.out.println("data changed abort update!");
-//                break;
-//            }
-//            if(allItemShow[i].getPageToGo()!=null){
-//                pageToGo="viewDetails";
-//                focusItem=allItemShow[i].getItem();
-//                break;
-//            }
-//        }
-//    }
 }

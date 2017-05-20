@@ -98,7 +98,7 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="locateList">
       <Properties>
-        <Property name="maximumRowCount" type="int" value="60" postCode="String[] temp = new String[locate.length+1];&#xa;temp[0]=&quot;&#xe17;&#xe31;&#xe49;&#xe07;&#xe2b;&#xe21;&#xe14;&quot;;&#xa;for(int i=1;i&lt;temp.length;i++){&#xa;    temp[i]=locate[i-1];&#xa;}"/>
+        <Property name="maximumRowCount" type="int" value="10" postCode="String[] temp = new String[locate.length+1];&#xa;temp[0]=&quot;&#xe17;&#xe31;&#xe49;&#xe07;&#xe2b;&#xe21;&#xe14;&quot;;&#xa;for(int i=1;i&lt;temp.length;i++){&#xa;    temp[i]=locate[i-1];&#xa;}"/>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(temp)" type="code"/>
         </Property>

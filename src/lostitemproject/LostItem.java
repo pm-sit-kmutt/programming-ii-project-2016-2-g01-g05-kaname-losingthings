@@ -10,7 +10,6 @@ public class LostItem {
     private int itemId;
     private String itemName;
     private String itemDescription;
-//    private int itemType;
     private String cate;
     private int ownerId;
     private String ownerName;
